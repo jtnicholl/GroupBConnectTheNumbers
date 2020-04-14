@@ -70,3 +70,19 @@
 1586885565 /usr/local/include/FL/Fl_Box.H
 	"Fl_Widget.H"
 
+1586898511 source:/home/luke/Documents/program_construction/GroupBConnectTheNumbers/main.cpp
+	<FL/Fl.H>
+	<FL/Fl_Window.H>
+	<FL/Fl_Box.H>
+
+1586907577 source:/home/luke/Documents/program_construction/GroupBConnectTheNumbers/Model/Tiles/ITile.cpp
+	"ITile.h"
+
+1586908390 /home/luke/Documents/program_construction/GroupBConnectTheNumbers/Model/Tiles/ITile.h
+
+1586907312 source:/home/luke/Documents/program_construction/GroupBConnectTheNumbers/Model/ITileGame.cpp
+	"ITileGame.h"
+
+1586908380 /home/luke/Documents/program_construction/GroupBConnectTheNumbers/Model/ITileGame.h
+	<vector>
+
