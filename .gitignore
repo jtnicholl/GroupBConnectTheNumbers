@@ -1,0 +1,7 @@
+bin/
+obj/
+
+#Platform specific metadata
+Thumbs.db
+.directory
+.DS_Store
