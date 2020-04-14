@@ -7,7 +7,7 @@ int main (int argc, char ** argv)
   Fl_Window *window;
   Fl_Box *box;
 
-  window = new Fl_Window (300, 180, "Connect the Numbers by Morganstern, Nicholl, Whaley");
+  window = new Fl_Window (300, 180, "Connect the Numbers by Morgenstern, Nicholl, Whaley");
   box = new Fl_Box (20, 40, 260, 100, "Hello World!");
 
   box->box (FL_UP_BOX);
