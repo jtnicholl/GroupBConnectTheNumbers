@@ -52,6 +52,12 @@ public:
 	 * @post getTile(position) == tile
 	 */
 	void setTile(int position, Tile* tile);
+	/**
+	 * Check if the puzzle has been solved.
+	 *
+	 * @return true if the puzzle is solved, else false
+	 */
+	 bool isSolved() const;
 
 private:
 	Tile** tiles;

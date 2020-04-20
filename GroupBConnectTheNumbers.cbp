@@ -30,6 +30,10 @@
 		</Linker>
 		<Unit filename="Model/Tile.cpp" />
 		<Unit filename="Model/Tile.h" />
+		<Unit filename="Model/TileBoard.cpp" />
+		<Unit filename="Model/TileBoard.h" />
+		<Unit filename="Model/TileGame.cpp" />
+		<Unit filename="Model/TileGame.h" />
 		<Unit filename="View/PuzzleWindow.cpp" />
 		<Unit filename="View/PuzzleWindow.h" />
 		<Unit filename="main.cpp" />
