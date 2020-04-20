@@ -18,6 +18,7 @@
 					<Add directory="View" />
 					<Add directory="Model" />
 					<Add directory="Model/Tiles" />
+					<Add directory="./" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -27,10 +28,8 @@
 		<Linker>
 			<Add option="`fltk-config --ldstaticflags`" />
 		</Linker>
-		<Unit filename="Model/ITileGame.cpp" />
-		<Unit filename="Model/ITileGame.h" />
-		<Unit filename="Model/Tiles/ITile.cpp" />
-		<Unit filename="Model/Tiles/ITile.h" />
+		<Unit filename="Model/Tile.cpp" />
+		<Unit filename="Model/Tile.h" />
 		<Unit filename="View/PuzzleWindow.cpp" />
 		<Unit filename="View/PuzzleWindow.h" />
 		<Unit filename="main.cpp" />
