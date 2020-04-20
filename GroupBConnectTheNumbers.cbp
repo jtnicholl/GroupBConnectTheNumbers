@@ -12,6 +12,7 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-g" />
 					<Add directory="Controller" />
 					<Add directory="View" />
@@ -26,18 +27,12 @@
 		<Linker>
 			<Add option="`fltk-config --ldstaticflags`" />
 		</Linker>
-		<Unit filename="Controller/GameController.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="Controller/GameController.h" />
 		<Unit filename="Model/ITileGame.cpp" />
 		<Unit filename="Model/ITileGame.h" />
 		<Unit filename="Model/Tiles/ITile.cpp" />
 		<Unit filename="Model/Tiles/ITile.h" />
-		<Unit filename="View/GameInterface.cpp">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
-		<Unit filename="View/GameInterface.h" />
+		<Unit filename="View/PuzzleWindow.cpp" />
+		<Unit filename="View/PuzzleWindow.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
