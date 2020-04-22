@@ -28,6 +28,8 @@
 		<Linker>
 			<Add option="`fltk-config --ldstaticflags`" />
 		</Linker>
+		<Unit filename="fileio/PuzzleLoader.cpp" />
+		<Unit filename="fileio/PuzzleLoader.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="model/Tile.cpp" />
 		<Unit filename="model/Tile.h" />

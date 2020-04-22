@@ -14,11 +14,11 @@ public:
 	/**
 	* The width of a puzzle board.
 	*/
-	const int BOARD_WIDTH = 8;
+	static const int BOARD_WIDTH = 8;
 	/**
 	* The total area of a puzzle board.
 	*/
-	const int BOARD_AREA = BOARD_WIDTH * BOARD_WIDTH;
+	static const int BOARD_AREA = BOARD_WIDTH * BOARD_WIDTH;
 
 	/**
 	 * Default constructor. Tiles must be set after constructing the board.

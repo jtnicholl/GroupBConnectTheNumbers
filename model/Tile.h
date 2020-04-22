@@ -10,11 +10,16 @@ class Tile
 {
 public:
 	/**
-	 * Construct a new tile. If a value is provided, the tile will be immutable.
+	 * Construct a new mutable tile with no initial value.
+	 */
+	Tile();
+	/**
+	 * Construct a new tile with an initial value.
 	 *
 	 * @param value Initial value for the tile
+	 * @param immutable Whether the tile should be immutable
 	 */
-	Tile(int value = 0);
+	Tile(int value, bool immutable = true);
 	/**
 	 * Destructor.
 	 */

@@ -2,10 +2,16 @@
 
 namespace model {
 
-Tile::Tile(int value)
+Tile::Tile()
+{
+	this->value = 0;
+	this->immutable = false;
+}
+
+Tile::Tile(int value, bool immutable)
 {
 	this->value = value;
-	this->immutable = value != 0;
+	this->immutable = immutable;
 }
 
 Tile::~Tile()
