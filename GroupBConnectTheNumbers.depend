@@ -152,12 +152,13 @@
 1587403551 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/Model/TileBoard.h
 	"Tile.h"
 
-1587395380 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/view/PuzzleWindow.h
+1587592895 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/view/PuzzleWindow.h
 	<FL/Fl_Window.H>
 	<FL/Fl_Menu_Button.H>
 	<FL/Fl_Button.H>
 	<FL/Fl_Input.H>
 	<FL/Fl_Output.H>
+	"../controller/GameController.h"
 
 1587580110 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/Tile.cpp
 	"Tile.h"
@@ -171,16 +172,17 @@
 1587586387 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/TileBoard.h
 	"Tile.h"
 
-1587569406 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/TileGame.cpp
+1587589769 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/TileGame.cpp
 	"TileGame.h"
 
-1587569406 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/TileGame.h
+1587589769 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/TileGame.h
 	"TileBoard.h"
 
-1587395380 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/view/PuzzleWindow.cpp
+1587592895 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/view/PuzzleWindow.cpp
 	"PuzzleWindow.h"
+	"../model/TileBoard.h"
 
-1587585851 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/fileio/PuzzleLoader.cpp
+1587586408 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/fileio/PuzzleLoader.cpp
 	"fileio/PuzzleLoader.h"
 	<fstream>
 	<sstream>
@@ -196,4 +198,20 @@
 	"Tile.h"
 
 1587581725 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers//model/Tile.h
+
+1587591539 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/controller/GameController.cpp
+	"GameController.h"
+	"../fileio/PuzzleLoader.h"
+
+1587591469 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/controller/GameController.h
+	<string>
+	<vector>
+	"../model/TileGame.h"
+	"../model/TileBoard.h"
+
+1587584784 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/fileio/PuzzleLoader.h
+	<vector>
+	<string>
+	"../model/TileBoard.h"
+	"../model/Tile.h"
 

@@ -10,22 +10,22 @@ TileGame::TileGame(TileBoard* board)
 
 TileGame::~TileGame()
 {
-	delete this->board;
+
 }
 
-bool TileGame::isTileMutable(int x, int y) const
+bool TileGame::isTileMutable(int position) const
 {
-	return !this->board->getTile(x, y)->isImmutable();
+	return !this->board->getTile(position)->isImmutable();
 }
 
-int TileGame::getTileValue(int x, int y) const
+int TileGame::getTileValue(int position) const
 {
-	return this->board->getTile(x, y)->getValue();
+	return this->board->getTile(position)->getValue();
 }
 
-bool TileGame::setTileValue(int x, int y, int value)
+bool TileGame::setTileValue(int position, int value)
 {
-	return this->board->getTile(x, y)->trySetValue(value);
+	return this->board->getTile(position)->trySetValue(value);
 }
 
 bool TileGame::isSolved() const

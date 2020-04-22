@@ -28,6 +28,8 @@
 		<Linker>
 			<Add option="`fltk-config --ldstaticflags`" />
 		</Linker>
+		<Unit filename="controller/GameController.cpp" />
+		<Unit filename="controller/GameController.h" />
 		<Unit filename="fileio/PuzzleLoader.cpp" />
 		<Unit filename="fileio/PuzzleLoader.h" />
 		<Unit filename="main.cpp" />
@@ -37,6 +39,7 @@
 		<Unit filename="model/TileBoard.h" />
 		<Unit filename="model/TileGame.cpp" />
 		<Unit filename="model/TileGame.h" />
+		<Unit filename="testfile.csv" />
 		<Unit filename="view/PuzzleWindow.cpp" />
 		<Unit filename="view/PuzzleWindow.h" />
 		<Extensions>

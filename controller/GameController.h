@@ -1,7 +1,13 @@
 #ifndef GAMECONTROLLER_H
 #define GAMECONTROLLER_H
 
+#include <string>
 #include <vector>
+
+#include "../model/TileGame.h"
+#include "../model/TileBoard.h"
+
+using namespace model;
 
 namespace controller
 {
@@ -14,84 +20,81 @@ class GameController
 {
 public:
     /**
-     * Gets the singleton game controller that interactes
-     * with the model logic.
-     *
-     * @return the singleton game controller.
+     * Construct a new GameController.
      */
-    static GameController* getSingleton();
-
+    GameController();
     /**
-     * Deallocates the GameController and all of its
-     * respective resources.
+     * Deconstructor.
      */
     virtual ~GameController();
-
     /**
      * Gets the current level of the game. The higher the level,
      * the higher the difficulty. getCurrentLevel() will never return
-     * a number less than 1.
+     * a number less than 0.
      *
-     * @return the current game level.
+     * @return the current game level
      */
-    virtual int getCurrentLevel() const = 0;
-
+    int getCurrentLevel() const;
+	/**
+	 * Gets the current level of the game. The higher the level,
+     * the higher the difficulty.
+     *
+     * @pre level > 0, level < getAvailableLevels()
+     * @post level is changed
+     *
+     * @param level new level to go to
+     */
+    void setCurrentLevel(int level);
+	/**
+     * Gets the number of levels available.
+     *
+     * @return the number of available levels
+     */
+    int getAvailableLevels() const;
     /**
      * Advances the game to the next level. If the level increment
      * is successful, then tryAdvanceLevel() returns true.
      *
-     * @post if tryAdvanceLevel(), then getCurrentLevel() == getCurrentLevel()@prev
+     * @post if tryAdvanceLevel(), then getCurrentLevel() == getCurrentLevel()@prev + 1
      *
-     * @return true if the level advancement was successful; false otherwise.
+     * @return true if the level advancement was successful; false otherwise
      */
-    virtual bool tryAdvanceLevel() = 0;
-
-    /**
-     * Gets the width of the game board.
-     *
-     * @return the width of the game board.
-     */
-    virtual int getGameBoardWidth() const = 0;
-
-    /**
-     * Gets the height of the game board.
-     *
-     * @return the height of the game board.
-     */
-    virtual int getGameBoardHeight() const = 0;
-
+    bool tryAdvanceLevel();
     /**
      * Attempts to set the tile number at the specified position
      * to the specified value. If the position is immutable, then
      * this method will return false.
      *
-     * @pre xPosition > 0 && yPosition > 0 && xPosition < getGameBoardWidth() && yPosition < getGameBoardHeight()
-     *      && value > 1 && value < 65
-     * @post if trySetTileNumber(x, y, z), then getPlayerTileValues()[y][x] == z
+     * @pre position >= 0, position < 64, value >= 0 value < 65
+     * @post if trySetTileNumber(x, y, value), then getTileValue(x, y) == value
      *
-     * @param xPosition the x position of the tile to set.
-     * @param yPosition the y position of the tile to set.
-     * @param value the value to set at the x, y position.
+     * @param position the position of the tile to set.
+     * @param value the value to set
      *
      * @return true if the set operation is successful; false otherwise.
      */
-    virtual bool trySetTileNumber(int xPosition, int yPosition, int value) = 0;
-
-    /**
-     * Gets all of the palyer tile values. These are the values that the player
-     * has placed via the trySetTileNumber(int,int,int) method. Blank tiles have
-     * value and immutable tiles have value -1.
+    bool trySetTileValue(int position, int value);
+	/**
+     * Gets the tile number at the specified position.
      *
-     * @return the two-dimensional array of integers that hold the player tile values.
+     * @pre position >= 0, position < 64
+     *
+     * @return the value at the specified position.
      */
-    virtual const std::vector<const std::vector<int>> getPlayerTileValues() const = 0;
-
-protected:
-    GameController();
+    int getTileValue(int position) const;
+	/**
+     * Saves all of the player's puzzles in progress to a file.
+     *
+     * @post puzzles are saved to a file on disk
+     */
+    void saveAllPuzzles() const;
 
 private:
-    static GameController* controller = nullptr;
+	const std::string PUZZLES_FILENAME = "testfile.csv";
 
+	int currentLevel;
+	std::vector<TileBoard*> boards;
+	TileGame* game;
 };
 
 }

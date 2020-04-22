@@ -21,45 +21,42 @@ public:
 	 */
 	TileGame(TileBoard* board);
     /**
-     * Destructor.
+     * Destructor. Does not delete the stored board.
      */
     virtual ~TileGame();
 
     /**
      * Returns true if the tile at the given position can have its value changed.
      *
-     * @pre x >= 0, x < TileBoard::BOARD_WIDTH, y >= 0, y < TileBoard::BOARD_WIDTH, value >= 0
+     * @pre position >= 0, x < TileBoard::BOARD_AREA
      *
-     * @param x x position
-     * @param y y position
+     * @param position the position to check
      *
      * @return true if the tile is mutable, else false
      */
-    bool isTileMutable(int x, int y) const;
+    bool isTileMutable(int position) const;
     /**
      * Get the value of the specified tile.
      *
-     * @pre x >= 0, x < TileBoard::BOARD_WIDTH, y >= 0, y < TileBoard::BOARD_WIDTH, value >= 0
+     * @pre position >= 0, x < TileBoard::BOARD_AREA
      *
-     * @param x x position
-     * @param y y position
+     * @param position the position to get
      *
      * @return The value in the specified tile
 	 */
-	int getTileValue(int x, int y) const;
+	int getTileValue(int position) const;
     /**
      * Sets the tile number at the specified position to the specified value.
      *
-     * @pre x >= 0, x < TileBoard::BOARD_WIDTH, y >= 0, y < TileBoard::BOARD_WIDTH, value >= 0, value <= 64
-     * @post if isTileMutable(x, y), then getTileValue(x, y) == value
+     * @pre position >= 0, x < TileBoard::BOARD_AREA, value >= 0, value <= 64
+     * @post if isTileMutable(position), then getTileValue(position) == value
      *
-     * @param x the x position of the tile to set
-     * @param x the y position of the tile to set
+     * @param position the position position of the tile to set
      * @param value the value to set at the x, y position
      *
      * @return true if the value was set, else false
      */
-    bool setTileValue(int x, int y, int value);
+    bool setTileValue(int position, int value);
     /**
      * Retruns if the puzzle has been solved.
      *
