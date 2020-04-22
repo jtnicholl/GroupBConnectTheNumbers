@@ -7,6 +7,10 @@
 #include <FL/Fl_Input.H>
 #include <FL/Fl_Output.H>
 
+#include "../controller/GameController.h"
+
+using namespace controller;
+
 namespace view
 {
 
@@ -21,12 +25,17 @@ class PuzzleWindow : public Fl_Window
 		const int GRID_STARTING_Y = 60;
 		const int GRID_BOX_WIDTH = 30;
 		const int GRID_BOX_PADDING = 10;
+
+		GameController* gameController;
+
 		Fl_Menu_Button* puzzleSelectMenu;
 		Fl_Button* resetButton;
 		Fl_Input** inputs;
 		Fl_Output* timerDisplay;
 		Fl_Button* pauseButton;
+
 		void addInputBox(int number);
+		void updateInputs();
 };
 
 }
