@@ -1,6 +1,6 @@
 #include <FL/Fl.H>
 
-#include "View/PuzzleWindow.h"
+#include "view/PuzzleWindow.h"
 
 using namespace view;
 

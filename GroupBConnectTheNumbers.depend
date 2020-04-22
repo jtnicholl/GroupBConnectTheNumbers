@@ -86,9 +86,9 @@
 1586908380 /home/luke/Documents/program_construction/GroupBConnectTheNumbers/Model/ITileGame.h
 	<vector>
 
-1587395380 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/main.cpp
+1587569552 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/main.cpp
 	<FL/Fl.H>
-	"View/PuzzleWindow.h"
+	"view/PuzzleWindow.h"
 
 1587395380 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/View/PuzzleWindow.h
 	<FL/Fl_Window.H>
@@ -151,4 +151,32 @@
 
 1587403551 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/Model/TileBoard.h
 	"Tile.h"
+
+1587395380 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/view/PuzzleWindow.h
+	<FL/Fl_Window.H>
+	<FL/Fl_Menu_Button.H>
+	<FL/Fl_Button.H>
+	<FL/Fl_Input.H>
+	<FL/Fl_Output.H>
+
+1587569406 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/Tile.cpp
+	"Tile.h"
+
+1587569406 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/Tile.h
+
+1587569406 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/TileBoard.cpp
+	"TileBoard.h"
+	<assert.h>
+
+1587569406 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/TileBoard.h
+	"Tile.h"
+
+1587569406 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/TileGame.cpp
+	"TileGame.h"
+
+1587569406 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/TileGame.h
+	"TileBoard.h"
+
+1587395380 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/view/PuzzleWindow.cpp
+	"PuzzleWindow.h"
 
