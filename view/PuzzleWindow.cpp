@@ -21,6 +21,9 @@ PuzzleWindow::PuzzleWindow(int width, int height, const char* title) : Fl_Window
 		addInputBox(i);
 	}
 	updateInputs();
+
+	this->resetButton->callback(cbReset, this);
+
 	end();
 }
 
@@ -54,6 +57,13 @@ void PuzzleWindow::updateInputs()
 		inputs[i]->value(boxValue.c_str());
 		inputs[i]->readonly(tileImmutable);
 	}
+}
+
+void PuzzleWindow::cbReset(Fl_Widget* widget, void* data)
+{
+	PuzzleWindow* window = (PuzzleWindow*) data;
+	window->gameController->resetCurrentPuzzle();
+	window->updateInputs();
 }
 
 }
