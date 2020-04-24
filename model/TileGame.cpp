@@ -23,7 +23,7 @@ int TileGame::getTileValue(int position) const
 	return this->board->getTile(position)->getValue();
 }
 
-bool TileGame::setTileValue(int position, int value)
+bool TileGame::trySetTileValue(int position, int value)
 {
 	return this->board->getTile(position)->trySetValue(value);
 }

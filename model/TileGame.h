@@ -21,7 +21,7 @@ public:
 	 */
 	TileGame(TileBoard* board);
     /**
-     * Destructor. Does not delete the stored board.
+     * Destructor. Does NOT delete the stored board.
      */
     virtual ~TileGame();
 
@@ -52,11 +52,11 @@ public:
      * @post if isTileMutable(position), then getTileValue(position) == value
      *
      * @param position the position position of the tile to set
-     * @param value the value to set at the x, y position
+     * @param value the value to set at the position
      *
      * @return true if the value was set, else false
      */
-    bool setTileValue(int position, int value);
+    bool trySetTileValue(int position, int value);
     /**
      * Retruns if the puzzle has been solved.
      *

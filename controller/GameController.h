@@ -93,6 +93,12 @@ public:
      */
 	bool isTileImmutable(int position) const;
 	/**
+	 * Reset the current puzzle by clearing all the player's inputs.
+	 *
+	 * @post puzzle is reset
+	 */
+	void resetCurrentPuzzle();
+	/**
      * Saves all of the player's puzzles in progress to a file.
      *
      * @post puzzles are saved to a file on disk
