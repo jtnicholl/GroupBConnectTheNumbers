@@ -71,7 +71,7 @@ public:
      * @param position the position of the tile to set.
      * @param value the value to set
      *
-     * @return true if the set operation is successful; false otherwise.
+     * @return true if the set operation is successful; false otherwise
      */
     bool trySetTileValue(int position, int value);
 	/**
@@ -79,9 +79,19 @@ public:
      *
      * @pre position >= 0, position < 64
      *
-     * @return the value at the specified position.
+     * @return the value at the specified position
      */
     int getTileValue(int position) const;
+    /**
+     * Returns if the given tile is immutable.
+     *
+     * @pre position >= 0, position < 64
+     *
+     * @param position the position of the tile to check
+     *
+     * @return true if the tile is immutable, else false
+     */
+	bool isTileImmutable(int position) const;
 	/**
      * Saves all of the player's puzzles in progress to a file.
      *

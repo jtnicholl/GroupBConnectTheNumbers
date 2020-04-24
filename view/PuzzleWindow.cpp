@@ -49,8 +49,10 @@ void PuzzleWindow::updateInputs()
 	for (int i = 0; i < model::TileBoard::BOARD_AREA; i++)
 	{
 		int tileValue = this->gameController->getTileValue(i);
+		bool tileImmutable = this->gameController->isTileImmutable(i);
 		std::string boxValue = tileValue == 0 ? "" : std::to_string(tileValue);
 		inputs[i]->value(boxValue.c_str());
+		inputs[i]->readonly(tileImmutable);
 	}
 }
 

@@ -13,9 +13,9 @@ TileGame::~TileGame()
 
 }
 
-bool TileGame::isTileMutable(int position) const
+bool TileGame::isTileImmutable(int position) const
 {
-	return !this->board->getTile(position)->isImmutable();
+	return this->board->getTile(position)->isImmutable();
 }
 
 int TileGame::getTileValue(int position) const

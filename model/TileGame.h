@@ -26,15 +26,15 @@ public:
     virtual ~TileGame();
 
     /**
-     * Returns true if the tile at the given position can have its value changed.
+     * Returns true if the tile at the given position can not have its value changed.
      *
      * @pre position >= 0, x < TileBoard::BOARD_AREA
      *
      * @param position the position to check
      *
-     * @return true if the tile is mutable, else false
+     * @return true if the tile is immutable, else false
      */
-    bool isTileMutable(int position) const;
+    bool isTileImmutable(int position) const;
     /**
      * Get the value of the specified tile.
      *

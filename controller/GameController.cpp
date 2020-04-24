@@ -58,6 +58,11 @@ int GameController::getTileValue(int position) const
 	return this->game->getTileValue(position);
 }
 
+bool GameController::isTileImmutable(int position) const
+{
+	return this->game->isTileImmutable(position);
+}
+
 void GameController::saveAllPuzzles() const
 {
 	// TODO
