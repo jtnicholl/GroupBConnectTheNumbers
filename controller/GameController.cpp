@@ -27,11 +27,10 @@ int GameController::getCurrentLevel() const
 void GameController::setCurrentLevel(int level)
 {
 	this->currentLevel = level;
-	delete this->game;
-	this->game = new TileGame(this->boards[level]);
+	this->game->setBoard(this->boards[level]);
 }
 
-int GameController::getAvailableLevels() const
+unsigned int GameController::getAvailableLevels() const
 {
 	return this->boards.size();
 }

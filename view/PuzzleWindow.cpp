@@ -1,5 +1,7 @@
 #include "PuzzleWindow.h"
 
+#include <string>
+
 #include "../model/TileBoard.h"
 
 namespace view
@@ -21,6 +23,7 @@ PuzzleWindow::PuzzleWindow(int width, int height, const char* title) : Fl_Window
 		addInputBox(i);
 	}
 	updateInputs();
+	populateMenu();
 
 	this->resetButton->callback(cbReset, this);
 
@@ -56,6 +59,14 @@ void PuzzleWindow::updateInputs()
 		std::string boxValue = tileValue == 0 ? "" : std::to_string(tileValue);
 		inputs[i]->value(boxValue.c_str());
 		inputs[i]->readonly(tileImmutable);
+	}
+}
+
+inline void PuzzleWindow::populateMenu()
+{
+	for (unsigned int i = 0; i < this->gameController->getAvailableLevels(); i++)
+	{
+		this->puzzleSelectMenu->add(std::to_string(i + 1).c_str());
 	}
 }
 

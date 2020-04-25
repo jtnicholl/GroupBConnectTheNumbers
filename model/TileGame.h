@@ -15,7 +15,7 @@ public:
 	/**
 	 * Constructs a new TileGame.
 	 *
-	 * @pre tileBoard != nullptr
+	 * @pre board != nullptr
 	 *
 	 * @param board TileBoard to use for the game
 	 */
@@ -57,6 +57,15 @@ public:
      * @return true if the value was set, else false
      */
     bool trySetTileValue(int position, int value);
+    /**
+     * Sets the board for the current game.
+     *
+     * @pre board != nullptr
+     * @post board is updated
+     *
+     * @param board TileBoard to use for the game
+     */
+    void setBoard(TileBoard* board);
     /**
      * Retruns if the puzzle has been solved.
      *

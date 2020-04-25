@@ -50,7 +50,7 @@ public:
      *
      * @return the number of available levels
      */
-    int getAvailableLevels() const;
+    unsigned int getAvailableLevels() const;
     /**
      * Advances the game to the next level. If the level increment
      * is successful, then tryAdvanceLevel() returns true.

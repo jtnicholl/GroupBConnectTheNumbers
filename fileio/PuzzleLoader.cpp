@@ -16,7 +16,10 @@ std::vector<TileBoard*> PuzzleLoader::loadPuzzlesFromFile(const std::string& fil
 	{
 		std::string line;
 		std::getline(infile, line);
-		output.push_back(loadPuzzleFromLine(line));
+		if (!line.empty())
+		{
+			output.push_back(loadPuzzleFromLine(line));
+		}
 	}
 	infile.close();
 	return output;

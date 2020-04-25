@@ -28,6 +28,11 @@ bool TileGame::trySetTileValue(int position, int value)
 	return this->board->getTile(position)->trySetValue(value);
 }
 
+void TileGame::setBoard(TileBoard* board)
+{
+	this->board = board;
+}
+
 bool TileGame::isSolved() const
 {
 	return this->board->isSolved();

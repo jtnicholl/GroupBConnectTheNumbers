@@ -36,6 +36,7 @@ class PuzzleWindow : public Fl_Window
 
 		void addInputBox(int number);
 		void updateInputs();
+		void populateMenu();
 
 		static void cbReset(Fl_Widget* widget, void* data);
 };
