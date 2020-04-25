@@ -39,6 +39,7 @@ class PuzzleWindow : public Fl_Window
 		void populateMenu();
 
 		static void cbReset(Fl_Widget* widget, void* data);
+		static void cbChangePuzzle(Fl_Widget* widget, void* data);
 };
 
 }

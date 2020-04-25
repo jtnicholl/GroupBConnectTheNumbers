@@ -152,7 +152,7 @@
 1587403551 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/Model/TileBoard.h
 	"Tile.h"
 
-1587839529 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/view/PuzzleWindow.h
+1587840596 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/view/PuzzleWindow.h
 	<FL/Fl_Window.H>
 	<FL/Fl_Menu_Button.H>
 	<FL/Fl_Button.H>
@@ -178,9 +178,10 @@
 1587767680 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/TileGame.h
 	"TileBoard.h"
 
-1587840067 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/view/PuzzleWindow.cpp
+1587841397 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/view/PuzzleWindow.cpp
 	"PuzzleWindow.h"
 	<string>
+	<FL/Fl_Menu_Item.H>
 	"../model/TileBoard.h"
 
 1587840158 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/fileio/PuzzleLoader.cpp

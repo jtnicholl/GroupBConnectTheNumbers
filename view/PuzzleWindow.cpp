@@ -1,6 +1,7 @@
 #include "PuzzleWindow.h"
 
 #include <string>
+#include <FL/Fl_Menu_Item.H>
 
 #include "../model/TileBoard.h"
 
@@ -66,7 +67,8 @@ inline void PuzzleWindow::populateMenu()
 {
 	for (unsigned int i = 0; i < this->gameController->getAvailableLevels(); i++)
 	{
-		this->puzzleSelectMenu->add(std::to_string(i + 1).c_str());
+		std::string label = std::to_string(i + 1);
+		this->puzzleSelectMenu->add(label.c_str(), 0, cbChangePuzzle, this);
 	}
 }
 
@@ -75,6 +77,15 @@ void PuzzleWindow::cbReset(Fl_Widget* widget, void* data)
 	PuzzleWindow* window = (PuzzleWindow*) data;
 	window->gameController->resetCurrentPuzzle();
 	window->updateInputs();
+}
+
+void PuzzleWindow::cbChangePuzzle(Fl_Widget* widget, void* data)
+{
+	PuzzleWindow* window = (PuzzleWindow*) data;
+	const char* label = ((Fl_Menu_*)widget)->text();
+    int puzzleSelected = std::atoi(label) - 1;
+    window->gameController->setCurrentLevel(puzzleSelected);
+    window->updateInputs();
 }
 
 }
