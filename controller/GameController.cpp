@@ -1,7 +1,11 @@
 #include "GameController.h"
 
 #include "../fileio/PuzzleLoader.h"
+#include "../fileio/PuzzleSaver.h"
+#include "../fileio/Utils.cpp"
 #include "../model/TileBoard.h"
+
+using namespace fileio;
 
 namespace controller
 {
@@ -9,7 +13,16 @@ namespace controller
 GameController::GameController()
 {
     this->currentLevel = 0;
-	this->boards = fileio::PuzzleLoader::loadPuzzlesFromFile(PUZZLES_FILENAME);
+    std::string filename;
+    if (fileExists(SAVED_PUZZLES_FILENAME))
+    {
+		filename = SAVED_PUZZLES_FILENAME;
+    }
+    else
+    {
+		filename = DEFAULT_PUZZLES_FILENAME;
+	}
+	this->boards = PuzzleLoader::loadPuzzlesFromFile(filename);
 	this->game = new TileGame(this->boards.front());
 }
 
@@ -73,7 +86,7 @@ void GameController::resetCurrentPuzzle()
 
 void GameController::saveAllPuzzles() const
 {
-	// TODO
+	PuzzleSaver::savePuzzlesToFile(this->boards, SAVED_PUZZLES_FILENAME);
 }
 
 }

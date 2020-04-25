@@ -44,7 +44,7 @@ PuzzleWindow::~PuzzleWindow()
 	delete this->pauseButton;
 }
 
-void PuzzleWindow::addInputBox(int number)
+inline void PuzzleWindow::addInputBox(int number)
 {
 	int x_offset = (number % model::TileBoard::BOARD_WIDTH) * (GRID_BOX_WIDTH + GRID_BOX_PADDING);
 	int y_offset = (number / model::TileBoard::BOARD_WIDTH) * (GRID_BOX_WIDTH + GRID_BOX_PADDING);
@@ -71,6 +71,7 @@ void PuzzleWindow::pushInputs()
 		int tileValue = parseEntry(this->inputs[i]->value());
 		this->gameController->trySetTileValue(i, tileValue);
 	}
+	this->gameController->saveAllPuzzles(); // TODO this should only be called once when exiting the application
 }
 
 inline void PuzzleWindow::populateMenu()

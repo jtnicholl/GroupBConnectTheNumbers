@@ -30,8 +30,17 @@
 		</Linker>
 		<Unit filename="controller/GameController.cpp" />
 		<Unit filename="controller/GameController.h" />
+		<Unit filename="default_puzzles.csv" />
 		<Unit filename="fileio/PuzzleLoader.cpp" />
 		<Unit filename="fileio/PuzzleLoader.h" />
+		<Unit filename="fileio/PuzzleSaver.cpp" />
+		<Unit filename="fileio/PuzzleSaver.h" />
+		<Unit filename="fileio/Utils.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="fileio/Utils.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="main.cpp" />
 		<Unit filename="model/Tile.cpp" />
 		<Unit filename="model/Tile.h" />
@@ -39,7 +48,6 @@
 		<Unit filename="model/TileBoard.h" />
 		<Unit filename="model/TileGame.cpp" />
 		<Unit filename="model/TileGame.h" />
-		<Unit filename="testfile.csv" />
 		<Unit filename="view/PuzzleWindow.cpp" />
 		<Unit filename="view/PuzzleWindow.h" />
 		<Extensions>
