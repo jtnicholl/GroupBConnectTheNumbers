@@ -49,6 +49,7 @@ void PuzzleWindow::addInputBox(int number)
 	int x_offset = (number % model::TileBoard::BOARD_WIDTH) * (GRID_BOX_WIDTH + GRID_BOX_PADDING);
 	int y_offset = (number / model::TileBoard::BOARD_WIDTH) * (GRID_BOX_WIDTH + GRID_BOX_PADDING);
     this->inputs[number] = new Fl_Input(GRID_STARTING_X + x_offset, GRID_STARTING_Y + y_offset, GRID_BOX_WIDTH, GRID_BOX_WIDTH);
+    this->inputs[number]->callback(cbSubmit, this);
 }
 
 void PuzzleWindow::updateInputs()
@@ -60,6 +61,15 @@ void PuzzleWindow::updateInputs()
 		std::string boxValue = tileValue == 0 ? "" : std::to_string(tileValue);
 		inputs[i]->value(boxValue.c_str());
 		inputs[i]->readonly(tileImmutable);
+	}
+}
+
+void PuzzleWindow::pushInputs()
+{
+	for (int i = 0; i < model::TileBoard::BOARD_AREA; i++)
+	{
+		int tileValue = parseEntry(this->inputs[i]->value());
+		this->gameController->trySetTileValue(i, tileValue);
 	}
 }
 
@@ -84,8 +94,34 @@ void PuzzleWindow::cbChangePuzzle(Fl_Widget* widget, void* data)
 	PuzzleWindow* window = (PuzzleWindow*) data;
 	const char* label = ((Fl_Menu_*)widget)->text();
     int puzzleSelected = std::atoi(label) - 1;
+    window->pushInputs();
     window->gameController->setCurrentLevel(puzzleSelected);
     window->updateInputs();
+}
+
+void PuzzleWindow::cbSubmit(Fl_Widget* widget, void* data)
+{
+	PuzzleWindow* window = (PuzzleWindow*) data;
+	window->pushInputs();
+	window->updateInputs();
+}
+
+int PuzzleWindow::parseEntry(const char* entry)
+{
+	int output = 0;
+	for (int i = 0; entry[i] != '\0'; i++)
+	{
+		if (std::isdigit(entry[i]))
+		{
+			output *= 10;
+			output += entry[i] - '0';
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	return output > 64 ? 0 : output;
 }
 
 }
