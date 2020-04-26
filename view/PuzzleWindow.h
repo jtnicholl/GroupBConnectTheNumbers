@@ -27,6 +27,8 @@ class PuzzleWindow : public Fl_Window
 		const int GRID_BOX_PADDING = 10;
 		const char* NOT_SOLVED_MESSAGE = "Puzzle not yet solved...";
 		const char* SOLVED_MESSAGE = "Puzzle solved!";
+		const Fl_Color MUTABLE_COLOR = FL_WHITE;
+		const Fl_Color IMMUTABLE_COLOR = FL_LIGHT2;
 
 		GameController* gameController;
 

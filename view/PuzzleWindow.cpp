@@ -61,6 +61,7 @@ void PuzzleWindow::updateInputs()
 		std::string boxValue = tileValue == 0 ? "" : std::to_string(tileValue);
 		inputs[i]->value(boxValue.c_str());
 		inputs[i]->readonly(tileImmutable);
+		inputs[i]->color(tileImmutable ? IMMUTABLE_COLOR : MUTABLE_COLOR);
 	}
 	this->puzzleStatus->value(this->gameController->isSolved() ? SOLVED_MESSAGE : NOT_SOLVED_MESSAGE);
 }
