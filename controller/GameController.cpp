@@ -21,7 +21,10 @@ GameController::GameController()
 GameController::~GameController()
 {
 	delete this->game;
-	// TODO delete boards
+	for (unsigned int i = 0; i < this->boards.size(); i++)
+	{
+		delete this->boards[i];
+	}
 }
 
 int GameController::getCurrentLevel() const

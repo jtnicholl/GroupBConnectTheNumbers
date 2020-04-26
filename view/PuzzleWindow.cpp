@@ -73,7 +73,7 @@ void PuzzleWindow::pushInputs()
 		int tileValue = parseEntry(this->inputs[i]->value());
 		this->gameController->trySetTileValue(i, tileValue);
 	}
-	this->gameController->saveAllPuzzles(); // TODO this should only be called once when exiting the application
+	this->gameController->saveAllPuzzles();
 }
 
 inline void PuzzleWindow::populateMenu()
