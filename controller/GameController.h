@@ -9,15 +9,13 @@
 
 using namespace model;
 
-namespace controller
-{
+namespace controller {
 
 /**
  * This controller interacts with the model game logic.
  * All access to the model should be made through this unified interface.
  */
-class GameController
-{
+class GameController {
 public:
     /**
      * Construct a new GameController.
@@ -35,8 +33,8 @@ public:
      * @return the current game level
      */
     int getCurrentLevel() const;
-	/**
-	 * Gets the current level of the game. The higher the level,
+    /**
+     * Gets the current level of the game. The higher the level,
      * the higher the difficulty.
      *
      * @pre level > 0, level < getAvailableLevels()
@@ -45,7 +43,7 @@ public:
      * @param level new level to go to
      */
     void setCurrentLevel(int level);
-	/**
+    /**
      * Gets the number of levels available.
      *
      * @return the number of available levels
@@ -74,7 +72,7 @@ public:
      * @return true if the set operation is successful; false otherwise
      */
     bool trySetTileValue(int position, int value);
-	/**
+    /**
      * Gets the tile number at the specified position.
      *
      * @pre position >= 0, position < 64
@@ -91,20 +89,20 @@ public:
      *
      * @return true if the tile is immutable, else false
      */
-	bool isTileImmutable(int position) const;
-	/**
-	 * Check if the current puzzle has been solved with a valid solution.
-	 *
-	 * @return true if the puzzle has been solved, else false
-	 */
-	bool isSolved() const;
-	/**
-	 * Reset the current puzzle by clearing all the player's inputs.
-	 *
-	 * @post puzzle is reset
-	 */
-	void resetCurrentPuzzle();
-	/**
+    bool isTileImmutable(int position) const;
+    /**
+     * Check if the current puzzle has been solved with a valid solution.
+     *
+     * @return true if the puzzle has been solved, else false
+     */
+    bool isSolved() const;
+    /**
+     * Reset the current puzzle by clearing all the player's inputs.
+     *
+     * @post puzzle is reset
+     */
+    void resetCurrentPuzzle();
+    /**
      * Saves all of the player's puzzles in progress to a file.
      *
      * @post puzzles are saved to a file on disk
@@ -112,13 +110,13 @@ public:
     void saveAllPuzzles() const;
 
 private:
-	const std::string DEFAULT_PUZZLES_FILENAME = "default_puzzles.csv";
-	const std::string SAVED_PUZZLES_FILENAME = "saved_puzzles.csv";
-	const std::string LAST_OPEN_PUZZLE_FILENAME = "open_puzzle";
+    const std::string DEFAULT_PUZZLES_FILENAME = "default_puzzles.csv";
+    const std::string SAVED_PUZZLES_FILENAME = "saved_puzzles.csv";
+    const std::string LAST_OPEN_PUZZLE_FILENAME = "open_puzzle";
 
-	int currentLevel;
-	std::vector<TileBoard*> boards;
-	TileGame* game;
+    int currentLevel;
+    std::vector<TileBoard*> boards;
+    TileGame* game;
 };
 
 }

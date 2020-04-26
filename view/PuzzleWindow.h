@@ -11,44 +11,55 @@
 
 using namespace controller;
 
-namespace view
-{
+namespace view {
 
-class PuzzleWindow : public Fl_Window
-{
-	public:
-		PuzzleWindow(int width, int height, const char* title);
-		virtual ~PuzzleWindow();
+/**
+ * Main window of the application.
+ */
+class PuzzleWindow : public Fl_Window {
+public:
+    /**
+     * Construct a new PuzzleWindow.
+     *
+     * @param width width of the window
+     * @param height height of the window
+     * @param title title of the window
+     */
+    PuzzleWindow(int width, int height, const char* title);
+    /**
+     * Destructor.
+     */
+    virtual ~PuzzleWindow();
 
-	private:
-		const int GRID_STARTING_X = 20;
-		const int GRID_STARTING_Y = 60;
-		const int GRID_BOX_WIDTH = 30;
-		const int GRID_BOX_PADDING = 10;
-		const char* NOT_SOLVED_MESSAGE = "Puzzle not yet solved...";
-		const char* SOLVED_MESSAGE = "Puzzle solved!";
-		const Fl_Color MUTABLE_COLOR = FL_WHITE;
-		const Fl_Color IMMUTABLE_COLOR = FL_LIGHT2;
+private:
+    const int GRID_STARTING_X = 20;
+    const int GRID_STARTING_Y = 60;
+    const int GRID_BOX_WIDTH = 30;
+    const int GRID_BOX_PADDING = 10;
+    const char* NOT_SOLVED_MESSAGE = "Puzzle not yet solved...";
+    const char* SOLVED_MESSAGE = "Puzzle solved!";
+    const Fl_Color MUTABLE_COLOR = FL_WHITE;
+    const Fl_Color IMMUTABLE_COLOR = FL_LIGHT2;
 
-		GameController* gameController;
+    GameController* gameController;
 
-		Fl_Menu_Button* puzzleSelectMenu;
-		Fl_Button* resetButton;
-		Fl_Input** inputs;
-		Fl_Output* puzzleStatus;
-		Fl_Output* timerDisplay;
-		Fl_Button* pauseButton;
+    Fl_Menu_Button* puzzleSelectMenu;
+    Fl_Button* resetButton;
+    Fl_Input** inputs;
+    Fl_Output* puzzleStatus;
+    Fl_Output* timerDisplay;
+    Fl_Button* pauseButton;
 
-		void addInputBox(int number);
-		void updateInputs();
-		void pushInputs();
-		void populateMenu();
+    void addInputBox(int number);
+    void updateInputs();
+    void pushInputs();
+    void populateMenu();
 
-		static void cbReset(Fl_Widget* widget, void* data);
-		static void cbChangePuzzle(Fl_Widget* widget, void* data);
-		static void cbSubmit(Fl_Widget* widget, void* data);
+    static void cbReset(Fl_Widget* widget, void* data);
+    static void cbChangePuzzle(Fl_Widget* widget, void* data);
+    static void cbSubmit(Fl_Widget* widget, void* data);
 
-		static int parseEntry(const char* entry);
+    static int parseEntry(const char* entry);
 };
 
 }

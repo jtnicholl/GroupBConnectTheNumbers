@@ -1,41 +1,33 @@
 #include "TileGame.h"
 
-namespace model
-{
+namespace model {
 
-TileGame::TileGame(TileBoard* board)
-{
+TileGame::TileGame(TileBoard* board) {
     this->board = board;
 }
 
-TileGame::~TileGame()
-{
+TileGame::~TileGame() {
 
 }
 
-bool TileGame::isTileImmutable(int position) const
-{
-	return this->board->getTile(position)->isImmutable();
+bool TileGame::isTileImmutable(int position) const {
+    return this->board->getTile(position)->isImmutable();
 }
 
-int TileGame::getTileValue(int position) const
-{
-	return this->board->getTile(position)->getValue();
+int TileGame::getTileValue(int position) const {
+    return this->board->getTile(position)->getValue();
 }
 
-bool TileGame::trySetTileValue(int position, int value)
-{
-	return this->board->getTile(position)->trySetValue(value);
+bool TileGame::trySetTileValue(int position, int value) {
+    return this->board->getTile(position)->trySetValue(value);
 }
 
-void TileGame::setBoard(TileBoard* board)
-{
-	this->board = board;
+void TileGame::setBoard(TileBoard* board) {
+    this->board = board;
 }
 
-bool TileGame::isSolved() const
-{
-	return this->board->isSolved();
+bool TileGame::isSolved() const {
+    return this->board->isSolved();
 }
 
 }

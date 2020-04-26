@@ -10,13 +10,18 @@ using namespace model;
 
 namespace fileio {
 
-class PuzzleSaver
-{
+class PuzzleSaver {
 public:
-	static void savePuzzlesToFile(const std::vector<TileBoard*>& boards, const std::string& filename);
+    /**
+     * Save puzzle boards to a file.
+     *
+     * @param boards puzzle boards to save, stored in a vector
+     * @param filename filename to save to
+     */
+    static void savePuzzlesToFile(const std::vector<TileBoard*>& boards, const std::string& filename);
 
 private:
-	static std::string puzzleToLine(TileBoard* board);
+    static std::string puzzleToLine(TileBoard* board);
 };
 
 } // namespace fileio

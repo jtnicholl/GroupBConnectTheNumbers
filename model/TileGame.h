@@ -3,23 +3,21 @@
 
 #include "TileBoard.h"
 
-namespace model
-{
+namespace model {
 
 /**
  * Object representing a tile puzzle.
  */
-class TileGame
-{
+class TileGame {
 public:
-	/**
-	 * Constructs a new TileGame.
-	 *
-	 * @pre board != nullptr
-	 *
-	 * @param board TileBoard to use for the game
-	 */
-	TileGame(TileBoard* board);
+    /**
+     * Constructs a new TileGame.
+     *
+     * @pre board != nullptr
+     *
+     * @param board TileBoard to use for the game
+     */
+    TileGame(TileBoard* board);
     /**
      * Destructor. Does NOT delete the stored board.
      */
@@ -43,8 +41,8 @@ public:
      * @param position the position to get
      *
      * @return The value in the specified tile
-	 */
-	int getTileValue(int position) const;
+     */
+    int getTileValue(int position) const;
     /**
      * Sets the tile number at the specified position to the specified value.
      *
@@ -71,10 +69,10 @@ public:
      *
      * @return true if the puzzle has been solved, else false
      */
-     bool isSolved() const;
+    bool isSolved() const;
 
 private:
-	TileBoard* board;
+    TileBoard* board;
 };
 
 }

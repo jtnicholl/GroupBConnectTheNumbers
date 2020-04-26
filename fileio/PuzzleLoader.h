@@ -11,17 +11,30 @@ using namespace model;
 
 namespace fileio {
 
-struct TileEntry { int position; Tile* tile; };
+/**
+ * Simple structure storing a pointer to a tile and its position on the board.
+ * Not intended for use outside the PuzzleLoader class.
+ */
+struct TileEntry {
+    int position;
+    Tile* tile;
+};
 
-class PuzzleLoader
-{
+class PuzzleLoader {
 public:
-	static std::vector<TileBoard*> loadPuzzlesFromFile(const std::string& filename);
+    /**
+     * Load puzzles from the specified file.
+     *
+     * @param filename filename to load from
+     *
+     * @return the tile boards in a vector
+     */
+    static std::vector<TileBoard*> loadPuzzlesFromFile(const std::string& filename);
 
 private:
-	static TileBoard* loadPuzzleFromLine(const std::string& line);
-	static std::vector<TileEntry> parseLine(const std::string& line);
-	static TileEntry parseEntry(const std::string& entry);
+    static TileBoard* loadPuzzleFromLine(const std::string& line);
+    static std::vector<TileEntry> parseLine(const std::string& line);
+    static TileEntry parseEntry(const std::string& entry);
 };
 
 } // namespace fileio
