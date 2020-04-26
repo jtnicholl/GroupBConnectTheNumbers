@@ -16,7 +16,7 @@ PuzzleWindow::PuzzleWindow(int width, int height, const char* title) : Fl_Window
 
 	this->puzzleSelectMenu = new Fl_Menu_Button(20, 20, 200, 24, "Select Puzzle");
 	this->resetButton = new Fl_Button(250, 20, 80, 24, "Reset");
-	this->solvedMessage = new Fl_Output(20, 390, 170, 24);
+	this->puzzleStatus = new Fl_Output(40, 390, 170, 24, "1");
 	this->pauseButton = new Fl_Button(250, 390, 80, 24, "Pause");
 
 	for (int i = 0; i < 64; i++)
@@ -62,7 +62,7 @@ void PuzzleWindow::updateInputs()
 		inputs[i]->value(boxValue.c_str());
 		inputs[i]->readonly(tileImmutable);
 	}
-	this->solvedMessage->value(this->gameController->isSolved() ? SOLVED_MESSAGE : NOT_SOLVED_MESSAGE);
+	this->puzzleStatus->value(this->gameController->isSolved() ? SOLVED_MESSAGE : NOT_SOLVED_MESSAGE);
 }
 
 void PuzzleWindow::pushInputs()
@@ -99,6 +99,7 @@ void PuzzleWindow::cbChangePuzzle(Fl_Widget* widget, void* data)
     window->pushInputs();
     window->gameController->setCurrentLevel(puzzleSelected);
     window->updateInputs();
+    window->puzzleStatus->label(label);
 }
 
 void PuzzleWindow::cbSubmit(Fl_Widget* widget, void* data)

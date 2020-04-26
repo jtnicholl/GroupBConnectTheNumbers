@@ -33,7 +33,7 @@ class PuzzleWindow : public Fl_Window
 		Fl_Menu_Button* puzzleSelectMenu;
 		Fl_Button* resetButton;
 		Fl_Input** inputs;
-		Fl_Output* solvedMessage;
+		Fl_Output* puzzleStatus;
 		Fl_Output* timerDisplay;
 		Fl_Button* pauseButton;
 
