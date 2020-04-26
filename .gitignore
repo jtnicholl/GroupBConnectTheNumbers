@@ -12,5 +12,6 @@ Thumbs.db
 #Open tabs in Codeblocks
 *.layout
 
-#Puzzle save file
+#Saved game files
 saved_puzzles.csv
+open_puzzle

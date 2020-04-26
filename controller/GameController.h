@@ -114,6 +114,7 @@ public:
 private:
 	const std::string DEFAULT_PUZZLES_FILENAME = "default_puzzles.csv";
 	const std::string SAVED_PUZZLES_FILENAME = "saved_puzzles.csv";
+	const std::string LAST_OPEN_PUZZLE_FILENAME = "open_puzzle";
 
 	int currentLevel;
 	std::vector<TileBoard*> boards;

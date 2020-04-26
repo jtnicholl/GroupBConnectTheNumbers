@@ -12,10 +12,10 @@ namespace controller
 
 GameController::GameController()
 {
-    this->currentLevel = 0;
+    this->currentLevel = fileExists(LAST_OPEN_PUZZLE_FILENAME) ? std::stoi(loadText(LAST_OPEN_PUZZLE_FILENAME)) : 0;
     std::string filename = fileExists(SAVED_PUZZLES_FILENAME) ? SAVED_PUZZLES_FILENAME : DEFAULT_PUZZLES_FILENAME;
 	this->boards = PuzzleLoader::loadPuzzlesFromFile(filename);
-	this->game = new TileGame(this->boards.front());
+	this->game = new TileGame(this->boards[this->currentLevel]);
 }
 
 GameController::~GameController()
@@ -33,6 +33,7 @@ void GameController::setCurrentLevel(int level)
 {
 	this->currentLevel = level;
 	this->game->setBoard(this->boards[level]);
+	saveText(std::to_string(level), LAST_OPEN_PUZZLE_FILENAME);
 }
 
 unsigned int GameController::getAvailableLevels() const
