@@ -25,12 +25,15 @@ class PuzzleWindow : public Fl_Window
 		const int GRID_STARTING_Y = 60;
 		const int GRID_BOX_WIDTH = 30;
 		const int GRID_BOX_PADDING = 10;
+		const char* NOT_SOLVED_MESSAGE = "Puzzle not yet solved...";
+		const char* SOLVED_MESSAGE = "Puzzle solved!";
 
 		GameController* gameController;
 
 		Fl_Menu_Button* puzzleSelectMenu;
 		Fl_Button* resetButton;
 		Fl_Input** inputs;
+		Fl_Output* solvedMessage;
 		Fl_Output* timerDisplay;
 		Fl_Button* pauseButton;
 

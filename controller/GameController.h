@@ -93,6 +93,12 @@ public:
      */
 	bool isTileImmutable(int position) const;
 	/**
+	 * Check if the current puzzle has been solved with a valid solution.
+	 *
+	 * @return true if the puzzle has been solved, else false
+	 */
+	bool isSolved() const;
+	/**
 	 * Reset the current puzzle by clearing all the player's inputs.
 	 *
 	 * @post puzzle is reset

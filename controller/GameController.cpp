@@ -13,15 +13,7 @@ namespace controller
 GameController::GameController()
 {
     this->currentLevel = 0;
-    std::string filename;
-    if (fileExists(SAVED_PUZZLES_FILENAME))
-    {
-		filename = SAVED_PUZZLES_FILENAME;
-    }
-    else
-    {
-		filename = DEFAULT_PUZZLES_FILENAME;
-	}
+    std::string filename = fileExists(SAVED_PUZZLES_FILENAME) ? SAVED_PUZZLES_FILENAME : DEFAULT_PUZZLES_FILENAME;
 	this->boards = PuzzleLoader::loadPuzzlesFromFile(filename);
 	this->game = new TileGame(this->boards.front());
 }
@@ -74,6 +66,11 @@ int GameController::getTileValue(int position) const
 bool GameController::isTileImmutable(int position) const
 {
 	return this->game->isTileImmutable(position);
+}
+
+bool GameController::isSolved() const
+{
+	return this->game->isSolved();
 }
 
 void GameController::resetCurrentPuzzle()

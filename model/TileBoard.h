@@ -61,6 +61,9 @@ public:
 
 private:
 	Tile** tiles;
+
+	bool tileValid(int position) const;
+	void checkPosition(int position, int value, bool& hasUpper, bool& hasLower) const;
 };
 
 } // namespace model
