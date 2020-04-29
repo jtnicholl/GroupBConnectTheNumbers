@@ -240,7 +240,7 @@
 	<fstream>
 	<sstream>
 
-1588172997 source:/home/luke/projects/GroupBConnectTheNumbers/controller/GameController.cpp
+1588185143 source:/home/luke/projects/GroupBConnectTheNumbers/controller/GameController.cpp
 	"GameController.h"
 	"../fileio/PuzzleLoader.h"
 	"../fileio/PuzzleSaver.h"
@@ -313,7 +313,7 @@
 	<FL/Fl.H>
 	"view/PuzzleWindow.h"
 
-1588174300 /home/luke/projects/GroupBConnectTheNumbers/view/PuzzleWindow.h
+1588185383 /home/luke/projects/GroupBConnectTheNumbers/view/PuzzleWindow.h
 	<FL/Fl_Window.H>
 	<FL/Fl_Menu_Button.H>
 	<FL/Fl_Button.H>
@@ -331,14 +331,15 @@
 1588101220 source:/home/luke/projects/GroupBConnectTheNumbers/model/TileGame.cpp
 	"TileGame.h"
 
-1588174198 source:/home/luke/projects/GroupBConnectTheNumbers/view/PuzzleWindow.cpp
+1588186339 source:/home/luke/projects/GroupBConnectTheNumbers/view/PuzzleWindow.cpp
 	"PuzzleWindow.h"
 	<string>
 	<FL/Fl_Menu_Item.H>
 	<FL/Fl.H>
 	"../model/TileBoard.h"
+	"SettingsWindow.h"
 
-1588120831 source:/home/luke/projects/GroupBConnectTheNumbers/model/Timing/Timer.cpp
+1588184992 source:/home/luke/projects/GroupBConnectTheNumbers/model/Timing/Timer.cpp
 	<chrono>
 	<stdexcept>
 	"Timer.h"
@@ -348,4 +349,15 @@
 
 1588120765 /home/luke/projects/GroupBConnectTheNumbers//model/Timing/Timer.h
 	<mutex>
+
+1588182027 source:/home/luke/projects/GroupBConnectTheNumbers/view/SettingsWindow.cpp
+	<string>
+	<Fl/Fl.H>
+	"SettingsWindow.h"
+
+1588179369 /home/luke/projects/GroupBConnectTheNumbers/view/SettingsWindow.h
+	<FL/Fl_Window.H>
+	<FL/Fl_Color_Chooser.H>
+	<FL/Fl_Button.H>
+	"PuzzleWindow.h"
 

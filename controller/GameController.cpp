@@ -62,16 +62,12 @@ bool GameController::tryAdvanceLevel() {
 }
 
 bool GameController::trySetTileValue(int position, int value) {
-    if (this->currentTimerThread == nullptr)
+    bool result = this->game->trySetTileValue(position, value);
+    if (this->currentTimerThread == nullptr && result)
     {
         this->startCurrentTimer();
     }
 
-    bool result = this->game->trySetTileValue(position, value);
-    if (this->isSolved())
-    {
-        this->stopCurrentTimer();
-    }
     return result;
 }
 

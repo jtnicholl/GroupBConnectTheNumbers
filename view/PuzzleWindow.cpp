@@ -5,6 +5,7 @@
 #include <FL/Fl.H>
 
 #include "../model/TileBoard.h"
+#include "SettingsWindow.h"
 
 namespace view {
 
@@ -14,13 +15,15 @@ PuzzleWindow::PuzzleWindow(int width, int height, const char* title) : Fl_Window
     this->gameController->setTimerPropertyChangedHandler(PuzzleWindow::cbUpdateTimer, this);
     this->inputs = new Fl_Input*[model::TileBoard::BOARD_AREA];
 
-    this->puzzleSelectMenu = new Fl_Menu_Button(20, 20, 200, 24, "Select Puzzle");
-    this->resetButton = new Fl_Button(380, 20, 80, 24, "Reset");
+    this->settingsButton = new Fl_Button(290, 30, 80, 24, "Settings");
+    this->puzzleSelectMenu = new Fl_Menu_Button(20, 30, 200, 24, "Select Puzzle");
+    this->resetButton = new Fl_Button(380, 30, 80, 24, "Reset");
     this->puzzleStatus = new Fl_Output(70, 440, 170, 24, "Status");
     this->pauseButton = new Fl_Button(380, 440, 80, 24, "Pause");
     this->timerDisplay = new Fl_Output(300, 440, 60, 24, "s");
     this->timerDisplay->value(std::to_string(this->gameController->getCurrentBoardTime()).c_str());
     this->timerDisplay->align(FL_ALIGN_RIGHT);
+
 
     for (int i = 0; i < 64; i++) {
         this->addInputBox(i);
@@ -30,6 +33,7 @@ PuzzleWindow::PuzzleWindow(int width, int height, const char* title) : Fl_Window
 
     this->resetButton->callback(PuzzleWindow::cbReset, this);
     this->pauseButton->callback(PuzzleWindow::cbPause, this);
+    this->settingsButton->callback(PuzzleWindow::cbSettings, this);
     end();
 }
 
@@ -42,6 +46,7 @@ PuzzleWindow::~PuzzleWindow() {
     delete this->inputs;
     delete this->timerDisplay;
     delete this->pauseButton;
+    delete this->settingsButton;
 }
 
 void PuzzleWindow::cbOnCloseWindow(Fl_Widget*, void* data)
@@ -62,10 +67,10 @@ void PuzzleWindow::updateInputs() {
     for (int i = 0; i < model::TileBoard::BOARD_AREA; i++) {
         int tileValue = this->gameController->getTileValue(i);
         bool tileImmutable = this->gameController->isTileImmutable(i);
-        std::string boxValue = tileValue == 0 ? "" : std::to_string(tileValue);
+        const std::string boxValue = tileValue == 0 ? "" : std::to_string(tileValue);
         inputs[i]->value(boxValue.c_str());
         inputs[i]->readonly(tileImmutable);
-        inputs[i]->color(tileImmutable ? IMMUTABLE_COLOR : MUTABLE_COLOR);
+        //inputs[i]->color(tileImmutable ? IMMUTABLE_COLOR : MUTABLE_COLOR);
     }
     this->puzzleStatus->value(this->gameController->isSolved() ? SOLVED_MESSAGE : NOT_SOLVED_MESSAGE);
 }
@@ -83,6 +88,26 @@ inline void PuzzleWindow::populateMenu() {
         std::string label = std::to_string(i + 1);
         this->puzzleSelectMenu->add(label.c_str(), 0, cbChangePuzzle, this);
     }
+}
+
+void PuzzleWindow::setInputTileColor(Fl_Color color)
+{
+    for (int i = 0; i < model::TileBoard::BOARD_AREA; i++) {
+        Fl_Input* currentInput = this->inputs[i];
+        bool isTileImmutable = this->gameController->isTileImmutable(i);
+        currentInput->color(isTileImmutable ? fl_darker(color) : color);
+        currentInput->selection_color(fl_darker(currentInput->color()));
+    }
+    this->redraw();
+}
+
+void PuzzleWindow::setInputNumberColor(Fl_Color color)
+{
+    for (int i = 0; i < model::TileBoard::BOARD_AREA; i++) {
+        Fl_Input* currentInput = this->inputs[i];
+        currentInput->textcolor(color);
+    }
+    this->redraw();
 }
 
 void PuzzleWindow::cbReset(Fl_Widget* widget, void* data) {
@@ -106,6 +131,30 @@ void PuzzleWindow::cbSubmit(Fl_Widget* widget, void* data) {
     PuzzleWindow* window = (PuzzleWindow*) data;
     window->pushInputs();
     window->updateInputs();
+
+    if (window->gameController->isSolved())
+    {
+        window->completeLevel();
+    }
+}
+
+void PuzzleWindow::completeLevel()
+{
+    this->gameController->pause(true);
+    bool isAdvanced = this->gameController->tryAdvanceLevel();
+    if (isAdvanced)
+    {
+        this->puzzleSelectMenu->value(this->gameController->getCurrentLevel() - 1);
+        this->updateInputs();
+    }
+}
+
+void PuzzleWindow::cbSettings(Fl_Widget* widget, void* data)
+{
+    PuzzleWindow* window = (PuzzleWindow*) data;
+    SettingsWindow* settings = new SettingsWindow(475, 250, "Settings", window);
+    settings->set_modal();
+    settings->show();
 }
 
 void PuzzleWindow::cbPause(Fl_Widget* widget, void* data)

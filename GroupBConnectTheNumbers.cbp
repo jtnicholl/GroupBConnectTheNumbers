@@ -20,6 +20,7 @@
 					<Add directory="Model/Tiles" />
 					<Add directory="./" />
 					<Add directory="model/Timing" />
+					<Add directory="view" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -53,6 +54,8 @@
 		<Unit filename="model/Timing/Timer.h" />
 		<Unit filename="view/PuzzleWindow.cpp" />
 		<Unit filename="view/PuzzleWindow.h" />
+		<Unit filename="view/SettingsWindow.cpp" />
+		<Unit filename="view/SettingsWindow.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

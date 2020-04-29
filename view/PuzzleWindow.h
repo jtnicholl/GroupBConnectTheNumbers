@@ -41,9 +41,12 @@ public:
      */
     virtual ~PuzzleWindow();
 
+    void setInputTileColor(Fl_Color color);
+    void setInputNumberColor(Fl_Color color);
+
 private:
     const int GRID_STARTING_X = 85;
-    const int GRID_STARTING_Y = 85;
+    const int GRID_STARTING_Y = 95;
     const int GRID_BOX_WIDTH = 30;
     const int GRID_BOX_PADDING = 10;
     const char* NOT_SOLVED_MESSAGE = "Puzzle not yet solved...";
@@ -58,6 +61,7 @@ private:
     Fl_Input** inputs;
     Fl_Output* puzzleStatus;
     Fl_Output* timerDisplay;
+    Fl_Button* settingsButton;
     Fl_Button* pauseButton;
     bool isPaused;
 
@@ -66,12 +70,14 @@ private:
     void pushInputs();
     void populateMenu();
     void makeInputsVisible(bool isVisible);
+    void completeLevel();
 
     static void cbReset(Fl_Widget* widget, void* data);
     static void cbChangePuzzle(Fl_Widget* widget, void* data);
     static void cbSubmit(Fl_Widget* widget, void* data);
     static void cbPause(Fl_Widget* widget, void* data);
     static void cbUpdateTimer(int number, void* data);
+    static void cbSettings(Fl_Widget* widget, void* data);
 
     static int parseEntry(const char* entry);
 };
