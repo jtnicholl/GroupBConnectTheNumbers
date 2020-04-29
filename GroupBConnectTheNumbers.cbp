@@ -19,8 +19,8 @@
 					<Add directory="Model" />
 					<Add directory="Model/Tiles" />
 					<Add directory="./" />
-					<Add directory="model" />
 					<Add directory="model/scoring" />
+					<Add directory="model/Timing" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -50,6 +50,8 @@
 		<Unit filename="model/TileBoard.h" />
 		<Unit filename="model/TileGame.cpp" />
 		<Unit filename="model/TileGame.h" />
+		<Unit filename="model/Timing/Timer.cpp" />
+		<Unit filename="model/Timing/Timer.h" />
 		<Unit filename="model/scoring/ScoreBoard.cpp" />
 		<Unit filename="model/scoring/ScoreBoard.h" />
 		<Unit filename="model/scoring/ScoreEntry.cpp" />

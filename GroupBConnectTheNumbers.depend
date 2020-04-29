@@ -240,12 +240,44 @@
 	<fstream>
 	<sstream>
 
+1588174300 D
+
 1588114571 source:/home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers/controller/GameController.cpp
+
+1588172997 source:/home/luke/projects/GroupBConnectTheNumbers/controller/GameController.cpp
+
+1588120765 214779525d9fa3bc90c4dcb7d16c4e8e1f39b
 	"GameController.h"
 	"../fileio/PuzzleLoader.h"
 	"../fileio/PuzzleSaver.h"
 	"../fileio/Utils.cpp"
 	"../model/TileBoard.h"
+	<vector>
+	<string>
+	"../model/TileBoard.h"
+	"../model/Tile.h"
+	"Utils.h"
+	<fstream>
+	<sstream>
+	"fileio/PuzzleLoader.h"
+	<fstream>
+	<sstream>
+	"../model/Tile.h"
+	<vector>
+	<string>
+	"../model/TileBoard.h"
+	"../model/Tile.h"
+	"PuzzleSaver.h"
+	<fstream>
+	<iostream>
+	<sstream>
+	"../model/Tile.h"
+	<FL/Fl_Window.H>
+	<FL/Fl_Menu_Button.H>
+	<FL/Fl_Button.H>
+	<FL/Fl_Input.H>
+	<FL/Fl_Output.H>
+	"../controller/GameController.h"
 
 1588114571 /home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers/controller/GameController.h
 	<string>
@@ -262,10 +294,24 @@
 1588114571 /home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers/model/Tile.h
 
 1588114571 /home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers/fileio/PuzzleLoader.h
-	<vector>
+
+1588174535 /home/luke/projects/GroupBConnectTheNumbers/controller/GameController.h
 	<string>
+	<vector>
+	<thread>
+	"../model/TileGame.h"
 	"../model/TileBoard.h"
-	"../model/Tile.h"
+	"../model/Timing/Timer.h"
+
+1588101221 /home/luke/projects/GroupBConnectTheNumbers/model/TileGame.h
+	"TileBoard.h"
+
+1588096219 /home/luke/projects/GroupBConnectTheNumbers/model/TileBoard.h
+	"Tile.h"
+
+1588096219 /home/luke/projects/GroupBConnectTheNumbers/model/Tile.h
+
+1588121343 /home/luke/projects/GroupBConnectTheNumbers/fileio/PuzzleLoader.h
 
 1588114571 /home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers/fileio/PuzzleSaver.h
 	<string>
@@ -273,24 +319,29 @@
 	"../model/TileBoard.h"
 
 1588114571 /home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers/fileio/Utils.cpp
-	"Utils.h"
-	<fstream>
-	<sstream>
+	"../model/Timing/Timer.h"
+
+1588120513 /home/luke/projects/GroupBConnectTheNumbers/fileio/PuzzleSaver.h
+	<string>
+	<vector>
+	"../model/TileBoard.h"
+	"../model/Timing/Timer.h"
+
+1588096219 /home/luke/projects/GroupBConnectTheNumbers/fileio/Utils.cpp
 
 1588114571 /home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers/fileio/Utils.h
 	<string>
 
 1588114571 source:/home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers/fileio/PuzzleLoader.cpp
-	"fileio/PuzzleLoader.h"
-	<fstream>
-	<sstream>
-	"../model/Tile.h"
+
+1588096219 /home/luke/projects/GroupBConnectTheNumbers/fileio/Utils.h
+	<string>
+
+1588120944 source:/home/luke/projects/GroupBConnectTheNumbers/fileio/PuzzleLoader.cpp
 
 1588114571 /home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers//fileio/PuzzleLoader.h
-	<vector>
-	<string>
-	"../model/TileBoard.h"
-	"../model/Tile.h"
+
+1588121343 /home/luke/projects/GroupBConnectTheNumbers//fileio/PuzzleLoader.h
 
 1588114571 /home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers//model/TileBoard.h
 	"Tile.h"
@@ -298,23 +349,26 @@
 1588114571 /home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers//model/Tile.h
 
 1588114571 source:/home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers/fileio/PuzzleSaver.cpp
-	"PuzzleSaver.h"
-	<fstream>
-	<iostream>
-	<sstream>
-	"../model/Tile.h"
+	"../model/Timing/Timer.h"
+
+1588096219 /home/luke/projects/GroupBConnectTheNumbers//model/TileBoard.h
+	"Tile.h"
+
+1588096219 /home/luke/projects/GroupBConnectTheNumbers//model/Tile.h
+
+1588120432 source:/home/luke/projects/GroupBConnectTheNumbers/fileio/PuzzleSaver.cpp
 
 1588114571 source:/home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers/main.cpp
 	<FL/Fl.H>
 	"view/PuzzleWindow.h"
 
 1588114571 /home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers/view/PuzzleWindow.h
-	<FL/Fl_Window.H>
-	<FL/Fl_Menu_Button.H>
-	<FL/Fl_Button.H>
-	<FL/Fl_Input.H>
-	<FL/Fl_Output.H>
-	"../controller/GameController.h"
+
+1588173888 source:/home/luke/projects/GroupBConnectTheNumbers/main.cpp
+	<FL/Fl.H>
+	"view/PuzzleWindow.h"
+
+1588174300 /home/luke/projects/GroupBConnectTheNumbers/view/PuzzleWindow.h
 
 1588114571 source:/home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers/model/Tile.cpp
 	"Tile.h"
@@ -332,10 +386,10 @@
 	<FL/Fl_Menu_Item.H>
 	"../model/TileBoard.h"
 
-1588138006 source:/home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers/model/scoring/ScoreBoard.cpp
+1588197613 source:/home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers/model/scoring/ScoreBoard.cpp
 	"ScoreBoard.h"
 
-1588138050 /home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers/model/scoring/ScoreBoard.h
+1588197630 /home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers/model/scoring/ScoreBoard.h
 	"ScoreEntry.h"
 
 1588195382 /home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers/model/scoring/ScoreEntry.h
@@ -343,4 +397,34 @@
 
 1588195425 source:/home/tmorgen1/Desktop/NumberGameAssignment/GroupBConnectTheNumbers/model/scoring/ScoreEntry.cpp
 	"ScoreEntry.h"
+
+1588195425 y.h"
+
+1588096219 source:/home/luke/projects/GroupBConnectTheNumbers/model/Tile.cpp
+	"Tile.h"
+
+1588096219 source:/home/luke/projects/GroupBConnectTheNumbers/model/TileBoard.cpp
+	"TileBoard.h"
+	<assert.h>
+
+1588101220 source:/home/luke/projects/GroupBConnectTheNumbers/model/TileGame.cpp
+	"TileGame.h"
+
+1588174198 source:/home/luke/projects/GroupBConnectTheNumbers/view/PuzzleWindow.cpp
+	"PuzzleWindow.h"
+	<string>
+	<FL/Fl_Menu_Item.H>
+	<FL/Fl.H>
+	"../model/TileBoard.h"
+
+1588120831 source:/home/luke/projects/GroupBConnectTheNumbers/model/Timing/Timer.cpp
+	<chrono>
+	<stdexcept>
+	"Timer.h"
+
+1588120765 /home/luke/projects/GroupBConnectTheNumbers/model/Timing/Timer.h
+	<mutex>
+
+1588120765 /home/luke/projects/GroupBConnectTheNumbers//model/Timing/Timer.h
+	<mutex>
 

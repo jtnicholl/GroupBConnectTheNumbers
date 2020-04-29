@@ -2,6 +2,7 @@
 
 #include <string>
 #include <FL/Fl_Menu_Item.H>
+#include <FL/Fl.H>
 
 #include "../model/TileBoard.h"
 
@@ -10,21 +11,25 @@ namespace view {
 PuzzleWindow::PuzzleWindow(int width, int height, const char* title) : Fl_Window(width, height, title) {
     begin();
     this->gameController = new GameController();
+    this->gameController->setTimerPropertyChangedHandler(PuzzleWindow::cbUpdateTimer, this);
     this->inputs = new Fl_Input*[model::TileBoard::BOARD_AREA];
 
     this->puzzleSelectMenu = new Fl_Menu_Button(20, 20, 200, 24, "Select Puzzle");
-    this->resetButton = new Fl_Button(250, 20, 80, 24, "Reset");
-    this->puzzleStatus = new Fl_Output(40, 390, 170, 24, "1");
-    this->pauseButton = new Fl_Button(250, 390, 80, 24, "Pause");
+    this->resetButton = new Fl_Button(380, 20, 80, 24, "Reset");
+    this->puzzleStatus = new Fl_Output(70, 440, 170, 24, "Status");
+    this->pauseButton = new Fl_Button(380, 440, 80, 24, "Pause");
+    this->timerDisplay = new Fl_Output(300, 440, 60, 24, "s");
+    this->timerDisplay->value(std::to_string(this->gameController->getCurrentBoardTime()).c_str());
+    this->timerDisplay->align(FL_ALIGN_RIGHT);
 
     for (int i = 0; i < 64; i++) {
-        addInputBox(i);
+        this->addInputBox(i);
     }
-    updateInputs();
-    populateMenu();
+    this->updateInputs();
+    this->populateMenu();
 
-    this->resetButton->callback(cbReset, this);
-
+    this->resetButton->callback(PuzzleWindow::cbReset, this);
+    this->pauseButton->callback(PuzzleWindow::cbPause, this);
     end();
 }
 
@@ -37,6 +42,13 @@ PuzzleWindow::~PuzzleWindow() {
     delete this->inputs;
     delete this->timerDisplay;
     delete this->pauseButton;
+}
+
+void PuzzleWindow::cbOnCloseWindow(Fl_Widget*, void* data)
+{
+    PuzzleWindow* window = (PuzzleWindow*) data;
+    window->gameController->saveAllPuzzles();
+    window->hide();
 }
 
 inline void PuzzleWindow::addInputBox(int number) {
@@ -77,6 +89,7 @@ void PuzzleWindow::cbReset(Fl_Widget* widget, void* data) {
     PuzzleWindow* window = (PuzzleWindow*) data;
     window->gameController->resetCurrentPuzzle();
     window->updateInputs();
+    window->timerDisplay->value("0");
 }
 
 void PuzzleWindow::cbChangePuzzle(Fl_Widget* widget, void* data) {
@@ -93,6 +106,44 @@ void PuzzleWindow::cbSubmit(Fl_Widget* widget, void* data) {
     PuzzleWindow* window = (PuzzleWindow*) data;
     window->pushInputs();
     window->updateInputs();
+}
+
+void PuzzleWindow::cbPause(Fl_Widget* widget, void* data)
+{
+    PuzzleWindow* window = (PuzzleWindow*) data;
+    window->makeInputsVisible(window->isPaused);
+    window->pauseButton->label(window->isPaused ? "Pause" : "Unpause");
+    window->isPaused = !window->isPaused;
+    window->gameController->pause(window->isPaused);
+}
+
+void PuzzleWindow::makeInputsVisible(bool isVisible)
+{
+    for (int i = 0; i < model::TileBoard::BOARD_AREA; i++) {
+        Fl_Input* currentInput = this->inputs[i];
+        if (isVisible)
+        {
+            currentInput->show();
+        }
+        else
+        {
+            currentInput->hide();
+        }
+    }
+}
+
+void PuzzleWindow::cbUpdateTimer(int number, void* data)
+{
+    // NOTE (REMOVE THIS BEFORE SUBMISSION): The number parameter is the timer's value
+    // in seconds. This can be changed here to another format such as minutes:seconds, etc.
+    // Then display it in the timerDisplay->value() method.
+    PuzzleWindow* window = (PuzzleWindow*) data;
+    std::string numberText = std::to_string(number);
+
+    Fl::lock();
+    window->timerDisplay->value(numberText.c_str());
+    Fl::awake();
+    Fl::unlock();
 }
 
 int PuzzleWindow::parseEntry(const char* entry) {

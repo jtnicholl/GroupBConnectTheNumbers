@@ -3,9 +3,11 @@
 
 #include <string>
 #include <vector>
+#include <thread>
 
 #include "../model/TileGame.h"
 #include "../model/TileBoard.h"
+#include "../model/Timing/Timer.h"
 
 using namespace model;
 
@@ -25,6 +27,13 @@ public:
      * Deconstructor.
      */
     virtual ~GameController();
+    /**
+     * Gets the time recorded that it has taken for the player on the
+     * currently active board.
+     *
+     * @return the time record for the current board.
+     */
+    int getCurrentBoardTime() const;
     /**
      * Gets the current level of the game. The higher the level,
      * the higher the difficulty. getCurrentLevel() will never return
@@ -107,16 +116,44 @@ public:
      *
      * @post puzzles are saved to a file on disk
      */
-    void saveAllPuzzles() const;
+    void saveAllPuzzles();
+    /**
+     * Sets the callback that is called when the current game board's
+     * timer is changed.
+     *
+     * @param callback the function pointer to call when the current game board's timer is changed.
+     * @param data the data to pass to the callback when it is called.
+     */
+    void setTimerPropertyChangedHandler(void (*callback)(int, void*), void* data);
+    /**
+     * Pauses or unpauses the games timer.
+     *
+     * @param shouldPause whether or not to pause or unpause the timer.
+     */
+    void pause(bool shouldPause);
 
 private:
     const std::string DEFAULT_PUZZLES_FILENAME = "default_puzzles.csv";
     const std::string SAVED_PUZZLES_FILENAME = "saved_puzzles.csv";
     const std::string LAST_OPEN_PUZZLE_FILENAME = "open_puzzle";
+    const std::string SAVED_PUZZLE_TIMES_FILENAME = "puzzle_times.txt";
 
     int currentLevel;
     std::vector<TileBoard*> boards;
     TileGame* game;
+
+    std::vector<timing::Timer*> gameTimers;
+    std::thread* currentTimerThread;
+
+    static void cbCurrentGameTimerUpdated(void* data);
+    void fireTimerEvent();
+
+    void (*notifyTimerPropertyChanged)(int, void*);
+    void* timerPropertyChangedData;
+
+    std::vector<timing::Timer*> createDefaultGameTimers();
+    timing::Timer* startCurrentTimer();
+    timing::Timer* stopCurrentTimer();
 };
 
 }
