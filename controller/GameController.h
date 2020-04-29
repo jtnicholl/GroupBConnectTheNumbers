@@ -125,6 +125,12 @@ public:
      * @param data the data to pass to the callback when it is called.
      */
     void setTimerPropertyChangedHandler(void (*callback)(int, void*), void* data);
+    /**
+     * Pauses or unpauses the games timer.
+     *
+     * @param shouldPause whether or not to pause or unpause the timer.
+     */
+    void pause(bool shouldPause);
 
 private:
     const std::string DEFAULT_PUZZLES_FILENAME = "default_puzzles.csv";

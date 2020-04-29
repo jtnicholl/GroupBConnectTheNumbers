@@ -23,6 +23,7 @@ GameController::~GameController() {
     for (unsigned int i = 0; i < this->boards.size(); i++) {
         delete this->boards[i];
     }
+    this->stopCurrentTimer();
     for (std::vector<timing::Timer*>::iterator i = this->gameTimers.begin(); i != this->gameTimers.end(); i++)
     {
         delete *i;
@@ -151,6 +152,18 @@ void GameController::setTimerPropertyChangedHandler(void (*callback)(int, void*)
 {
     this->notifyTimerPropertyChanged = callback;
     this->timerPropertyChangedData = data;
+}
+
+void GameController::pause(bool shouldPause)
+{
+    if (shouldPause)
+    {
+        this->stopCurrentTimer();
+    }
+    else
+    {
+        this->startCurrentTimer();
+    }
 }
 
 }

@@ -15,11 +15,12 @@ PuzzleWindow::PuzzleWindow(int width, int height, const char* title) : Fl_Window
     this->inputs = new Fl_Input*[model::TileBoard::BOARD_AREA];
 
     this->puzzleSelectMenu = new Fl_Menu_Button(20, 20, 200, 24, "Select Puzzle");
-    this->resetButton = new Fl_Button(250, 20, 80, 24, "Reset");
-    this->puzzleStatus = new Fl_Output(40, 390, 170, 24, "1");
-    this->pauseButton = new Fl_Button(270, 390, 60, 24, "Pause");
-    this->timerDisplay = new Fl_Output(220, 390, 40, 24, "");
+    this->resetButton = new Fl_Button(380, 20, 80, 24, "Reset");
+    this->puzzleStatus = new Fl_Output(70, 440, 170, 24, "Status");
+    this->pauseButton = new Fl_Button(380, 440, 80, 24, "Pause");
+    this->timerDisplay = new Fl_Output(300, 440, 60, 24, "s");
     this->timerDisplay->value(std::to_string(this->gameController->getCurrentBoardTime()).c_str());
+    this->timerDisplay->align(FL_ALIGN_RIGHT);
 
     for (int i = 0; i < 64; i++) {
         this->addInputBox(i);
@@ -27,7 +28,8 @@ PuzzleWindow::PuzzleWindow(int width, int height, const char* title) : Fl_Window
     this->updateInputs();
     this->populateMenu();
 
-    this->resetButton->callback(cbReset, this);
+    this->resetButton->callback(PuzzleWindow::cbReset, this);
+    this->pauseButton->callback(PuzzleWindow::cbPause, this);
     end();
 }
 
@@ -104,6 +106,30 @@ void PuzzleWindow::cbSubmit(Fl_Widget* widget, void* data) {
     PuzzleWindow* window = (PuzzleWindow*) data;
     window->pushInputs();
     window->updateInputs();
+}
+
+void PuzzleWindow::cbPause(Fl_Widget* widget, void* data)
+{
+    PuzzleWindow* window = (PuzzleWindow*) data;
+    window->makeInputsVisible(window->isPaused);
+    window->pauseButton->label(window->isPaused ? "Pause" : "Unpause");
+    window->isPaused = !window->isPaused;
+    window->gameController->pause(window->isPaused);
+}
+
+void PuzzleWindow::makeInputsVisible(bool isVisible)
+{
+    for (int i = 0; i < model::TileBoard::BOARD_AREA; i++) {
+        Fl_Input* currentInput = this->inputs[i];
+        if (isVisible)
+        {
+            currentInput->show();
+        }
+        else
+        {
+            currentInput->hide();
+        }
+    }
 }
 
 void PuzzleWindow::cbUpdateTimer(int number, void* data)
