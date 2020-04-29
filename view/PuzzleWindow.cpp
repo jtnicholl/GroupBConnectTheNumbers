@@ -2,6 +2,7 @@
 
 #include <string>
 #include <FL/Fl_Menu_Item.H>
+#include <FL/Fl.H>
 
 #include "../model/TileBoard.h"
 
@@ -10,18 +11,21 @@ namespace view {
 PuzzleWindow::PuzzleWindow(int width, int height, const char* title) : Fl_Window(width, height, title) {
     begin();
     this->gameController = new GameController();
+    this->gameController->setTimerPropertyChangedHandler(PuzzleWindow::cbUpdateTimer, this);
     this->inputs = new Fl_Input*[model::TileBoard::BOARD_AREA];
 
     this->puzzleSelectMenu = new Fl_Menu_Button(20, 20, 200, 24, "Select Puzzle");
     this->resetButton = new Fl_Button(250, 20, 80, 24, "Reset");
     this->puzzleStatus = new Fl_Output(40, 390, 170, 24, "1");
-    this->pauseButton = new Fl_Button(250, 390, 80, 24, "Pause");
+    this->pauseButton = new Fl_Button(270, 390, 60, 24, "Pause");
+    this->timerDisplay = new Fl_Output(220, 390, 40, 24, "");
+    this->timerDisplay->value("0");
 
     for (int i = 0; i < 64; i++) {
-        addInputBox(i);
+        this->addInputBox(i);
     }
-    updateInputs();
-    populateMenu();
+    this->updateInputs();
+    this->populateMenu();
 
     this->resetButton->callback(cbReset, this);
 
@@ -77,6 +81,7 @@ void PuzzleWindow::cbReset(Fl_Widget* widget, void* data) {
     PuzzleWindow* window = (PuzzleWindow*) data;
     window->gameController->resetCurrentPuzzle();
     window->updateInputs();
+    window->timerDisplay->value("0");
 }
 
 void PuzzleWindow::cbChangePuzzle(Fl_Widget* widget, void* data) {
@@ -93,6 +98,20 @@ void PuzzleWindow::cbSubmit(Fl_Widget* widget, void* data) {
     PuzzleWindow* window = (PuzzleWindow*) data;
     window->pushInputs();
     window->updateInputs();
+}
+
+void PuzzleWindow::cbUpdateTimer(int number, void* data)
+{
+    // NOTE (REMOVE THIS BEFORE SUBMISSION): The number parameter is the timer's value
+    // in seconds. This can be changed here to another format such as minutes:seconds, etc.
+    // Then display it in the timerDisplay->value() method.
+    PuzzleWindow* window = (PuzzleWindow*) data;
+    std::string numberText = std::to_string(number);
+
+    Fl::lock();
+    window->timerDisplay->value(numberText.c_str());
+    Fl::awake();
+    Fl::unlock();
 }
 
 int PuzzleWindow::parseEntry(const char* entry) {

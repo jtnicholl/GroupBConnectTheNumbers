@@ -3,9 +3,11 @@
 
 #include <string>
 #include <vector>
+#include <thread>
 
 #include "../model/TileGame.h"
 #include "../model/TileBoard.h"
+#include "../model/Timing/Timer.h"
 
 using namespace model;
 
@@ -108,6 +110,14 @@ public:
      * @post puzzles are saved to a file on disk
      */
     void saveAllPuzzles() const;
+    /**
+     * Sets the callback that is called when the current game board's
+     * timer is changed.
+     *
+     * @param callback the function pointer to call when the current game board's timer is changed.
+     * @param data the data to pass to the callback when it is called.
+     */
+    void setTimerPropertyChangedHandler(void (*callback)(int, void*), void* data);
 
 private:
     const std::string DEFAULT_PUZZLES_FILENAME = "default_puzzles.csv";
@@ -117,6 +127,19 @@ private:
     int currentLevel;
     std::vector<TileBoard*> boards;
     TileGame* game;
+
+    std::vector<timing::Timer*> gameTimers;
+    std::thread* currentTimerThread;
+
+    static void cbCurrentGameTimerUpdated(void* data);
+    void fireTimerEvent();
+
+    void (*notifyTimerPropertyChanged)(int, void*);
+    void* timerPropertyChangedData;
+
+    void initializeGameTimers();
+    timing::Timer* startCurrentTimer();
+    timing::Timer* stopCurrentTimer();
 };
 
 }

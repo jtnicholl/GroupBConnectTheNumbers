@@ -7,7 +7,6 @@ TileGame::TileGame(TileBoard* board) {
 }
 
 TileGame::~TileGame() {
-
 }
 
 bool TileGame::isTileImmutable(int position) const {
