@@ -19,9 +19,9 @@
 					<Add directory="Model" />
 					<Add directory="Model/Tiles" />
 					<Add directory="./" />
-					<Add directory="model/scoring" />
 					<Add directory="model/Timing" />
 					<Add directory="view" />
+					<Add directory="view/FileIO" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -57,6 +57,8 @@
 		<Unit filename="model/scoring/ScoreBoard.h" />
 		<Unit filename="model/scoring/ScoreEntry.cpp" />
 		<Unit filename="model/scoring/ScoreEntry.h" />
+		<Unit filename="view/FileIO/PuzzleColorPersistence.cpp" />
+		<Unit filename="view/FileIO/PuzzleColorPersistence.h" />
 		<Unit filename="view/PuzzleWindow.cpp" />
 		<Unit filename="view/PuzzleWindow.h" />
 		<Unit filename="view/SettingsWindow.cpp" />
