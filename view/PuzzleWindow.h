@@ -19,6 +19,16 @@ namespace view {
 class PuzzleWindow : public Fl_Window {
 public:
     /**
+     * This is the callback that is called when this window
+     * is hidden/closed. Saves the state of the game, then closes
+     * the window like normal.
+     *
+     * @param widget the widget firing the event.
+     * @param data the data to pass to the callback.
+     */
+    static void cbOnCloseWindow(Fl_Widget* widget, void* data);
+
+    /**
      * Construct a new PuzzleWindow.
      *
      * @param width width of the window

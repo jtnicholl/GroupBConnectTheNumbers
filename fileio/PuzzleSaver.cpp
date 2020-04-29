@@ -30,4 +30,19 @@ std::string PuzzleSaver::puzzleToLine(TileBoard* board) {
     return output.str();
 }
 
+void PuzzleSaver::savePuzzleTimesToFile(const std::vector<timing::Timer*>& times, const std::string& filename)
+{
+    std::ofstream outfile;
+    outfile.open(filename, std::ios::out | std::ios::trunc);
+    if (outfile.is_open())
+    {
+        for (std::vector<timing::Timer*>::const_iterator i = times.cbegin(); i != times.cend(); i++)
+        {
+            timing::Timer* currentTimer = *i;
+            outfile << currentTimer->getSecondCount() << std::endl;
+        }
+        outfile.close();
+    }
+}
+
 } // namespace fileio

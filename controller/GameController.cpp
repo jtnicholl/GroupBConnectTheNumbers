@@ -14,7 +14,8 @@ GameController::GameController() {
     std::string filename = fileExists(SAVED_PUZZLES_FILENAME) ? SAVED_PUZZLES_FILENAME : DEFAULT_PUZZLES_FILENAME;
     this->boards = PuzzleLoader::loadPuzzlesFromFile(filename);
     this->game = new TileGame(this->boards[this->currentLevel]);
-    this->initializeGameTimers();
+    this->gameTimers = fileExists(SAVED_PUZZLE_TIMES_FILENAME) ? PuzzleLoader::loadPuzzleTimesFromFile(SAVED_PUZZLE_TIMES_FILENAME) : this->createDefaultGameTimers();
+    this->currentTimerThread = nullptr;
 }
 
 GameController::~GameController() {
@@ -26,6 +27,12 @@ GameController::~GameController() {
     {
         delete *i;
     }
+}
+
+int GameController::getCurrentBoardTime() const
+{
+    timing::Timer* currentTimer = this->gameTimers[this->currentLevel];
+    return currentTimer->getSecondCount();
 }
 
 int GameController::getCurrentLevel() const {
@@ -87,17 +94,19 @@ void GameController::resetCurrentPuzzle() {
     currentTimer->reset();
 }
 
-void GameController::saveAllPuzzles() const {
+void GameController::saveAllPuzzles() {
     PuzzleSaver::savePuzzlesToFile(this->boards, SAVED_PUZZLES_FILENAME);
+    PuzzleSaver::savePuzzleTimesToFile(this->gameTimers, SAVED_PUZZLE_TIMES_FILENAME);
 }
 
-void GameController::initializeGameTimers()
+std::vector<timing::Timer*> GameController::createDefaultGameTimers()
 {
+    std::vector<timing::Timer*> timers;
     for (std::vector<TileBoard*>::size_type i = 0; i < this->boards.size(); i++)
     {
-        this->gameTimers.push_back(new timing::Timer());
+        timers.push_back(new timing::Timer());
     }
-    this->currentTimerThread = nullptr;
+    return timers;
 }
 
 timing::Timer* GameController::startCurrentTimer()

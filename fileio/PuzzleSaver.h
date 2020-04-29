@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "../model/TileBoard.h"
+#include "../model/Timing/Timer.h"
 
 using namespace model;
 
@@ -19,6 +20,14 @@ public:
      * @param filename filename to save to
      */
     static void savePuzzlesToFile(const std::vector<TileBoard*>& boards, const std::string& filename);
+
+    /**
+     * Save puzzle time records to a file.
+     *
+     * @param times puzzle board times, stored in a vector
+     * @param filename filename to save to
+     */
+    static void savePuzzleTimesToFile(const std::vector<timing::Timer*>& times, const std::string& filename);
 
 private:
     static std::string puzzleToLine(TileBoard* board);

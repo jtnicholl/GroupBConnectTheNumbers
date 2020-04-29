@@ -19,7 +19,7 @@ PuzzleWindow::PuzzleWindow(int width, int height, const char* title) : Fl_Window
     this->puzzleStatus = new Fl_Output(40, 390, 170, 24, "1");
     this->pauseButton = new Fl_Button(270, 390, 60, 24, "Pause");
     this->timerDisplay = new Fl_Output(220, 390, 40, 24, "");
-    this->timerDisplay->value("0");
+    this->timerDisplay->value(std::to_string(this->gameController->getCurrentBoardTime()).c_str());
 
     for (int i = 0; i < 64; i++) {
         this->addInputBox(i);
@@ -28,7 +28,6 @@ PuzzleWindow::PuzzleWindow(int width, int height, const char* title) : Fl_Window
     this->populateMenu();
 
     this->resetButton->callback(cbReset, this);
-
     end();
 }
 
@@ -41,6 +40,13 @@ PuzzleWindow::~PuzzleWindow() {
     delete this->inputs;
     delete this->timerDisplay;
     delete this->pauseButton;
+}
+
+void PuzzleWindow::cbOnCloseWindow(Fl_Widget*, void* data)
+{
+    PuzzleWindow* window = (PuzzleWindow*) data;
+    window->gameController->saveAllPuzzles();
+    window->hide();
 }
 
 inline void PuzzleWindow::addInputBox(int number) {

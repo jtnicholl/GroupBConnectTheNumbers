@@ -6,6 +6,7 @@
 
 #include "../model/TileBoard.h"
 #include "../model/Tile.h"
+#include "../model/Timing/Timer.h"
 
 using namespace model;
 
@@ -30,6 +31,14 @@ public:
      * @return the tile boards in a vector
      */
     static std::vector<TileBoard*> loadPuzzlesFromFile(const std::string& filename);
+
+    /**
+     * Load puzzle times from the specified file.
+     *
+     * @param filename filename to load from.
+     * @return the Timer objects in a vector.
+     */
+    static std::vector<timing::Timer*> loadPuzzleTimesFromFile(const std::string& filename);
 
 private:
     static TileBoard* loadPuzzleFromLine(const std::string& line);

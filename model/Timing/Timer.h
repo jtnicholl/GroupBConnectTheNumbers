@@ -26,6 +26,15 @@ public:
     Timer();
 
     /**
+     * Constructs a new non-running Timer with the
+     * specified counter value.
+     *
+     * @pre counter >= 0
+     * @post !isCounting() && getSecondCount() == counter
+     */
+    Timer(int counter);
+
+    /**
      * Deallocates this Timer object and all of its
      * resources.
      */

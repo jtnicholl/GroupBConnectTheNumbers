@@ -1,4 +1,5 @@
 #include <chrono>
+#include <stdexcept>
 
 #include "Timer.h"
 
@@ -11,6 +12,17 @@ Timer::Timer() :
     counter(0),
     counting(false)
 {
+}
+
+Timer::Timer(int counter)
+{
+    if (counter < 0)
+    {
+        throw std::invalid_argument("counter must not be negative.");
+    }
+
+    this->counter = counter;
+    this->counting = false;
 }
 
 Timer::~Timer()
