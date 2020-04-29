@@ -1,13 +1,16 @@
-#include "PuzzleWindow.h"
-
 #include <string>
 #include <FL/Fl_Menu_Item.H>
 #include <FL/Fl.H>
 
 #include "../model/TileBoard.h"
+#include "../fileio/Utils.h"
+#include "FileIO/PuzzleColorPersistence.h"
+#include "PuzzleWindow.h"
 #include "SettingsWindow.h"
 
 namespace view {
+
+const std::string PuzzleWindow::COLOR_SAVE_FILENAME = "colors.csv";
 
 PuzzleWindow::PuzzleWindow(int width, int height, const char* title) : Fl_Window(width, height, title) {
     begin();
@@ -18,12 +21,11 @@ PuzzleWindow::PuzzleWindow(int width, int height, const char* title) : Fl_Window
     this->settingsButton = new Fl_Button(290, 30, 80, 24, "Settings");
     this->puzzleSelectMenu = new Fl_Menu_Button(20, 30, 200, 24, "Select Puzzle");
     this->resetButton = new Fl_Button(380, 30, 80, 24, "Reset");
-    this->puzzleStatus = new Fl_Output(70, 440, 170, 24, "Status");
+    this->puzzleStatus = new Fl_Output(70, 440, 170, 24, "1");
     this->pauseButton = new Fl_Button(380, 440, 80, 24, "Pause");
     this->timerDisplay = new Fl_Output(300, 440, 60, 24, "s");
     this->timerDisplay->value(std::to_string(this->gameController->getCurrentBoardTime()).c_str());
     this->timerDisplay->align(FL_ALIGN_RIGHT);
-
 
     for (int i = 0; i < 64; i++) {
         this->addInputBox(i);
@@ -34,6 +36,7 @@ PuzzleWindow::PuzzleWindow(int width, int height, const char* title) : Fl_Window
     this->resetButton->callback(PuzzleWindow::cbReset, this);
     this->pauseButton->callback(PuzzleWindow::cbPause, this);
     this->settingsButton->callback(PuzzleWindow::cbSettings, this);
+    this->setInitialColors();
     end();
 }
 
@@ -47,6 +50,33 @@ PuzzleWindow::~PuzzleWindow() {
     delete this->timerDisplay;
     delete this->pauseButton;
     delete this->settingsButton;
+}
+
+Fl_Color PuzzleWindow::getInputTileColor() const
+{
+    return this->currentCellColor;
+}
+
+Fl_Color PuzzleWindow::getInputNumberColor() const
+{
+    return this->currentNumberColor;
+}
+
+void PuzzleWindow::setInitialColors()
+{
+    if (fileio::fileExists(COLOR_SAVE_FILENAME))
+    {
+        std::vector<io::PuzzleColorPersistence::PuzzleColor> colors = io::PuzzleColorPersistence::loadPuzzleColorsFromFile(COLOR_SAVE_FILENAME);
+        this->currentCellColor = fl_rgb_color(colors[0].red, colors[0].green, colors[0].blue);
+        this->currentNumberColor = fl_rgb_color(colors[1].red, colors[1].green, colors[1].blue);
+    }
+    else
+    {
+        this->currentCellColor = DEFAULT_COLOR;
+        this->currentNumberColor = DEFAULT_COLOR;
+    }
+    this->setInputTileColor(this->currentCellColor);
+    this->setInputNumberColor(this->currentNumberColor);
 }
 
 void PuzzleWindow::cbOnCloseWindow(Fl_Widget*, void* data)
@@ -70,9 +100,10 @@ void PuzzleWindow::updateInputs() {
         const std::string boxValue = tileValue == 0 ? "" : std::to_string(tileValue);
         inputs[i]->value(boxValue.c_str());
         inputs[i]->readonly(tileImmutable);
-        //inputs[i]->color(tileImmutable ? IMMUTABLE_COLOR : MUTABLE_COLOR);
     }
     this->puzzleStatus->value(this->gameController->isSolved() ? SOLVED_MESSAGE : NOT_SOLVED_MESSAGE);
+    this->setInputTileColor(this->currentCellColor);
+    this->setInputNumberColor(this->currentNumberColor);
 }
 
 void PuzzleWindow::pushInputs() {
@@ -92,10 +123,11 @@ inline void PuzzleWindow::populateMenu() {
 
 void PuzzleWindow::setInputTileColor(Fl_Color color)
 {
+    this->currentCellColor = color;
     for (int i = 0; i < model::TileBoard::BOARD_AREA; i++) {
         Fl_Input* currentInput = this->inputs[i];
         bool isTileImmutable = this->gameController->isTileImmutable(i);
-        currentInput->color(isTileImmutable ? fl_darker(color) : color);
+        currentInput->color(isTileImmutable ? fl_darker(this->currentCellColor) : this->currentCellColor);
         currentInput->selection_color(fl_darker(currentInput->color()));
     }
     this->redraw();
@@ -103,9 +135,10 @@ void PuzzleWindow::setInputTileColor(Fl_Color color)
 
 void PuzzleWindow::setInputNumberColor(Fl_Color color)
 {
+    this->currentNumberColor = color;
     for (int i = 0; i < model::TileBoard::BOARD_AREA; i++) {
         Fl_Input* currentInput = this->inputs[i];
-        currentInput->textcolor(color);
+        currentInput->textcolor(this->currentNumberColor);
     }
     this->redraw();
 }

@@ -18,6 +18,8 @@ namespace view {
  */
 class PuzzleWindow : public Fl_Window {
 public:
+    static const std::string COLOR_SAVE_FILENAME;
+
     /**
      * This is the callback that is called when this window
      * is hidden/closed. Saves the state of the game, then closes
@@ -40,21 +42,46 @@ public:
      * Destructor.
      */
     virtual ~PuzzleWindow();
-
+    /**
+     * Sets the input tile's color.
+     *
+     * @param color the color for the input tiles.
+     */
     void setInputTileColor(Fl_Color color);
+    /**
+     * Sets the input number color.
+     *
+     * @param color the input number color.
+     */
     void setInputNumberColor(Fl_Color color);
+    /**
+     * Gets the input tile's color.
+     *
+     * @return the input tile's color.
+     */
+    Fl_Color getInputTileColor() const;
+    /**
+     * Gets the input number color.
+     *
+     * @return the input number color.
+     */
+    Fl_Color getInputNumberColor() const;
 
 private:
     const int GRID_STARTING_X = 85;
     const int GRID_STARTING_Y = 95;
     const int GRID_BOX_WIDTH = 30;
     const int GRID_BOX_PADDING = 10;
+
     const char* NOT_SOLVED_MESSAGE = "Puzzle not yet solved...";
     const char* SOLVED_MESSAGE = "Puzzle solved!";
-    const Fl_Color MUTABLE_COLOR = FL_WHITE;
-    const Fl_Color IMMUTABLE_COLOR = FL_LIGHT2;
+
+    const Fl_Color DEFAULT_COLOR = FL_WHITE;
 
     GameController* gameController;
+
+    Fl_Color currentNumberColor;
+    Fl_Color currentCellColor;
 
     Fl_Menu_Button* puzzleSelectMenu;
     Fl_Button* resetButton;
@@ -71,6 +98,7 @@ private:
     void populateMenu();
     void makeInputsVisible(bool isVisible);
     void completeLevel();
+    void setInitialColors();
 
     static void cbReset(Fl_Widget* widget, void* data);
     static void cbChangePuzzle(Fl_Widget* widget, void* data);

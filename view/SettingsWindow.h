@@ -10,10 +10,28 @@
 namespace view
 {
 
+/**
+ * This is the Settings window for the Puzzle Game.
+ *
+ * @author Thomas Luke Whaley
+ */
 class SettingsWindow : public Fl_Window
 {
 public:
+    /**
+     * Constructs a new SettingsWindow.
+     *
+     * @param width the window's width
+     * @param height the window's height
+     * @param title the window's title
+     * @param parent the window's parent window.
+     */
     SettingsWindow(int width, int height, const std::string& title, PuzzleWindow* parent);
+
+    /**
+     * Deallocates this setting window and all of its
+     * resources.
+     */
     virtual ~SettingsWindow();
 
 private:

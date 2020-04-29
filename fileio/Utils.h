@@ -2,6 +2,7 @@
 #define UTILS_H_INCLUDED
 
 #include <string>
+#include <vector>
 
 namespace fileio {
 
@@ -28,6 +29,14 @@ void saveText(const std::string& text, const std::string& filename);
  * @return text contents of the file
  */
 std::string loadText(const std::string& filename);
+/**
+ * Splits the given input string into components using the specified delimeter.
+ *
+ * @param input the string to split into components.
+ * @param delimeter the delimeter to judge where the splits are made.
+ * @return a vector of components that were separated in input by delimeter.
+ */
+std::vector<std::string> split(const std::string& input, const std::string& delimeter);
 
 }
 
