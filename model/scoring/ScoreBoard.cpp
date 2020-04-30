@@ -5,17 +5,6 @@ namespace model::scoring {
 ScoreBoard::ScoreBoard() {
     this->scores = new ScoreEntry*[MAX_SCORES]();
     this->sortType = ScoreEntry::TIME_ASCENDING;
-    addScore(10, "TestName1", 1);
-    addScore(4, "TestName2", 1);
-    addScore(20, "TestName3", 2);
-    addScore(15, "TestName4", 3);
-    addScore(15, "TestName5", 2);
-    addScore(20, "TestName3", 2);
-    addScore(20, "TestName3", 2);
-    addScore(20, "TestName3", 2);
-    addScore(20, "TestName3", 2);
-    addScore(20, "TestName3", 2);
-    addScore(1, "TestName3", 2);
 }
 
 ScoreBoard::ScoreBoard(ScoreEntry::SortType sortType) {

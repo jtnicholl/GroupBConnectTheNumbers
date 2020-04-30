@@ -142,6 +142,12 @@ public:
      * @return Score board data as a string.
      */
     const std::string getScoreBoardData() const;
+    /**
+     * Adds a score entry to the scoreboard.
+     *
+     * @param name the name of the score entry.
+     */
+    void addScoreBoardEntry(std::string name);
 
 private:
     const std::string DEFAULT_PUZZLES_FILENAME = "default_puzzles.csv";
