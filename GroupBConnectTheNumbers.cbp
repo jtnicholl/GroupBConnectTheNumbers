@@ -19,9 +19,9 @@
 					<Add directory="Model" />
 					<Add directory="Model/Tiles" />
 					<Add directory="./" />
-					<Add directory="model/scoring" />
 					<Add directory="model/Timing" />
 					<Add directory="view" />
+					<Add directory="view/FileIO" />
 				</Compiler>
 			</Target>
 		</Build>
