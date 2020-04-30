@@ -64,13 +64,7 @@ bool GameController::tryAdvanceLevel() {
 }
 
 bool GameController::trySetTileValue(int position, int value) {
-    bool result = this->game->trySetTileValue(position, value);
-    if (this->currentTimerThread == nullptr && result)
-    {
-        this->startCurrentTimer();
-    }
-
-    return result;
+    return this->game->trySetTileValue(position, value);
 }
 
 int GameController::getTileValue(int position) const {
@@ -111,8 +105,12 @@ std::vector<timing::Timer*> GameController::createDefaultGameTimers()
 timing::Timer* GameController::startCurrentTimer()
 {
     timing::Timer* currentTimer = this->gameTimers[this->currentLevel];
-    currentTimer->addSecondsIncreasedListener(GameController::cbCurrentGameTimerUpdated, this);
-    this->currentTimerThread = new std::thread(&timing::Timer::run, currentTimer);
+    if (this->currentTimerThread == nullptr)
+    {
+        currentTimer->addSecondsIncreasedListener(GameController::cbCurrentGameTimerUpdated, this);
+        this->currentTimerThread = new std::thread(&timing::Timer::run, currentTimer);
+    }
+
     return currentTimer;
 }
 
@@ -152,9 +150,9 @@ void GameController::setTimerPropertyChangedHandler(void (*callback)(int, void*)
     this->timerPropertyChangedData = data;
 }
 
-void GameController::pause(bool shouldPause)
+void GameController::toggleTimer(bool isOff)
 {
-    if (shouldPause)
+    if (isOff)
     {
         this->stopCurrentTimer();
     }

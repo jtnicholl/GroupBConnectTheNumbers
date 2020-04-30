@@ -151,6 +151,7 @@ void PuzzleWindow::cbReset(Fl_Widget* widget, void* data) {
     PuzzleWindow* window = (PuzzleWindow*) data;
     window->gameController->resetCurrentPuzzle();
     window->updateInputs();
+    window->gameController->saveAllPuzzles();
     window->timerDisplay->value("0");
 }
 
@@ -158,9 +159,9 @@ void PuzzleWindow::cbChangePuzzle(Fl_Widget* widget, void* data) {
     PuzzleWindow* window = (PuzzleWindow*) data;
     const char* label = ((Fl_Menu_*)widget)->text();
     int puzzleSelected = std::atoi(label) - 1;
-    window->pushInputs();
     window->gameController->setCurrentLevel(puzzleSelected);
     window->updateInputs();
+    window->pushInputs();
     window->puzzleStatus->label(label);
 }
 
@@ -168,6 +169,7 @@ void PuzzleWindow::cbSubmit(Fl_Widget* widget, void* data) {
     PuzzleWindow* window = (PuzzleWindow*) data;
     window->pushInputs();
     window->updateInputs();
+    window->gameController->toggleTimer(false);
 
     if (window->gameController->isSolved())
     {
@@ -177,7 +179,7 @@ void PuzzleWindow::cbSubmit(Fl_Widget* widget, void* data) {
 
 void PuzzleWindow::completeLevel()
 {
-    this->gameController->pause(true);
+    this->gameController->toggleTimer(true);
     bool isAdvanced = this->gameController->tryAdvanceLevel();
     if (isAdvanced)
     {
@@ -200,7 +202,7 @@ void PuzzleWindow::cbPause(Fl_Widget* widget, void* data)
     window->makeInputsVisible(window->isPaused);
     window->pauseButton->label(window->isPaused ? "Pause" : "Unpause");
     window->isPaused = !window->isPaused;
-    window->gameController->pause(window->isPaused);
+    window->gameController->toggleTimer(window->isPaused);
 }
 
 void PuzzleWindow::makeInputsVisible(bool isVisible)
@@ -220,9 +222,6 @@ void PuzzleWindow::makeInputsVisible(bool isVisible)
 
 void PuzzleWindow::cbUpdateTimer(int number, void* data)
 {
-    // NOTE (REMOVE THIS BEFORE SUBMISSION): The number parameter is the timer's value
-    // in seconds. This can be changed here to another format such as minutes:seconds, etc.
-    // Then display it in the timerDisplay->value() method.
     PuzzleWindow* window = (PuzzleWindow*) data;
     std::string numberText = std::to_string(number);
 

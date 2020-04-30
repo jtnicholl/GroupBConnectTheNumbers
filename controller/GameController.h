@@ -131,7 +131,7 @@ public:
      *
      * @param shouldPause whether or not to pause or unpause the timer.
      */
-    void pause(bool shouldPause);
+    void toggleTimer(bool isOff);
     /**
      * Removes the entries in the scoreboard.
      */
