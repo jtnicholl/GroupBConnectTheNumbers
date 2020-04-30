@@ -76,8 +76,8 @@ void PuzzleWindow::setInitialColors()
     }
     else
     {
-        this->currentCellColor = DEFAULT_COLOR;
-        this->currentNumberColor = DEFAULT_COLOR;
+        this->currentCellColor = DEFAULT_MUTABLE_CELL_COLOR;
+        this->currentNumberColor = DEFAULT_CELL_TEXT_COLOR;
     }
     this->setInputTileColor(this->currentCellColor);
     this->setInputNumberColor(this->currentNumberColor);

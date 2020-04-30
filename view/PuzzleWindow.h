@@ -82,7 +82,8 @@ private:
     const char* NOT_SOLVED_MESSAGE = "Puzzle not yet solved...";
     const char* SOLVED_MESSAGE = "Puzzle solved!";
 
-    const Fl_Color DEFAULT_COLOR = FL_WHITE;
+    const Fl_Color DEFAULT_MUTABLE_CELL_COLOR = FL_WHITE;
+    const Fl_Color DEFAULT_CELL_TEXT_COLOR = FL_BLACK;
 
     GameController* gameController;
 

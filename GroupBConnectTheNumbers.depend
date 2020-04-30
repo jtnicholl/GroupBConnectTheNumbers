@@ -155,3 +155,271 @@
 	"SettingsWindow.h"
 	"FileIO/PuzzleColorPersistence.h"
 
+1588259488 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/controller/GameController.cpp
+	"GameController.h"
+	"../fileio/PuzzleLoader.h"
+	"../fileio/PuzzleSaver.h"
+	"../fileio/Utils.cpp"
+	"../model/TileBoard.h"
+
+1588259488 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/controller/GameController.h
+	<string>
+	<vector>
+	<thread>
+	"../model/TileGame.h"
+	"../model/TileBoard.h"
+	"../model/Timing/Timer.h"
+	"../model/scoring/ScoreBoard.h"
+
+1587944355 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/TileGame.h
+	"TileBoard.h"
+
+1587944356 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/TileBoard.h
+	"Tile.h"
+
+1587944356 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/Tile.h
+
+1588259488 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/Timing/Timer.h
+	<mutex>
+
+1588259488 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/scoring/ScoreBoard.h
+	"ScoreEntry.h"
+
+1588259488 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/scoring/ScoreEntry.h
+	<string>
+
+1588259488 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/fileio/PuzzleLoader.h
+	<vector>
+	<string>
+	"../model/TileBoard.h"
+	"../model/Tile.h"
+	"../model/Timing/Timer.h"
+
+1588259488 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/fileio/PuzzleSaver.h
+	<string>
+	<vector>
+	"../model/TileBoard.h"
+	"../model/Timing/Timer.h"
+
+1588259488 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/fileio/Utils.cpp
+	"Utils.h"
+	<fstream>
+	<sstream>
+
+1588259488 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/fileio/Utils.h
+	<string>
+	<vector>
+
+1588259488 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/fileio/PuzzleLoader.cpp
+	"fileio/PuzzleLoader.h"
+	<fstream>
+	<sstream>
+	"../model/Tile.h"
+
+1588259488 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers//fileio/PuzzleLoader.h
+	<vector>
+	<string>
+	"../model/TileBoard.h"
+	"../model/Tile.h"
+	"../model/Timing/Timer.h"
+
+1587944356 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers//model/TileBoard.h
+	"Tile.h"
+
+1587944356 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers//model/Tile.h
+
+1588259488 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers//model/Timing/Timer.h
+	<mutex>
+
+1588259488 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/fileio/PuzzleSaver.cpp
+	<fstream>
+	<iostream>
+	<sstream>
+	"PuzzleSaver.h"
+	"../model/Tile.h"
+
+1588259488 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/main.cpp
+	<FL/Fl.H>
+	"view/PuzzleWindow.h"
+
+1586976448 /usr/local/include/FL/Fl.H
+	<FL/Fl_Export.H>
+	<FL/Fl_Cairo.H>
+	"fl_utf8.h"
+	"Enumerations.H"
+	<stdio.h>
+	<FL/Fl.H>
+	<FL/Fl_Window.H>
+
+1586976448 /usr/local/include/FL/Fl_Export.H
+
+1586976448 /usr/local/include/FL/Fl_Cairo.H
+	<FL/Fl_Export.H>
+	<cairo.h>
+
+1586976448 /usr/local/include/FL/fl_utf8.h
+	"Fl_Export.H"
+	"fl_types.h"
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<locale.h>
+	<ctype.h>
+	<wchar.h>
+	<sys/stat.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<X11/Xlocale.h>
+	<X11/Xlib.h>
+	<locale.h>
+
+1586976448 /usr/local/include/FL/fl_types.h
+
+1586976448 /usr/local/include/FL/Enumerations.H
+	<FL/abi-version.h>
+	"Fl_Export.H"
+	"fl_types.h"
+
+1586976448 /usr/local/include/FL/abi-version.h
+
+1586976448 /usr/local/include/FL/Fl_Window.H
+	<windows.h>
+	"Fl_Group.H"
+	"Fl_Bitmap.H"
+	<stdlib.h>
+
+1586976448 /usr/local/include/FL/Fl_Group.H
+	"Fl_Widget.H"
+
+1586976448 /usr/local/include/FL/Fl_Widget.H
+	"Enumerations.H"
+	<stdint.h>
+	<stddef.h>
+
+1586976448 /usr/local/include/FL/Fl_Bitmap.H
+	"Fl_Image.H"
+
+1586976448 /usr/local/include/FL/Fl_Image.H
+	"Enumerations.H"
+	<stdlib.h>
+
+1588261017 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/view/PuzzleWindow.h
+	<FL/Fl_Window.H>
+	<FL/Fl_Menu_Button.H>
+	<FL/Fl_Button.H>
+	<FL/Fl_Input.H>
+	<FL/Fl_Output.H>
+	"../controller/GameController.h"
+
+1586976448 /usr/local/include/FL/Fl_Menu_Button.H
+	"Fl_Menu_.H"
+
+1586976448 /usr/local/include/FL/Fl_Menu_.H
+	"Fl_Widget.H"
+	"Fl_Menu_Item.H"
+
+1586976448 /usr/local/include/FL/Fl_Menu_Item.H
+	"Fl_Widget.H"
+	"Fl_Image.H"
+
+1586976448 /usr/local/include/FL/Fl_Button.H
+	"Fl_Widget.H"
+
+1586976448 /usr/local/include/FL/Fl_Input.H
+	"Fl_Input_.H"
+
+1586976448 /usr/local/include/FL/Fl_Input_.H
+	"Fl_Widget.H"
+
+1586976448 /usr/local/include/FL/Fl_Output.H
+	"Fl_Input.H"
+
+1588259488 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/scoring/ScoreBoard.cpp
+	"ScoreBoard.h"
+
+1588259488 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/scoring/ScoreEntry.cpp
+	"ScoreEntry.h"
+
+1587944356 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/Tile.cpp
+	"Tile.h"
+
+1587944355 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/TileBoard.cpp
+	"TileBoard.h"
+	<assert.h>
+
+1588259488 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/TileGame.cpp
+	"TileGame.h"
+
+1588259488 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/model/Timing/Timer.cpp
+	<chrono>
+	<stdexcept>
+	"Timer.h"
+
+1588259488 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/view/FileIO/PuzzleColorPersistence.cpp
+	<fstream>
+	"PuzzleColorPersistence.h"
+	"../../fileio/Utils.h"
+
+1588259488 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/view/FileIO/PuzzleColorPersistence.h
+	<string>
+	<vector>
+
+1588259488 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/view/PuzzleWindow.cpp
+	<string>
+	<FL/Fl_Menu_Item.H>
+	<FL/Fl.H>
+	"../model/TileBoard.h"
+	"../fileio/Utils.h"
+	"FileIO/PuzzleColorPersistence.h"
+	"PuzzleWindow.h"
+	"SettingsWindow.h"
+	"ScoreBoardWindow.h"
+
+1588259488 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/view/SettingsWindow.h
+	<FL/Fl_Window.H>
+	<FL/Fl_Color_Chooser.H>
+	<FL/Fl_Button.H>
+	"PuzzleWindow.h"
+
+1586976448 /usr/local/include/FL/Fl_Color_Chooser.H
+	<FL/Fl_Group.H>
+	<FL/Fl_Box.H>
+	<FL/Fl_Return_Button.H>
+	<FL/Fl_Choice.H>
+	<FL/Fl_Value_Input.H>
+
+1586976448 /usr/local/include/FL/Fl_Box.H
+	"Fl_Widget.H"
+
+1586976448 /usr/local/include/FL/Fl_Return_Button.H
+	"Fl_Button.H"
+
+1586976448 /usr/local/include/FL/Fl_Choice.H
+	"Fl_Menu_.H"
+
+1586976448 /usr/local/include/FL/Fl_Value_Input.H
+	"Fl_Valuator.H"
+	"Fl_Input.H"
+
+1586976448 /usr/local/include/FL/Fl_Valuator.H
+	"Fl_Widget.H"
+
+1588259488 /home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/view/ScoreBoardWindow.h
+	<FL/Fl_Window.H>
+	<FL/Fl_Multiline_Output.H>
+	"PuzzleWindow.h"
+
+1586976448 /usr/local/include/FL/Fl_Multiline_Output.H
+	"Fl_Output.H"
+
+1588259488 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/view/ScoreBoardWindow.cpp
+	"ScoreBoardWindow.h"
+
+1588259555 source:/home/jtnicholl/Codeblocks/GroupBConnectTheNumbers/view/SettingsWindow.cpp
+	<string>
+	<FL/Fl.H>
+	"SettingsWindow.h"
+	"FileIO/PuzzleColorPersistence.h"
+
