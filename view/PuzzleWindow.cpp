@@ -24,7 +24,7 @@ PuzzleWindow::PuzzleWindow(int width, int height, const char* title) : Fl_Window
     this->resetButton = new Fl_Button(380, 30, 80, 24, "Reset");
     this->puzzleStatus = new Fl_Output(70, 440, 170, 24);
     this->pauseButton = new Fl_Button(380, 440, 80, 24, "Pause");
-    this->scoreboardButton = new Fl_Button(290, 60, 80, 24, "ScoreBoard");
+    this->scoreboardButton = new Fl_Button(290, 60, 170, 24, "ScoreBoard");
     this->timerDisplay = new Fl_Output(300, 440, 60, 24, "s");
     this->timerDisplay->value(std::to_string(this->gameController->getCurrentBoardTime()).c_str());
     this->timerDisplay->align(FL_ALIGN_RIGHT);
