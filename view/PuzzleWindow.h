@@ -101,7 +101,7 @@ private:
     bool isPaused;
 
     void addInputBox(int number);
-    void updateInputs();
+    void updateFromController();
     void pushInputs();
     void populateMenu();
     void makeInputsVisible(bool isVisible);
