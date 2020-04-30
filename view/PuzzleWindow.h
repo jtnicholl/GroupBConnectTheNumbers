@@ -71,7 +71,11 @@ public:
      *
      * @return the game controller.
      */
-    const GameController* const getGameController() const;
+    GameController* const getGameController() const;
+    /**
+     * Advances game to the next level.
+     */
+    void completeLevel();
 
 private:
     const int GRID_STARTING_X = 85;
@@ -104,7 +108,6 @@ private:
     void pushInputs();
     void populateMenu();
     void makeInputsVisible(bool isVisible);
-    void completeLevel();
     void setInitialColors();
 
     static void cbReset(Fl_Widget* widget, void* data);

@@ -172,4 +172,13 @@ const std::string GameController::getScoreBoardData() const
     return this->scoreboard->printScores();
 }
 
+void GameController::addScoreBoardEntry(std::string name)
+{
+    timing::Timer* currentTimer = this->gameTimers[this->currentLevel];
+    if (currentTimer)
+    {
+        this->scoreboard->addScore(currentTimer->getSecondCount(), name, this->currentLevel + 1);
+    }
+}
+
 }

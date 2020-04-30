@@ -8,6 +8,7 @@
 #include "PuzzleWindow.h"
 #include "SettingsWindow.h"
 #include "ScoreBoardWindow.h"
+#include "AddNewScoreWindow.h"
 
 namespace view {
 
@@ -173,7 +174,9 @@ void PuzzleWindow::cbSubmit(Fl_Widget* widget, void* data) {
 
     if (window->gameController->isSolved())
     {
-        window->completeLevel();
+        AddNewScoreWindow* addScoreWindow = new AddNewScoreWindow(275, 100, "Score Entry", window);
+        addScoreWindow->set_modal();
+        addScoreWindow->show();
     }
 }
 
@@ -252,7 +255,7 @@ void PuzzleWindow::cbScoreBoard(Fl_Widget* widget, void* data)
     scoreboard->show();
 }
 
-const GameController* const PuzzleWindow::getGameController() const
+GameController* const PuzzleWindow::getGameController() const
 {
     return this->gameController;
 }
