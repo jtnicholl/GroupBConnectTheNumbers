@@ -1,5 +1,5 @@
 #include <string>
-#include <Fl/Fl.H>
+#include <FL/Fl.H>
 
 #include "SettingsWindow.h"
 #include "FileIO/PuzzleColorPersistence.h"
