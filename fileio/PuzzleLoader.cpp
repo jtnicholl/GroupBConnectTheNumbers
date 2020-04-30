@@ -77,16 +77,13 @@ TileEntry PuzzleLoader::parseEntry(const std::string& entry) {
     return output;
 }
 
-std::vector<timing::Timer*> PuzzleLoader::loadPuzzleTimesFromFile(const std::string& filename)
-{
+std::vector<timing::Timer*> PuzzleLoader::loadPuzzleTimesFromFile(const std::string& filename) {
     std::vector<timing::Timer*> times;
     std::ifstream infile;
     infile.open(filename, std::ios::in);
-    if (infile.is_open())
-    {
+    if (infile.is_open()) {
         std::string line;
-        while (std::getline(infile, line))
-        {
+        while (std::getline(infile, line)) {
             std::string::size_type stringSize;
             int counterValue = std::stoi(line, &stringSize);
             times.push_back(new timing::Timer(counterValue));

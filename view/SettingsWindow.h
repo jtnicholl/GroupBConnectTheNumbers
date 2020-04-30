@@ -7,16 +7,14 @@
 
 #include "PuzzleWindow.h"
 
-namespace view
-{
+namespace view {
 
 /**
  * This is the Settings window for the Puzzle Game.
  *
  * @author Thomas Luke Whaley
  */
-class SettingsWindow : public Fl_Window
-{
+class SettingsWindow : public Fl_Window {
 public:
     /**
      * Constructs a new SettingsWindow.

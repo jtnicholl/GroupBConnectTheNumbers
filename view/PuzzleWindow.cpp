@@ -56,26 +56,20 @@ PuzzleWindow::~PuzzleWindow() {
     delete this->scoreboardButton;
 }
 
-Fl_Color PuzzleWindow::getInputTileColor() const
-{
+Fl_Color PuzzleWindow::getInputTileColor() const {
     return this->currentCellColor;
 }
 
-Fl_Color PuzzleWindow::getInputNumberColor() const
-{
+Fl_Color PuzzleWindow::getInputNumberColor() const {
     return this->currentNumberColor;
 }
 
-void PuzzleWindow::setInitialColors()
-{
-    if (fileio::fileExists(COLOR_SAVE_FILENAME))
-    {
+void PuzzleWindow::setInitialColors() {
+    if (fileio::fileExists(COLOR_SAVE_FILENAME)) {
         std::vector<io::PuzzleColorPersistence::PuzzleColor> colors = io::PuzzleColorPersistence::loadPuzzleColorsFromFile(COLOR_SAVE_FILENAME);
         this->currentCellColor = fl_rgb_color(colors[0].red, colors[0].green, colors[0].blue);
         this->currentNumberColor = fl_rgb_color(colors[1].red, colors[1].green, colors[1].blue);
-    }
-    else
-    {
+    } else {
         this->currentCellColor = DEFAULT_MUTABLE_CELL_COLOR;
         this->currentNumberColor = DEFAULT_CELL_TEXT_COLOR;
     }
@@ -83,8 +77,7 @@ void PuzzleWindow::setInitialColors()
     this->setInputNumberColor(this->currentNumberColor);
 }
 
-void PuzzleWindow::cbOnCloseWindow(Fl_Widget*, void* data)
-{
+void PuzzleWindow::cbOnCloseWindow(Fl_Widget*, void* data) {
     PuzzleWindow* window = (PuzzleWindow*) data;
     window->gameController->saveAllPuzzles();
     window->hide();
@@ -125,8 +118,7 @@ inline void PuzzleWindow::populateMenu() {
     }
 }
 
-void PuzzleWindow::setInputTileColor(Fl_Color color)
-{
+void PuzzleWindow::setInputTileColor(Fl_Color color) {
     this->currentCellColor = color;
     for (int i = 0; i < model::TileBoard::BOARD_AREA; i++) {
         Fl_Input* currentInput = this->inputs[i];
@@ -137,8 +129,7 @@ void PuzzleWindow::setInputTileColor(Fl_Color color)
     this->redraw();
 }
 
-void PuzzleWindow::setInputNumberColor(Fl_Color color)
-{
+void PuzzleWindow::setInputNumberColor(Fl_Color color) {
     this->currentNumberColor = color;
     for (int i = 0; i < model::TileBoard::BOARD_AREA; i++) {
         Fl_Input* currentInput = this->inputs[i];
@@ -171,33 +162,28 @@ void PuzzleWindow::cbSubmit(Fl_Widget* widget, void* data) {
     window->updateInputs();
     window->gameController->toggleTimer(false);
 
-    if (window->gameController->isSolved())
-    {
+    if (window->gameController->isSolved()) {
         window->completeLevel();
     }
 }
 
-void PuzzleWindow::completeLevel()
-{
+void PuzzleWindow::completeLevel() {
     this->gameController->toggleTimer(true);
     bool isAdvanced = this->gameController->tryAdvanceLevel();
-    if (isAdvanced)
-    {
+    if (isAdvanced) {
         this->puzzleSelectMenu->value(this->gameController->getCurrentLevel() - 1);
         this->updateInputs();
     }
 }
 
-void PuzzleWindow::cbSettings(Fl_Widget* widget, void* data)
-{
+void PuzzleWindow::cbSettings(Fl_Widget* widget, void* data) {
     PuzzleWindow* window = (PuzzleWindow*) data;
     SettingsWindow* settings = new SettingsWindow(475, 250, "Settings", window);
     settings->set_modal();
     settings->show();
 }
 
-void PuzzleWindow::cbPause(Fl_Widget* widget, void* data)
-{
+void PuzzleWindow::cbPause(Fl_Widget* widget, void* data) {
     PuzzleWindow* window = (PuzzleWindow*) data;
     window->makeInputsVisible(window->isPaused);
     window->pauseButton->label(window->isPaused ? "Pause" : "Unpause");
@@ -205,23 +191,18 @@ void PuzzleWindow::cbPause(Fl_Widget* widget, void* data)
     window->gameController->toggleTimer(window->isPaused);
 }
 
-void PuzzleWindow::makeInputsVisible(bool isVisible)
-{
+void PuzzleWindow::makeInputsVisible(bool isVisible) {
     for (int i = 0; i < model::TileBoard::BOARD_AREA; i++) {
         Fl_Input* currentInput = this->inputs[i];
-        if (isVisible)
-        {
+        if (isVisible) {
             currentInput->show();
-        }
-        else
-        {
+        } else {
             currentInput->hide();
         }
     }
 }
 
-void PuzzleWindow::cbUpdateTimer(int number, void* data)
-{
+void PuzzleWindow::cbUpdateTimer(int number, void* data) {
     PuzzleWindow* window = (PuzzleWindow*) data;
     std::string numberText = std::to_string(number);
 
@@ -244,16 +225,14 @@ int PuzzleWindow::parseEntry(const char* entry) {
     return output > 64 ? 0 : output;
 }
 
-void PuzzleWindow::cbScoreBoard(Fl_Widget* widget, void* data)
-{
+void PuzzleWindow::cbScoreBoard(Fl_Widget* widget, void* data) {
     PuzzleWindow* window = (PuzzleWindow*) data;
     ScoreBoardWindow* scoreboard = new ScoreBoardWindow(300, 300, "ScoreBoard", window);
     scoreboard->set_modal();
     scoreboard->show();
 }
 
-const GameController* const PuzzleWindow::getGameController() const
-{
+const GameController* const PuzzleWindow::getGameController() const {
     return this->gameController;
 }
 

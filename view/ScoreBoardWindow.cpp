@@ -1,10 +1,8 @@
 #include "ScoreBoardWindow.h"
 
-namespace view
-{
+namespace view {
 
-ScoreBoardWindow::ScoreBoardWindow(int width, int height, const std::string& title, PuzzleWindow* parent) : Fl_Window(width, height, title.c_str())
-{
+ScoreBoardWindow::ScoreBoardWindow(int width, int height, const std::string& title, PuzzleWindow* parent) : Fl_Window(width, height, title.c_str()) {
     begin();
 
     this->parent = parent;
@@ -19,20 +17,17 @@ ScoreBoardWindow::ScoreBoardWindow(int width, int height, const std::string& tit
     end();
 }
 
-ScoreBoardWindow::~ScoreBoardWindow()
-{
+ScoreBoardWindow::~ScoreBoardWindow() {
     delete this->output;
 }
 
-void ScoreBoardWindow::cbReset(Fl_Widget* widget, void* data)
-{
+void ScoreBoardWindow::cbReset(Fl_Widget* widget, void* data) {
     ScoreBoardWindow* window = (ScoreBoardWindow*)data;
     window->parent->getGameController()->resetScoreBoard();
     window->updateScores();
 }
 
-void ScoreBoardWindow::updateScores()
-{
+void ScoreBoardWindow::updateScores() {
     this->output->value(this->parent->getGameController()->getScoreBoardData().c_str());
 }
 

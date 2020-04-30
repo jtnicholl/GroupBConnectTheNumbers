@@ -25,15 +25,13 @@ GameController::~GameController() {
         delete this->boards[i];
     }
     this->stopCurrentTimer();
-    for (std::vector<timing::Timer*>::iterator i = this->gameTimers.begin(); i != this->gameTimers.end(); i++)
-    {
+    for (std::vector<timing::Timer*>::iterator i = this->gameTimers.begin(); i != this->gameTimers.end(); i++) {
         delete *i;
     }
     delete this->scoreboard;
 }
 
-int GameController::getCurrentBoardTime() const
-{
+int GameController::getCurrentBoardTime() const {
     timing::Timer* currentTimer = this->gameTimers[this->currentLevel];
     return currentTimer->getSecondCount();
 }
@@ -92,21 +90,17 @@ void GameController::saveAllPuzzles() {
     PuzzleSaver::savePuzzleTimesToFile(this->gameTimers, SAVED_PUZZLE_TIMES_FILENAME);
 }
 
-std::vector<timing::Timer*> GameController::createDefaultGameTimers()
-{
+std::vector<timing::Timer*> GameController::createDefaultGameTimers() {
     std::vector<timing::Timer*> timers;
-    for (std::vector<TileBoard*>::size_type i = 0; i < this->boards.size(); i++)
-    {
+    for (std::vector<TileBoard*>::size_type i = 0; i < this->boards.size(); i++) {
         timers.push_back(new timing::Timer());
     }
     return timers;
 }
 
-timing::Timer* GameController::startCurrentTimer()
-{
+timing::Timer* GameController::startCurrentTimer() {
     timing::Timer* currentTimer = this->gameTimers[this->currentLevel];
-    if (this->currentTimerThread == nullptr)
-    {
+    if (this->currentTimerThread == nullptr) {
         currentTimer->addSecondsIncreasedListener(GameController::cbCurrentGameTimerUpdated, this);
         this->currentTimerThread = new std::thread(&timing::Timer::run, currentTimer);
     }
@@ -114,12 +108,10 @@ timing::Timer* GameController::startCurrentTimer()
     return currentTimer;
 }
 
-timing::Timer* GameController::stopCurrentTimer()
-{
+timing::Timer* GameController::stopCurrentTimer() {
     timing::Timer* currentTimer = this->gameTimers[this->currentLevel];
     currentTimer->stop();
-    if (this->currentTimerThread != nullptr)
-    {
+    if (this->currentTimerThread != nullptr) {
         this->currentTimerThread->join();
 
         delete this->currentTimerThread;
@@ -128,47 +120,37 @@ timing::Timer* GameController::stopCurrentTimer()
     return currentTimer;
 }
 
-void GameController::cbCurrentGameTimerUpdated(void* data)
-{
+void GameController::cbCurrentGameTimerUpdated(void* data) {
     GameController* controller = (GameController*) data;
     controller->fireTimerEvent();
 }
 
-void GameController::fireTimerEvent()
-{
+void GameController::fireTimerEvent() {
     timing::Timer* currentTimer = this->gameTimers[this->currentLevel];
     int seconds = currentTimer->getSecondCount();
-    if (this->notifyTimerPropertyChanged != nullptr)
-    {
+    if (this->notifyTimerPropertyChanged != nullptr) {
         this->notifyTimerPropertyChanged(seconds, this->timerPropertyChangedData);
     }
 }
 
-void GameController::setTimerPropertyChangedHandler(void (*callback)(int, void*), void* data)
-{
+void GameController::setTimerPropertyChangedHandler(void (*callback)(int, void*), void* data) {
     this->notifyTimerPropertyChanged = callback;
     this->timerPropertyChangedData = data;
 }
 
-void GameController::toggleTimer(bool isOff)
-{
-    if (isOff)
-    {
+void GameController::toggleTimer(bool isOff) {
+    if (isOff) {
         this->stopCurrentTimer();
-    }
-    else
-    {
+    } else {
         this->startCurrentTimer();
     }
 }
 
-void GameController::resetScoreBoard() const
-{
+void GameController::resetScoreBoard() const {
     this->scoreboard->resetScores();
 }
 
-const std::string GameController::getScoreBoardData() const
-{
+const std::string GameController::getScoreBoardData() const {
     return this->scoreboard->printScores();
 }
 

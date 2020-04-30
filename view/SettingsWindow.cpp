@@ -4,11 +4,9 @@
 #include "SettingsWindow.h"
 #include "fileio/PuzzleColorPersistence.h"
 
-namespace view
-{
+namespace view {
 
-SettingsWindow::SettingsWindow(int width, int height, const std::string& title, PuzzleWindow* parent) : Fl_Window(width, height, title.c_str())
-{
+SettingsWindow::SettingsWindow(int width, int height, const std::string& title, PuzzleWindow* parent) : Fl_Window(width, height, title.c_str()) {
     begin();
     this->cellColorMenu = new Fl_Color_Chooser(25, 25, 200, 150, "Cell Color");
     this->numberColorMenu = new Fl_Color_Chooser(250, 25, 200, 150, "Number Color");
@@ -33,16 +31,14 @@ SettingsWindow::SettingsWindow(int width, int height, const std::string& title, 
     end();
 }
 
-SettingsWindow::~SettingsWindow()
-{
+SettingsWindow::~SettingsWindow() {
     delete this->cellColorMenu;
     delete this->numberColorMenu;
     delete this->saveButton;
     delete this->cancelButton;
 }
 
-void SettingsWindow::cbSave(Fl_Widget* widget, void* data)
-{
+void SettingsWindow::cbSave(Fl_Widget* widget, void* data) {
     SettingsWindow* window = (SettingsWindow*) data;
 
     io::PuzzleColorPersistence::PuzzleColor numberColorData;
@@ -65,8 +61,7 @@ void SettingsWindow::cbSave(Fl_Widget* widget, void* data)
     window->hide();
 }
 
-void SettingsWindow::cbCancel(Fl_Widget* widget, void* data)
-{
+void SettingsWindow::cbCancel(Fl_Widget* widget, void* data) {
     SettingsWindow* window = (SettingsWindow*) data;
     window->hide();
 }
