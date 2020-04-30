@@ -16,7 +16,7 @@ class ScoreBoard
         ScoreBoard(ScoreEntry::SortType sortType);
         virtual ~ScoreBoard();
 
-        void addScore(int time, std::string& name, int puzzleLevel);
+        void addScore(int time, const std::string& name, int puzzleLevel);
         const std::string printScores() const;
         void setSortType(ScoreEntry::SortType sortType);
         void resetScores();

@@ -32,14 +32,14 @@ const int ScoreEntry::getPuzzleLevel() const
 
 bool ScoreEntry::compare(ScoreEntry* entry, SortType type) const
 {
-    bool relation = false;
+    bool isLessThan = false;
     if (type == TIME_ASCENDING)
     {
-        relation = compareTimes(entry);
+        isLessThan = compareTimes(entry);
     }
     else if (type == PUZZLE_LEVEL_DESCENDING)
     {
-        relation = comparePuzzleLevel(entry);
+        isLessThan = comparePuzzleLevel(entry);
     }
 }
 

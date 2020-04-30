@@ -8,6 +8,7 @@
 #include "../model/TileGame.h"
 #include "../model/TileBoard.h"
 #include "../model/Timing/Timer.h"
+#include "ScoreBoard.h"
 
 using namespace model;
 
@@ -131,6 +132,16 @@ public:
      * @param shouldPause whether or not to pause or unpause the timer.
      */
     void pause(bool shouldPause);
+    /**
+     * Removes the entries in the scoreboard.
+     */
+    void resetScoreBoard() const;
+    /**
+     * Gets the score board data as a string.
+     *
+     * @return Score board data as a string.
+     */
+    const std::string getScoreBoardData() const;
 
 private:
     const std::string DEFAULT_PUZZLES_FILENAME = "default_puzzles.csv";
@@ -141,6 +152,7 @@ private:
     int currentLevel;
     std::vector<TileBoard*> boards;
     TileGame* game;
+    scoring::ScoreBoard* scoreboard;
 
     std::vector<timing::Timer*> gameTimers;
     std::thread* currentTimerThread;

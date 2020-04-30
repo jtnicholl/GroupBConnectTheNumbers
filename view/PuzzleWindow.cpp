@@ -7,6 +7,7 @@
 #include "FileIO/PuzzleColorPersistence.h"
 #include "PuzzleWindow.h"
 #include "SettingsWindow.h"
+#include "ScoreBoardWindow.h"
 
 namespace view {
 
@@ -23,6 +24,7 @@ PuzzleWindow::PuzzleWindow(int width, int height, const char* title) : Fl_Window
     this->resetButton = new Fl_Button(380, 30, 80, 24, "Reset");
     this->puzzleStatus = new Fl_Output(70, 440, 170, 24, "1");
     this->pauseButton = new Fl_Button(380, 440, 80, 24, "Pause");
+    this->scoreboardButton = new Fl_Button(290, 60, 80, 24, "ScoreBoard");
     this->timerDisplay = new Fl_Output(300, 440, 60, 24, "s");
     this->timerDisplay->value(std::to_string(this->gameController->getCurrentBoardTime()).c_str());
     this->timerDisplay->align(FL_ALIGN_RIGHT);
@@ -36,6 +38,7 @@ PuzzleWindow::PuzzleWindow(int width, int height, const char* title) : Fl_Window
     this->resetButton->callback(PuzzleWindow::cbReset, this);
     this->pauseButton->callback(PuzzleWindow::cbPause, this);
     this->settingsButton->callback(PuzzleWindow::cbSettings, this);
+    this->scoreboardButton->callback(PuzzleWindow::cbScoreBoard, this);
     this->setInitialColors();
     end();
 }
@@ -50,6 +53,7 @@ PuzzleWindow::~PuzzleWindow() {
     delete this->timerDisplay;
     delete this->pauseButton;
     delete this->settingsButton;
+    delete this->scoreboardButton;
 }
 
 Fl_Color PuzzleWindow::getInputTileColor() const
@@ -239,6 +243,19 @@ int PuzzleWindow::parseEntry(const char* entry) {
         }
     }
     return output > 64 ? 0 : output;
+}
+
+void PuzzleWindow::cbScoreBoard(Fl_Widget* widget, void* data)
+{
+    PuzzleWindow* window = (PuzzleWindow*) data;
+    ScoreBoardWindow* scoreboard = new ScoreBoardWindow(300, 300, "ScoreBoard", window);
+    scoreboard->set_modal();
+    scoreboard->show();
+}
+
+const GameController* const PuzzleWindow::getGameController() const
+{
+    return this->gameController;
 }
 
 }

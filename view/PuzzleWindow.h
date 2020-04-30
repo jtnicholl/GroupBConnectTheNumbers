@@ -66,6 +66,12 @@ public:
      * @return the input number color.
      */
     Fl_Color getInputNumberColor() const;
+    /**
+     * Gets the game controller.
+     *
+     * @return the game controller.
+     */
+    const GameController* const getGameController() const;
 
 private:
     const int GRID_STARTING_X = 85;
@@ -90,6 +96,7 @@ private:
     Fl_Output* timerDisplay;
     Fl_Button* settingsButton;
     Fl_Button* pauseButton;
+    Fl_Button* scoreboardButton;
     bool isPaused;
 
     void addInputBox(int number);
@@ -106,6 +113,7 @@ private:
     static void cbPause(Fl_Widget* widget, void* data);
     static void cbUpdateTimer(int number, void* data);
     static void cbSettings(Fl_Widget* widget, void* data);
+    static void cbScoreBoard(Fl_Widget* widget, void* data);
 
     static int parseEntry(const char* entry);
 };

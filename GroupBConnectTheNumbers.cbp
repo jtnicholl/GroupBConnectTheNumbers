@@ -57,8 +57,12 @@
 		<Unit filename="model/scoring/ScoreBoard.h" />
 		<Unit filename="model/scoring/ScoreEntry.cpp" />
 		<Unit filename="model/scoring/ScoreEntry.h" />
+		<Unit filename="view/FileIO/PuzzleColorPersistence.cpp" />
+		<Unit filename="view/FileIO/PuzzleColorPersistence.h" />
 		<Unit filename="view/PuzzleWindow.cpp" />
 		<Unit filename="view/PuzzleWindow.h" />
+		<Unit filename="view/ScoreBoardWindow.cpp" />
+		<Unit filename="view/ScoreBoardWindow.h" />
 		<Unit filename="view/SettingsWindow.cpp" />
 		<Unit filename="view/SettingsWindow.h" />
 		<Extensions>

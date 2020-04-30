@@ -16,6 +16,7 @@ GameController::GameController() {
     this->game = new TileGame(this->boards[this->currentLevel]);
     this->gameTimers = fileExists(SAVED_PUZZLE_TIMES_FILENAME) ? PuzzleLoader::loadPuzzleTimesFromFile(SAVED_PUZZLE_TIMES_FILENAME) : this->createDefaultGameTimers();
     this->currentTimerThread = nullptr;
+    this->scoreboard = new scoring::ScoreBoard();
 }
 
 GameController::~GameController() {
@@ -28,6 +29,7 @@ GameController::~GameController() {
     {
         delete *i;
     }
+    delete this->scoreboard;
 }
 
 int GameController::getCurrentBoardTime() const
@@ -160,6 +162,16 @@ void GameController::pause(bool shouldPause)
     {
         this->startCurrentTimer();
     }
+}
+
+void GameController::resetScoreBoard() const
+{
+    this->scoreboard->resetScores();
+}
+
+const std::string GameController::getScoreBoardData() const
+{
+    return this->scoreboard->printScores();
 }
 
 }
