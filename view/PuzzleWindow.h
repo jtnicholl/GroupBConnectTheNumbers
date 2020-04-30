@@ -18,6 +18,10 @@ namespace view {
  */
 class PuzzleWindow : public Fl_Window {
 public:
+    /**
+     * This is the filename for the savefile that stores
+     * the game's color information.
+     */
     static const std::string COLOR_SAVE_FILENAME;
 
     /**
