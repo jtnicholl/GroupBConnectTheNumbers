@@ -4,10 +4,8 @@
 #include <string>
 #include <vector>
 
-namespace view
-{
-namespace io
-{
+namespace view {
+namespace io {
 
 /**
  * This class manages loading and saving view information.
@@ -16,15 +14,13 @@ namespace io
  *
  * @author Thomas Luke Whaley
  */
-class PuzzleColorPersistence
-{
+class PuzzleColorPersistence {
 public:
     /**
      * This struct groups color information to be
      * loaded/saved.
      */
-    struct PuzzleColor
-    {
+    struct PuzzleColor {
         int8_t red;
         int8_t green;
         int8_t blue;

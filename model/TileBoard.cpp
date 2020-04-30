@@ -52,19 +52,23 @@ inline bool TileBoard::tileValid(int position) const {
     if (value == 0) {
         return false;
     }
-    bool hasUpper = value == 64;
+    bool hasUpper = value == BOARD_AREA;
     bool hasLower = value == 1;
-    if (position % 8 != 0) {
+    bool leftNeighbor = position % BOARD_WIDTH != 0;
+    bool rightNeighbor = position % BOARD_WIDTH != BOARD_WIDTH - 1;
+    bool upNeighbor = position / BOARD_WIDTH != 0;
+    bool downNeighbor = position / BOARD_WIDTH != BOARD_WIDTH - 1;
+    if (leftNeighbor) {
         checkPosition(position - 1, value, hasUpper, hasLower);
     }
-    if (position % 8 != 7) {
+    if (rightNeighbor) {
         checkPosition(position + 1, value, hasUpper, hasLower);
     }
-    if (position / 8 != 0) {
-        checkPosition(position - 8, value, hasUpper, hasLower);
+    if (upNeighbor) {
+        checkPosition(position - BOARD_WIDTH, value, hasUpper, hasLower);
     }
-    if (position / 8 != 7) {
-        checkPosition(position + 8, value, hasUpper, hasLower);
+    if (downNeighbor) {
+        checkPosition(position + BOARD_WIDTH, value, hasUpper, hasLower);
     }
     return hasUpper && hasLower;
 }

@@ -51,8 +51,6 @@
 		<Unit filename="model/TileBoard.h" />
 		<Unit filename="model/TileGame.cpp" />
 		<Unit filename="model/TileGame.h" />
-		<Unit filename="model/Timing/Timer.cpp" />
-		<Unit filename="model/Timing/Timer.h" />
 		<Unit filename="model/scoring/ScoreBoard.cpp" />
 		<Unit filename="model/scoring/ScoreBoard.h" />
 		<Unit filename="model/scoring/ScoreEntry.cpp" />
@@ -61,12 +59,16 @@
 		<Unit filename="view/AddNewScoreWindow.h" />
 		<Unit filename="view/FileIO/PuzzleColorPersistence.cpp" />
 		<Unit filename="view/FileIO/PuzzleColorPersistence.h" />
+		<Unit filename="model/timing/Timer.cpp" />
+		<Unit filename="model/timing/Timer.h" />
 		<Unit filename="view/PuzzleWindow.cpp" />
 		<Unit filename="view/PuzzleWindow.h" />
 		<Unit filename="view/ScoreBoardWindow.cpp" />
 		<Unit filename="view/ScoreBoardWindow.h" />
 		<Unit filename="view/SettingsWindow.cpp" />
 		<Unit filename="view/SettingsWindow.h" />
+		<Unit filename="view/fileio/PuzzleColorPersistence.cpp" />
+		<Unit filename="view/fileio/PuzzleColorPersistence.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

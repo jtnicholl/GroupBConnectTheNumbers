@@ -3,21 +3,16 @@
 
 #include "Timer.h"
 
-namespace model
-{
-namespace timing
-{
+namespace model {
+namespace timing {
 
 Timer::Timer() :
     counter(0),
-    counting(false)
-{
+    counting(false) {
 }
 
-Timer::Timer(int counter)
-{
-    if (counter < 0)
-    {
+Timer::Timer(int counter) {
+    if (counter < 0) {
         throw std::invalid_argument("counter must not be negative.");
     }
 
@@ -25,20 +20,16 @@ Timer::Timer(int counter)
     this->counting = false;
 }
 
-Timer::~Timer()
-{
+Timer::~Timer() {
 }
 
-void Timer::run()
-{
+void Timer::run() {
     this->counting = true;
     std::chrono::high_resolution_clock::time_point startingTime = std::chrono::high_resolution_clock::now();
-    while (this->isCounting())
-    {
+    while (this->isCounting()) {
         std::chrono::high_resolution_clock::time_point currentTime = std::chrono::high_resolution_clock::now();
         std::chrono::high_resolution_clock::duration timeDifference = currentTime - startingTime;
-        if (timeDifference >= std::chrono::seconds(1))
-        {
+        if (timeDifference >= std::chrono::seconds(1)) {
             this->counterLock.lock();
             this->counter++;
             this->counterLock.unlock();
@@ -49,46 +40,39 @@ void Timer::run()
     }
 }
 
-void Timer::reset()
-{
+void Timer::reset() {
     this->counterLock.lock();
     this->counter = 0;
     this->counterLock.unlock();
 }
 
-void Timer::stop()
-{
+void Timer::stop() {
     this->countingConditionLock.lock();
     this->counting = false;
     this->countingConditionLock.unlock();
 }
 
-int Timer::getSecondCount()
-{
+int Timer::getSecondCount() {
     this->counterLock.lock();
     int result = this->counter;
     this->counterLock.unlock();
     return result;
 }
 
-bool Timer::isCounting()
-{
+bool Timer::isCounting() {
     this->countingConditionLock.lock();
     bool result = this->counting;
     this->countingConditionLock.unlock();
     return result;
 }
 
-void Timer::addSecondsIncreasedListener(void (*callback)(void*), void* data)
-{
+void Timer::addSecondsIncreasedListener(void (*callback)(void*), void* data) {
     this->callback = callback;
     this->callbackData = data;
 }
 
-void Timer::notifyListener()
-{
-    if (this->callback != nullptr)
-    {
+void Timer::notifyListener() {
+    if (this->callback != nullptr) {
         this->callback(this->callbackData);
     }
 }

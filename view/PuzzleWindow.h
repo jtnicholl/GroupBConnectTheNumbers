@@ -18,6 +18,10 @@ namespace view {
  */
 class PuzzleWindow : public Fl_Window {
 public:
+    /**
+     * This is the filename for the savefile that stores
+     * the game's color information.
+     */
     static const std::string COLOR_SAVE_FILENAME;
 
     /**
@@ -86,7 +90,8 @@ private:
     const char* NOT_SOLVED_MESSAGE = "Puzzle not yet solved...";
     const char* SOLVED_MESSAGE = "Puzzle solved!";
 
-    const Fl_Color DEFAULT_COLOR = FL_WHITE;
+    const Fl_Color DEFAULT_MUTABLE_CELL_COLOR = FL_WHITE;
+    const Fl_Color DEFAULT_CELL_TEXT_COLOR = FL_BLACK;
 
     GameController* gameController;
 
@@ -104,7 +109,7 @@ private:
     bool isPaused;
 
     void addInputBox(int number);
-    void updateInputs();
+    void updateFromController();
     void pushInputs();
     void populateMenu();
     void makeInputsVisible(bool isVisible);

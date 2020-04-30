@@ -29,14 +29,12 @@ inline std::string loadText(const std::string& filename) {
     return output.str();
 }
 
-std::vector<std::string> split(const std::string& input, const std::string& delimeter)
-{
+std::vector<std::string> split(const std::string& input, const std::string& delimeter) {
     std::vector<std::string> components;
     std::string phrase(input);
     std::string::size_type position = 0;
     std::string token;
-    while ((position = phrase.find(delimeter)) != std::string::npos)
-    {
+    while ((position = phrase.find(delimeter)) != std::string::npos) {
         token = phrase.substr(0, position);
         components.push_back(token);
         phrase.erase(0, position + delimeter.length());

@@ -3,10 +3,8 @@
 
 #include <mutex>
 
-namespace model
-{
-namespace timing
-{
+namespace model {
+namespace timing {
 
 /**
  * This timer class is intended to be ran on its own thread.
@@ -14,8 +12,7 @@ namespace timing
  *
  * @author Luke Whaley
  */
-class Timer
-{
+class Timer {
 public:
     /**
      * Constructs a new non-running Timer object with
