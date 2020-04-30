@@ -4,7 +4,7 @@
 
 #include "../model/TileBoard.h"
 #include "../fileio/Utils.h"
-#include "FileIO/PuzzleColorPersistence.h"
+#include "fileio/PuzzleColorPersistence.h"
 #include "PuzzleWindow.h"
 #include "SettingsWindow.h"
 #include "ScoreBoardWindow.h"

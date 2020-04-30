@@ -2,7 +2,7 @@
 #include <FL/Fl.H>
 
 #include "SettingsWindow.h"
-#include "FileIO/PuzzleColorPersistence.h"
+#include "fileio/PuzzleColorPersistence.h"
 
 namespace view
 {

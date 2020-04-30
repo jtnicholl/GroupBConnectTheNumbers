@@ -6,7 +6,7 @@
 
 #include "../model/TileBoard.h"
 #include "../model/Tile.h"
-#include "../model/Timing/Timer.h"
+#include "../model/timing/Timer.h"
 
 using namespace model;
 

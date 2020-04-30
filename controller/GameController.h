@@ -7,7 +7,7 @@
 
 #include "../model/TileGame.h"
 #include "../model/TileBoard.h"
-#include "../model/Timing/Timer.h"
+#include "../model/timing/Timer.h"
 #include "../model/scoring/ScoreBoard.h"
 
 using namespace model;
