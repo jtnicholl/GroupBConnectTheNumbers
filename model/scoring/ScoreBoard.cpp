@@ -25,6 +25,14 @@ void ScoreBoard::addScore(int time, const std::string& name, int puzzleLevel) {
     }
 }
 
+void ScoreBoard::addScore(ScoreEntry* scoreEntry) {
+    if (!canAddNewScore(scoreEntry)) {
+        delete scoreEntry;
+    } else {
+        insertScore(scoreEntry);
+    }
+}
+
 bool ScoreBoard::canAddNewScore(ScoreEntry* newScore) const {
     bool canAdd = false;
     for (unsigned int i = 0; i < MAX_SCORES && !canAdd; i++) {
