@@ -8,8 +8,6 @@ namespace model::scoring {
 
 class ScoreBoard {
 public:
-    static const int MAX_SCORES = 10;
-
     ScoreBoard();
     virtual ~ScoreBoard();
 

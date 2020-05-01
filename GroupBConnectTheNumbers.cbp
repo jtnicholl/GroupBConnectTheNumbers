@@ -74,6 +74,8 @@
 		<Unit filename="view/SettingsWindow.h" />
 		<Unit filename="view/fileio/PuzzleColorPersistence.cpp" />
 		<Unit filename="view/fileio/PuzzleColorPersistence.h" />
+		<Unit filename="view/format/HighScoreFormatter.cpp" />
+		<Unit filename="view/format/HighScoreFormatter.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

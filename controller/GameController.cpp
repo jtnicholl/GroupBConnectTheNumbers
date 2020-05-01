@@ -5,6 +5,7 @@
 #include "../fileio/Utils.cpp"
 #include "../model/TileBoard.h"
 #include "../fileio/ScoreBoardSaver.h"
+#include "../view/format/HighScoreFormatter.h"
 
 using namespace fileio;
 
@@ -151,9 +152,9 @@ void GameController::resetScoreBoard() const {
     this->scoreboard->resetScores();
 }
 
-//const std::string GameController::getScoreBoard() const {
-//    return this->scoreboard->printScores();
-//}
+std::string GameController::getScoreBoardText(ScoreEntry::SortType sortType) const {
+    return view::format::HighScoreFormatter::formatHighScores(this->scoreboard, sortType);
+}
 
 void GameController::addScoreBoardEntry(std::string name) {
     timing::Timer* currentTimer = this->gameTimers[this->currentLevel];

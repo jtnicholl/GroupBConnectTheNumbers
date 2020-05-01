@@ -9,6 +9,7 @@
 #include "../model/TileBoard.h"
 #include "../model/timing/Timer.h"
 #include "../model/scoring/ScoreBoard.h"
+#include "../model/scoring/ScoreEntry.h"
 
 using namespace model;
 
@@ -139,9 +140,11 @@ public:
     /**
      * Gets the score board data as a string.
      *
+     * @param sortType Sort type for the scores
+     *
      * @return Score board data as a string.
      */
-    //const std::string getScoreBoardData() const;
+    std::string getScoreBoardText(scoring::ScoreEntry::SortType sortType) const;
     /**
      * Adds a score entry to the scoreboard.
      *
