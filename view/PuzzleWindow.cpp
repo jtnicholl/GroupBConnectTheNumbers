@@ -2,6 +2,8 @@
 #include <FL/Fl_Menu_Item.H>
 #include <FL/Fl.H>
 
+#include <iostream>
+
 #include "../model/TileBoard.h"
 #include "../fileio/Utils.h"
 #include "fileio/PuzzleColorPersistence.h"
@@ -167,7 +169,6 @@ void PuzzleWindow::cbSubmit(Fl_Widget* widget, void* data) {
 
     if (window->gameController->isSolved())
     {
-        //window->gameController->toggleTimer(true);
         AddNewScoreWindow* addScoreWindow = new AddNewScoreWindow(275, 100, "Score Entry", window);
         addScoreWindow->set_modal();
         addScoreWindow->show();

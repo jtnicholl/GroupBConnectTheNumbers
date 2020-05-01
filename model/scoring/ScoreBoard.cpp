@@ -1,5 +1,7 @@
 #include "ScoreBoard.h"
 
+#include <sstream>
+
 namespace model::scoring {
 
 ScoreBoard::ScoreBoard() {
@@ -63,13 +65,13 @@ void ScoreBoard::placeAndPushBack(ScoreEntry* entry, int index) {
 }
 
 const std::string ScoreBoard::printScores() const {
-    std::string output = "";
+    std::stringstream output;
     for (unsigned int i = 0; i < MAX_SCORES; i++) {
         if (this->scores[i] != nullptr) {
-            output += buildScoreString(this->scores[i]);
+            output << buildScoreString(this->scores[i]);
         }
     }
-    return output;
+    return output.str();
 }
 
 const std::string ScoreBoard::buildScoreString(ScoreEntry* scoreEntry) const {
