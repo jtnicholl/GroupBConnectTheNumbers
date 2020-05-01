@@ -12,6 +12,7 @@ public:
     virtual ~ScoreBoard();
 
     void addScore(int time, const std::string& name, int puzzleLevel);
+    void addScore(ScoreEntry* entry);
     const ScoreEntry* getScore(int position, ScoreEntry::SortType sortType) const;
     int getSize() const;
     void resetScores();

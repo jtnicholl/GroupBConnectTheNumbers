@@ -6,6 +6,7 @@
 #include "../model/TileBoard.h"
 #include "../fileio/ScoreBoardSaver.h"
 #include "../view/format/HighScoreFormatter.h"
+#include "../fileio/ScoreBoardLoader.h"
 
 using namespace fileio;
 
@@ -18,7 +19,7 @@ GameController::GameController() {
     this->game = new TileGame(this->boards[this->currentLevel]);
     this->gameTimers = fileExists(SAVED_PUZZLE_TIMES_FILENAME) ? PuzzleLoader::loadPuzzleTimesFromFile(SAVED_PUZZLE_TIMES_FILENAME) : this->createDefaultGameTimers();
     this->currentTimerThread = nullptr;
-    this->scoreboard = new scoring::ScoreBoard();
+    this->scoreboard = fileExists(SAVED_SCOREBOARD_FILENAME) ? ScoreBoardLoader::loadScoresFromFile(SAVED_SCOREBOARD_FILENAME) : new scoring::ScoreBoard();
 }
 
 GameController::~GameController() {
