@@ -10,6 +10,7 @@ ScoreBoardWindow::ScoreBoardWindow(int width, int height, const std::string& tit
     this->output = new Fl_Multiline_Output(25, 25, 250, 225, nullptr);
     this->reset = new Fl_Button(110, 260, 80, 30, "Reset");
 
+    this->output->textfont(FL_COURIER);
     this->reset->callback(cbReset, this);
 
     updateScores();
