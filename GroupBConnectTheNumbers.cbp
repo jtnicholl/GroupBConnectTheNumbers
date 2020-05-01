@@ -22,6 +22,7 @@
 					<Add directory="model/Timing" />
 					<Add directory="view" />
 					<Add directory="view/FileIO" />
+					<Add directory="fileio" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -38,6 +39,10 @@
 		<Unit filename="fileio/PuzzleLoader.h" />
 		<Unit filename="fileio/PuzzleSaver.cpp" />
 		<Unit filename="fileio/PuzzleSaver.h" />
+		<Unit filename="fileio/ScoreBoardLoader.cpp" />
+		<Unit filename="fileio/ScoreBoardLoader.h" />
+		<Unit filename="fileio/ScoreBoardSaver.cpp" />
+		<Unit filename="fileio/ScoreBoardSaver.h" />
 		<Unit filename="fileio/Utils.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -55,12 +60,10 @@
 		<Unit filename="model/scoring/ScoreBoard.h" />
 		<Unit filename="model/scoring/ScoreEntry.cpp" />
 		<Unit filename="model/scoring/ScoreEntry.h" />
-		<Unit filename="view/AddNewScoreWindow.cpp" />
-		<Unit filename="view/AddNewScoreWindow.h" />
-		<Unit filename="view/FileIO/PuzzleColorPersistence.cpp" />
-		<Unit filename="view/FileIO/PuzzleColorPersistence.h" />
 		<Unit filename="model/timing/Timer.cpp" />
 		<Unit filename="model/timing/Timer.h" />
+		<Unit filename="view/AddNewScoreWindow.cpp" />
+		<Unit filename="view/AddNewScoreWindow.h" />
 		<Unit filename="view/PuzzleWindow.cpp" />
 		<Unit filename="view/PuzzleWindow.h" />
 		<Unit filename="view/ScoreBoardWindow.cpp" />

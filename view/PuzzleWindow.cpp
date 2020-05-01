@@ -81,6 +81,7 @@ void PuzzleWindow::setInitialColors() {
 void PuzzleWindow::cbOnCloseWindow(Fl_Widget*, void* data) {
     PuzzleWindow* window = (PuzzleWindow*) data;
     window->gameController->saveAllPuzzles();
+    window->gameController->saveScoreBoard();
     window->hide();
 }
 
@@ -164,21 +165,16 @@ void PuzzleWindow::cbSubmit(Fl_Widget* widget, void* data) {
     window->updateFromController();
     window->gameController->toggleTimer(false);
 
-<<<<<<< HEAD
     if (window->gameController->isSolved())
     {
+        window->gameController->toggleTimer(true);
         AddNewScoreWindow* addScoreWindow = new AddNewScoreWindow(275, 100, "Score Entry", window);
         addScoreWindow->set_modal();
         addScoreWindow->show();
-=======
-    if (window->gameController->isSolved()) {
-        window->completeLevel();
->>>>>>> 9c691131201d499f5b2b218b61e47253febd43c2
     }
 }
 
 void PuzzleWindow::completeLevel() {
-    this->gameController->toggleTimer(true);
     bool isAdvanced = this->gameController->tryAdvanceLevel();
     if (isAdvanced) {
         this->updateFromController();
@@ -241,12 +237,8 @@ void PuzzleWindow::cbScoreBoard(Fl_Widget* widget, void* data) {
     scoreboard->show();
 }
 
-<<<<<<< HEAD
 GameController* const PuzzleWindow::getGameController() const
 {
-=======
-const GameController* const PuzzleWindow::getGameController() const {
->>>>>>> 9c691131201d499f5b2b218b61e47253febd43c2
     return this->gameController;
 }
 

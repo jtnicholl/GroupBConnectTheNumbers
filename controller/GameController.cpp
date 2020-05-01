@@ -4,6 +4,7 @@
 #include "../fileio/PuzzleSaver.h"
 #include "../fileio/Utils.cpp"
 #include "../model/TileBoard.h"
+#include "../fileio/ScoreBoardSaver.h"
 
 using namespace fileio;
 
@@ -161,6 +162,11 @@ void GameController::addScoreBoardEntry(std::string name)
     {
         this->scoreboard->addScore(currentTimer->getSecondCount(), name, this->currentLevel + 1);
     }
+}
+
+void GameController::saveScoreBoard()
+{
+    ScoreBoardSaver::saveScoreBoardToFile(this->scoreboard, SAVED_SCOREBOARD_FILENAME);
 }
 
 }

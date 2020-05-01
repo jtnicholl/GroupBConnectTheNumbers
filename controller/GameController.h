@@ -148,12 +148,19 @@ public:
      * @param name the name of the score entry.
      */
     void addScoreBoardEntry(std::string name);
+    /**
+     * Saves the score board data to file.
+     *
+     * @post data is saved to file.
+     */
+    void saveScoreBoard();
 
 private:
     const std::string DEFAULT_PUZZLES_FILENAME = "default_puzzles.csv";
     const std::string SAVED_PUZZLES_FILENAME = "saved_puzzles.csv";
     const std::string LAST_OPEN_PUZZLE_FILENAME = "open_puzzle";
     const std::string SAVED_PUZZLE_TIMES_FILENAME = "puzzle_times.txt";
+    const std::string SAVED_SCOREBOARD_FILENAME = "scores.csv";
 
     int currentLevel;
     std::vector<TileBoard*> boards;
