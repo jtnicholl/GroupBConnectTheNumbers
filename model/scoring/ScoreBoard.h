@@ -6,15 +6,15 @@
 namespace model::scoring {
 
 class ScoreBoard {
-private:
+public:
     static const int MAX_SCORES = 10;
 
-public:
     ScoreBoard();
     ScoreBoard(ScoreEntry::SortType sortType);
     virtual ~ScoreBoard();
 
     void addScore(int time, const std::string& name, int puzzleLevel);
+    const ScoreEntry* getScore(int position) const;
     const std::string printScores() const;
     void setSortType(ScoreEntry::SortType sortType);
     void resetScores();

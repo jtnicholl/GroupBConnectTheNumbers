@@ -27,6 +27,10 @@ void ScoreBoard::addScore(int time, const std::string& name, int puzzleLevel) {
     }
 }
 
+const ScoreEntry* ScoreBoard::getScore(int position) const {
+    return this->scores[position];
+}
+
 bool ScoreBoard::canAddNewScore(ScoreEntry* newScore) const {
     bool canAdd = false;
     for (unsigned int i = 0; i < MAX_SCORES && !canAdd; i++) {

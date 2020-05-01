@@ -2,6 +2,7 @@
 #define SCOREBOARDSAVER_H
 
 #include "../model/scoring/ScoreBoard.h"
+#include "../model/scoring/ScoreEntry.h"
 
 #include <string>
 
@@ -12,8 +13,11 @@ namespace fileio
 
 class ScoreBoardSaver
 {
-    public:
-        static void saveScoreBoardToFile(const ScoreBoard* const scoreboard, const std::string& filename);
+public:
+    static void saveScoreBoardToFile(const ScoreBoard* scoreboard, const std::string& filename);
+
+private:
+    static std::string scoreEntryToLine(const ScoreEntry* entry);
 };
 
 }
