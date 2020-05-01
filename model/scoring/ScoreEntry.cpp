@@ -37,7 +37,8 @@ int ScoreEntry::compareTimes(const ScoreEntry* other) const {
 }
 
 int ScoreEntry::comparePuzzleLevel(const ScoreEntry* other) const {
-    return this->getPuzzleLevel() - other->getPuzzleLevel();
+	int comparison = other->getPuzzleLevel() - this->getPuzzleLevel();
+    return comparison == 0 ? this->compareTimes(other) : comparison;
 }
 
 }

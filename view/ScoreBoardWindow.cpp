@@ -7,13 +7,16 @@ ScoreBoardWindow::ScoreBoardWindow(int width, int height, const std::string& tit
 
     this->parent = parent;
 
-    this->output = new Fl_Multiline_Output(25, 25, 250, 225, nullptr);
+    this->sortMenu = new Fl_Menu_Button(25, 20, 250, 25, "Sort");
+    this->output = new Fl_Multiline_Output(25, 65, 250, 185);
     this->reset = new Fl_Button(110, 260, 80, 30, "Reset");
 
+    this->sortMenu->add("By time", 0, cbSortTime, this);
+    this->sortMenu->add("By level", 0, cbSortLevel, this);
     this->output->textfont(FL_COURIER);
     this->reset->callback(cbReset, this);
 
-    updateScores();
+    updateScores(ScoreEntry::SortType::TIME_ASCENDING);
 
     end();
 }
@@ -25,11 +28,22 @@ ScoreBoardWindow::~ScoreBoardWindow() {
 void ScoreBoardWindow::cbReset(Fl_Widget* widget, void* data) {
     ScoreBoardWindow* window = (ScoreBoardWindow*)data;
     window->parent->getGameController()->resetScoreBoard();
-    window->updateScores();
+    window->updateScores(ScoreEntry::SortType::TIME_ASCENDING);
 }
 
-void ScoreBoardWindow::updateScores() {
-	this->output->value(this->parent->getGameController()->getScoreBoardText(scoring::ScoreEntry::SortType::TIME_ASCENDING).c_str());
+void ScoreBoardWindow::cbSortTime(Fl_Widget* widget, void* data) {
+    ScoreBoardWindow* window = (ScoreBoardWindow*)data;
+    window->updateScores(ScoreEntry::SortType::TIME_ASCENDING);
+}
+
+void ScoreBoardWindow::cbSortLevel(Fl_Widget* widget, void* data) {
+    ScoreBoardWindow* window = (ScoreBoardWindow*)data;
+    window->updateScores(ScoreEntry::SortType::PUZZLE_LEVEL_DESCENDING);
+}
+
+void ScoreBoardWindow::updateScores(ScoreEntry::SortType sortType) {
+	std::string newText = this->parent->getGameController()->getScoreBoardText(sortType);
+	this->output->value(newText.c_str());
 }
 
 }

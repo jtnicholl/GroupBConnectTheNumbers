@@ -2,8 +2,6 @@
 #include <FL/Fl_Menu_Item.H>
 #include <FL/Fl.H>
 
-#include <iostream>
-
 #include "../model/TileBoard.h"
 #include "../fileio/Utils.h"
 #include "fileio/PuzzleColorPersistence.h"
