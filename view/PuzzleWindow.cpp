@@ -2,6 +2,8 @@
 #include <FL/Fl_Menu_Item.H>
 #include <FL/Fl.H>
 
+#include <iostream>
+
 #include "../model/TileBoard.h"
 #include "../fileio/Utils.h"
 #include "fileio/PuzzleColorPersistence.h"
@@ -154,9 +156,9 @@ void PuzzleWindow::cbChangePuzzle(Fl_Widget* widget, void* data) {
     PuzzleWindow* window = (PuzzleWindow*) data;
     const char* label = ((Fl_Menu_*)widget)->text();
     int puzzleSelected = std::atoi(label) - 1;
+    window->pushInputs();
     window->gameController->setCurrentLevel(puzzleSelected);
     window->updateFromController();
-    window->pushInputs();
 }
 
 void PuzzleWindow::cbSubmit(Fl_Widget* widget, void* data) {
@@ -167,7 +169,6 @@ void PuzzleWindow::cbSubmit(Fl_Widget* widget, void* data) {
 
     if (window->gameController->isSolved())
     {
-        window->gameController->toggleTimer(true);
         AddNewScoreWindow* addScoreWindow = new AddNewScoreWindow(275, 100, "Score Entry", window);
         addScoreWindow->set_modal();
         addScoreWindow->show();
