@@ -24,28 +24,20 @@ const int ScoreEntry::getPuzzleLevel() const {
     return this->puzzleLevel;
 }
 
-bool ScoreEntry::compare(ScoreEntry* entry, SortType type) const {
-    bool isLessThan = false;
-    if (type == TIME_ASCENDING) {
-        isLessThan = compareTimes(entry);
-    } else if (type == PUZZLE_LEVEL_DESCENDING) {
-        isLessThan = comparePuzzleLevel(entry);
+int ScoreEntry::compare(const ScoreEntry* other, SortType sortType) const {
+    if (sortType == TIME_ASCENDING) {
+        return compareTimes(other);
+    } else if (sortType == PUZZLE_LEVEL_DESCENDING) {
+        return comparePuzzleLevel(other);
     }
 }
 
-bool ScoreEntry::compareTimes(ScoreEntry* entry) const {
-    if (this->getTime() <= entry->getTime()) {
-        return true;
-    } else {
-        return false;
-    }
+int ScoreEntry::compareTimes(const ScoreEntry* other) const {
+    return this->getTime() - other->getTime();
 }
 
-bool ScoreEntry::comparePuzzleLevel(ScoreEntry* entry) const {
-    if (this->getPuzzleLevel() > entry->getPuzzleLevel()) {
-        return true;
-    }
-    // part 3 functionality needs to be added here
+int ScoreEntry::comparePuzzleLevel(const ScoreEntry* other) const {
+    return this->getPuzzleLevel() - other->getPuzzleLevel();
 }
 
 }

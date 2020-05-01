@@ -15,9 +15,9 @@ public:
     const int getTime() const;
     const std::string& getName() const;
     const int getPuzzleLevel() const;
-    bool compare(ScoreEntry* entry, SortType type) const;
-    bool compareTimes(ScoreEntry* entry) const;
-    bool comparePuzzleLevel(ScoreEntry* entry) const;
+    int compare(const ScoreEntry* other, SortType sortType) const;
+    int compareTimes(const ScoreEntry* other) const;
+    int comparePuzzleLevel(const ScoreEntry* other) const;
 
 private:
     int time;

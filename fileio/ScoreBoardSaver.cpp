@@ -3,15 +3,13 @@
 #include <fstream>
 #include <iostream>
 
-namespace fileio
-{
+namespace fileio {
 
-void ScoreBoardSaver::saveScoreBoardToFile(const ScoreBoard* scoreboard, const std::string& filename)
-{
+void ScoreBoardSaver::saveScoreBoardToFile(const ScoreBoard* scoreboard, const std::string& filename) {
     std::ofstream outfile;
     outfile.open(filename, std::ios::out | std::ios::trunc);
-    for (int i = 0; i < ScoreBoard::MAX_SCORES && scoreboard->getScore(i) != nullptr; i++) {
-        outfile << scoreEntryToLine(scoreboard->getScore(i)) << std::endl;
+    for (int i = 0; i < scoreboard->getSize(); i++) {
+        outfile << scoreEntryToLine(scoreboard->getScore(i, ScoreEntry::SortType::TIME_ASCENDING)) << std::endl;
     }
     outfile.close();
 }

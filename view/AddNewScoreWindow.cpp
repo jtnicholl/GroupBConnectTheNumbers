@@ -1,10 +1,8 @@
 #include "AddNewScoreWindow.h"
 
-namespace view
-{
+namespace view {
 
-AddNewScoreWindow::AddNewScoreWindow(int width, int height, const std::string& title, PuzzleWindow* parent) : Fl_Window(width, height, title.c_str())
-{
+AddNewScoreWindow::AddNewScoreWindow(int width, int height, const std::string& title, PuzzleWindow* parent) : Fl_Window(width, height, title.c_str()) {
     begin();
 
     this->nameEntry = new Fl_Input(100, 30, 130, 30, "Enter Name:");
@@ -15,14 +13,12 @@ AddNewScoreWindow::AddNewScoreWindow(int width, int height, const std::string& t
     end();
 }
 
-AddNewScoreWindow::~AddNewScoreWindow()
-{
+AddNewScoreWindow::~AddNewScoreWindow() {
     delete this->nameEntry;
     delete this->saveNameButton;
 }
 
-void AddNewScoreWindow::cbSaveName(Fl_Widget* widget, void* data)
-{
+void AddNewScoreWindow::cbSaveName(Fl_Widget* widget, void* data) {
     AddNewScoreWindow* window = (AddNewScoreWindow*)data;
     window->parent->getGameController()->addScoreBoardEntry(window->nameEntry->value());
     window->hide();

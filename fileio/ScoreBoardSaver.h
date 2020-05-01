@@ -8,11 +8,9 @@
 
 using namespace model::scoring;
 
-namespace fileio
-{
+namespace fileio {
 
-class ScoreBoardSaver
-{
+class ScoreBoardSaver {
 public:
     static void saveScoreBoardToFile(const ScoreBoard* scoreboard, const std::string& filename);
 

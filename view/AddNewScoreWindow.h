@@ -5,21 +5,19 @@
 
 #include "PuzzleWindow.h"
 
-namespace view
-{
+namespace view {
 
-class AddNewScoreWindow : public Fl_Window
-{
-    public:
-        AddNewScoreWindow(int width, int height, const std::string& title, PuzzleWindow* parent);
-        virtual ~AddNewScoreWindow();
+class AddNewScoreWindow : public Fl_Window {
+public:
+    AddNewScoreWindow(int width, int height, const std::string& title, PuzzleWindow* parent);
+    virtual ~AddNewScoreWindow();
 
-    private:
-        Fl_Input* nameEntry;
-        Fl_Button* saveNameButton;
-        PuzzleWindow* parent;
+private:
+    Fl_Input* nameEntry;
+    Fl_Button* saveNameButton;
+    PuzzleWindow* parent;
 
-        static void cbSaveName(Fl_Widget* widget, void* data);
+    static void cbSaveName(Fl_Widget* widget, void* data);
 };
 
 }

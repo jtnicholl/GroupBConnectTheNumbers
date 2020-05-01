@@ -141,7 +141,7 @@ public:
      *
      * @return Score board data as a string.
      */
-    const std::string getScoreBoardData() const;
+    //const std::string getScoreBoardData() const;
     /**
      * Adds a score entry to the scoreboard.
      *

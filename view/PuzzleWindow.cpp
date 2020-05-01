@@ -167,8 +167,7 @@ void PuzzleWindow::cbSubmit(Fl_Widget* widget, void* data) {
     window->updateFromController();
     window->gameController->toggleTimer(false);
 
-    if (window->gameController->isSolved())
-    {
+    if (window->gameController->isSolved()) {
         AddNewScoreWindow* addScoreWindow = new AddNewScoreWindow(275, 100, "Score Entry", window);
         addScoreWindow->set_modal();
         addScoreWindow->show();
@@ -238,8 +237,7 @@ void PuzzleWindow::cbScoreBoard(Fl_Widget* widget, void* data) {
     scoreboard->show();
 }
 
-GameController* const PuzzleWindow::getGameController() const
-{
+GameController* const PuzzleWindow::getGameController() const {
     return this->gameController;
 }
 

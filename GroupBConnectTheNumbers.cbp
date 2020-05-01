@@ -60,6 +60,8 @@
 		<Unit filename="model/scoring/ScoreBoard.h" />
 		<Unit filename="model/scoring/ScoreEntry.cpp" />
 		<Unit filename="model/scoring/ScoreEntry.h" />
+		<Unit filename="model/scoring/ScoreNode.cpp" />
+		<Unit filename="model/scoring/ScoreNode.h" />
 		<Unit filename="model/timing/Timer.cpp" />
 		<Unit filename="model/timing/Timer.h" />
 		<Unit filename="view/AddNewScoreWindow.cpp" />

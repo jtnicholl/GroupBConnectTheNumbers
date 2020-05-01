@@ -5,89 +5,75 @@
 namespace model::scoring {
 
 ScoreBoard::ScoreBoard() {
-    this->scores = new ScoreEntry*[MAX_SCORES]();
-    this->sortType = ScoreEntry::TIME_ASCENDING;
+    this->timeHead = nullptr;
+    this->puzzleHead = nullptr;
+    this->size = 0;
 }
 
-ScoreBoard::ScoreBoard(ScoreEntry::SortType sortType) {
-    this->scores = new ScoreEntry*[MAX_SCORES];
-    this->sortType = sortType;
-}
 
 ScoreBoard::~ScoreBoard() {
-    delete[] this->scores;
+    resetScores();
 }
 
 void ScoreBoard::addScore(int time, const std::string& name, int puzzleLevel) {
-    ScoreEntry* newScore = new ScoreEntry(time, name, puzzleLevel);
-    if (!canAddNewScore(newScore)) {
-        delete newScore;
+    ScoreEntry* entry = new ScoreEntry(time, name, puzzleLevel);
+    ScoreNode* node = new ScoreNode(entry);
+    insertScore(node, ScoreEntry::SortType::TIME_ASCENDING);
+    insertScore(node, ScoreEntry::SortType::PUZZLE_LEVEL_DESCENDING);
+    this->size++;
+}
+
+const ScoreEntry* ScoreBoard::getScore(int position, ScoreEntry::SortType sortType) const {
+    ScoreNode* output;
+    if (sortType == ScoreEntry::SortType::TIME_ASCENDING) {
+        output = this->timeHead;
+    } else if (sortType == ScoreEntry::SortType::PUZZLE_LEVEL_DESCENDING) {
+        output = this->puzzleHead;
+    }
+    for (int i = 0; i < position; i++) {
+        output = output->getNext(sortType);
+    }
+    return output->getEntry();
+}
+
+int ScoreBoard::getSize() const {
+    return this->size;
+}
+
+void ScoreBoard::insertScore(ScoreNode* newScore, ScoreEntry::SortType sortType) {
+    ScoreNode** head = this->getHead(sortType);
+    if (*(head) == nullptr) {
+        *(head) = newScore;
+    } else if (newScore->compare(*(head), sortType) < 0) {
+        newScore->insertNext(*(head), sortType);
+        *(head) = newScore;
     } else {
-        insertScore(newScore);
-    }
-}
-
-const ScoreEntry* ScoreBoard::getScore(int position) const {
-    return this->scores[position];
-}
-
-bool ScoreBoard::canAddNewScore(ScoreEntry* newScore) const {
-    bool canAdd = false;
-    for (unsigned int i = 0; i < MAX_SCORES && !canAdd; i++) {
-        if (this->scores[i] == nullptr) {
-            canAdd = true;
-        } else if (!this->scores[i]->compare(newScore, this->sortType)) {
-            canAdd = true;
+        ScoreNode* currentNode = *(head);
+        ScoreNode* nextNode = currentNode->getNext(sortType);
+        while (nextNode != nullptr && nextNode->compare(newScore, sortType) >= 0) {
+            currentNode = nextNode;
+            nextNode = currentNode->getNext(sortType);
         }
+        currentNode->insertNext(newScore, sortType);
     }
-    return canAdd;
-}
-
-void ScoreBoard::insertScore(ScoreEntry* newScore) {
-    bool inserted = false;
-    for (unsigned int i = 0; i < MAX_SCORES && !inserted; i++) {
-        if (this->scores[i] == nullptr) {
-            this->scores[i] = newScore;
-            inserted = true;
-        } else if (!this->scores[i]->compare(newScore, this->sortType)) {
-            ScoreEntry* temp = this->scores[i];
-            this->scores[i] = newScore;
-            placeAndPushBack(temp, i + 1);
-            inserted = true;
-        }
-    }
-}
-
-void ScoreBoard::placeAndPushBack(ScoreEntry* entry, int index) {
-    ScoreEntry* temp1 = nullptr;
-    ScoreEntry* temp2 = entry;
-    for (int i = index; i < MAX_SCORES && temp2; i++) {
-        temp1 = this->scores[i];
-        this->scores[i] = temp2;
-        temp2 = temp1;
-    }
-}
-
-const std::string ScoreBoard::printScores() const {
-    std::stringstream output;
-    for (unsigned int i = 0; i < MAX_SCORES; i++) {
-        if (this->scores[i] != nullptr) {
-            output << buildScoreString(this->scores[i]);
-        }
-    }
-    return output.str();
-}
-
-const std::string ScoreBoard::buildScoreString(ScoreEntry* scoreEntry) const {
-    std::string curName = scoreEntry->getName();
-    std::string curTime = std::to_string(scoreEntry->getTime());
-    std::string curPuzzle = std::to_string(scoreEntry->getPuzzleLevel());
-    return curName + " " + curTime + " " + curPuzzle + "\n";
 }
 
 void ScoreBoard::resetScores() {
-    delete[] this->scores;
-    this->scores = new ScoreEntry*[MAX_SCORES]();
+    ScoreNode* currentNode = this->timeHead;
+    while (currentNode != nullptr) {
+        ScoreNode* toDelete = currentNode;
+        currentNode = currentNode->getNext(ScoreEntry::SortType::TIME_ASCENDING);
+        delete toDelete;
+    }
+    this->size = 0;
+}
+
+ScoreNode** ScoreBoard::getHead(ScoreEntry::SortType sortType) {
+    if (sortType == ScoreEntry::SortType::TIME_ASCENDING) {
+        return &(this->timeHead);
+    } else if (sortType == ScoreEntry::SortType::PUZZLE_LEVEL_DESCENDING) {
+        return &(this->puzzleHead);
+    }
 }
 
 }

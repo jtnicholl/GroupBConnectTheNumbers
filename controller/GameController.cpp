@@ -151,21 +151,18 @@ void GameController::resetScoreBoard() const {
     this->scoreboard->resetScores();
 }
 
-const std::string GameController::getScoreBoardData() const {
-    return this->scoreboard->printScores();
-}
+//const std::string GameController::getScoreBoard() const {
+//    return this->scoreboard->printScores();
+//}
 
-void GameController::addScoreBoardEntry(std::string name)
-{
+void GameController::addScoreBoardEntry(std::string name) {
     timing::Timer* currentTimer = this->gameTimers[this->currentLevel];
-    if (currentTimer)
-    {
+    if (currentTimer) {
         this->scoreboard->addScore(currentTimer->getSecondCount(), name, this->currentLevel + 1);
     }
 }
 
-void GameController::saveScoreBoard()
-{
+void GameController::saveScoreBoard() {
     ScoreBoardSaver::saveScoreBoardToFile(this->scoreboard, SAVED_SCOREBOARD_FILENAME);
 }
 

@@ -1,12 +1,10 @@
 #ifndef SCOREBOARDLOADER_H
 #define SCOREBOARDLOADER_H
 
-namespace fileio
-{
+namespace fileio {
 
-class ScoreBoardLoader
-{
-    public:
+class ScoreBoardLoader {
+public:
 
 };
 

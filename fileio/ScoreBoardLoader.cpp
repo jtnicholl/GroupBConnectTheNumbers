@@ -1,7 +1,6 @@
 #include "ScoreBoardLoader.h"
 
-namespace fileio
-{
+namespace fileio {
 
 
 

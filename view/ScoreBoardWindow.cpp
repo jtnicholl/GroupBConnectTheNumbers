@@ -28,7 +28,7 @@ void ScoreBoardWindow::cbReset(Fl_Widget* widget, void* data) {
 }
 
 void ScoreBoardWindow::updateScores() {
-    this->output->value(this->parent->getGameController()->getScoreBoardData().c_str());
+
 }
 
 }
