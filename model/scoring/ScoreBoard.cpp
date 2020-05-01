@@ -48,7 +48,7 @@ void ScoreBoard::insertScore(ScoreNode* newScore, ScoreEntry::SortType sortType)
     if (*(head) == nullptr) {
         *(head) = newScore;
     } else if ((*(head))->compare(newScore, sortType) > 0) {
-        newScore->insertNext(*(head), sortType);
+        newScore->setNext(*(head), sortType);
         *(head) = newScore;
     } else {
         ScoreNode* currentNode = *(head);

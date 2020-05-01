@@ -15,6 +15,7 @@ public:
     int compare(const ScoreNode* other, ScoreEntry::SortType sortType) const;
     ScoreNode* getNext(ScoreEntry::SortType sortType) const;
     void insertNext(ScoreNode* node, ScoreEntry::SortType sortType);
+    void setNext(ScoreNode* node, ScoreEntry::SortType sortType);
 
 private:
     ScoreEntry* entry;
