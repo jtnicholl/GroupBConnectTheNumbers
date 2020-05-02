@@ -20,7 +20,7 @@ void ScoreBoard::addScore(int time, const std::string& name, int puzzleLevel) {
 }
 
 void ScoreBoard::addScore(ScoreEntry* entry) {
-	ScoreNode* node = new ScoreNode(entry);
+    ScoreNode* node = new ScoreNode(entry);
     insertScore(node, ScoreEntry::SortType::TIME_ASCENDING);
     insertScore(node, ScoreEntry::SortType::PUZZLE_LEVEL_DESCENDING);
     this->size++;

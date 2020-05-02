@@ -42,8 +42,8 @@ void ScoreBoardWindow::cbSortLevel(Fl_Widget* widget, void* data) {
 }
 
 void ScoreBoardWindow::updateScores(ScoreEntry::SortType sortType) {
-	std::string newText = this->parent->getGameController()->getScoreBoardText(sortType);
-	this->output->value(newText.c_str());
+    std::string newText = this->parent->getGameController()->getScoreBoardText(sortType);
+    this->output->value(newText.c_str());
 }
 
 }

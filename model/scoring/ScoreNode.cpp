@@ -40,9 +40,9 @@ void ScoreNode::insertNext(ScoreNode* node, ScoreEntry::SortType sortType) {
 }
 
 void ScoreNode::setNext(ScoreNode* node, ScoreEntry::SortType sortType) {
-	if (sortType == ScoreEntry::SortType::TIME_ASCENDING) {
-		this->nextTime = node;
-	} else if (sortType == ScoreEntry::SortType::PUZZLE_LEVEL_DESCENDING) {
+    if (sortType == ScoreEntry::SortType::TIME_ASCENDING) {
+        this->nextTime = node;
+    } else if (sortType == ScoreEntry::SortType::PUZZLE_LEVEL_DESCENDING) {
         this->nextPuzzle = node;
     }
 }

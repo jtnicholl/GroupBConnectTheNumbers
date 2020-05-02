@@ -10,14 +10,23 @@ using namespace model;
 
 namespace fileio {
 
-class ScoreBoardLoader
-{
-    public:
-        static scoring::ScoreBoard* loadScoresFromFile(const std::string& filename);
+/**
+ * Class for loading high score boards.
+ */
+class ScoreBoardLoader {
+public:
+    /**
+     * Load a high score board from a file.
+     *
+     * @param filename name of the file to laod
+     *
+     * @return the scoreboard
+     */
+    static scoring::ScoreBoard* loadScoresFromFile(const std::string& filename);
 
-    private:
-        static const char DELIMETER = ',';
-        static scoring::ScoreEntry* loadScoreFromLine(const std::string& line);
+private:
+    static const char DELIMETER = ',';
+    static scoring::ScoreEntry* loadScoreFromLine(const std::string& line);
 };
 
 }

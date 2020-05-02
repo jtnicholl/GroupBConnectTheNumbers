@@ -12,13 +12,27 @@ using namespace model::scoring;
 
 namespace view {
 
+/**
+ * Window for displaying high scores.
+ */
 class ScoreBoardWindow : public Fl_Window {
 public:
+    /**
+     * Construct a new high score window.
+     *
+     * @param width width of the window
+     * @param height height of the window
+     * @param title title of the window
+     * @param parent parent of the window
+     */
     ScoreBoardWindow(int width, int height, const std::string& title, PuzzleWindow* parent);
+    /**
+     * Destructor.
+     */
     virtual ~ScoreBoardWindow();
 
 private:
-	Fl_Menu_Button* sortMenu;
+    Fl_Menu_Button* sortMenu;
     Fl_Multiline_Output* output;
     Fl_Button* reset;
     PuzzleWindow* parent;
