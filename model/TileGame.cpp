@@ -18,7 +18,8 @@ int TileGame::getTileValue(int position) const {
 }
 
 bool TileGame::trySetTileValue(int position, int value) {
-	if (value != 0 && this->board->contains(value)) {
+	if (this->board->getTile(position)->getValue() != value && this->board->contains(value)) {
+		this->board->getTile(position)->trySetValue(0);
 		return false;
 	} else {
 		return this->board->getTile(position)->trySetValue(value);
