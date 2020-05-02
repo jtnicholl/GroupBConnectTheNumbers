@@ -3,7 +3,11 @@
 #include <fstream>
 #include <sstream>
 
+#include "Utils.h"
+
 namespace fileio {
+
+const std::string ScoreBoardLoader::DELIMETER = ",";
 
 scoring::ScoreBoard* ScoreBoardLoader::loadScoresFromFile(const std::string& filename) {
     std::ifstream infile;
@@ -21,25 +25,13 @@ scoring::ScoreBoard* ScoreBoardLoader::loadScoresFromFile(const std::string& fil
 }
 
 scoring::ScoreEntry* ScoreBoardLoader::loadScoreFromLine(const std::string& line) {
-    std::vector<std::string> lineValues;
-    std::size_t curPos = line.find(DELIMETER), prevPos = 0;
-    while (curPos != std::string::npos) {
-        lineValues.push_back(line.substr(prevPos, curPos - prevPos));
-        prevPos = curPos + 1;
-        curPos = line.find(DELIMETER, prevPos);
-    }
-    lineValues.push_back(line.substr(prevPos, curPos - prevPos));
+    std::vector<std::string> lineValues = split(line, DELIMETER);
 
-    int puzzleLevel = std::stoi(lineValues.back());
-    lineValues.pop_back();
-    int time = std::stoi(lineValues.back());
-    lineValues.pop_back();
-    std::stringstream nameStream;
-    for (std::vector<std::string>::iterator i = lineValues.begin(); i != lineValues.end(); i++) {
-        nameStream << *i;
-    }
-    std::string name = nameStream.str();
-    return new scoring::ScoreEntry(time, name, puzzleLevel);
+    std::string name = lineValues[0];
+    int time = std::stoi(lineValues[1]);
+    int level = std::stoi(lineValues[2]);
+
+    return new scoring::ScoreEntry(time, name, level);
 }
 
 }

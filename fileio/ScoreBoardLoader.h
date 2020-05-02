@@ -25,7 +25,7 @@ public:
     static scoring::ScoreBoard* loadScoresFromFile(const std::string& filename);
 
 private:
-    static const char DELIMETER = ',';
+    static const std::string DELIMETER;
     static scoring::ScoreEntry* loadScoreFromLine(const std::string& line);
 };
 

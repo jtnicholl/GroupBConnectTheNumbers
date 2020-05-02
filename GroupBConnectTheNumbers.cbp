@@ -35,6 +35,8 @@
 		<Unit filename="controller/GameController.cpp" />
 		<Unit filename="controller/GameController.h" />
 		<Unit filename="default_puzzles.csv" />
+		<Unit filename="fileio/PuzzleColorPersistence.cpp" />
+		<Unit filename="fileio/PuzzleColorPersistence.h" />
 		<Unit filename="fileio/PuzzleLoader.cpp" />
 		<Unit filename="fileio/PuzzleLoader.h" />
 		<Unit filename="fileio/PuzzleSaver.cpp" />
@@ -72,8 +74,6 @@
 		<Unit filename="view/ScoreBoardWindow.h" />
 		<Unit filename="view/SettingsWindow.cpp" />
 		<Unit filename="view/SettingsWindow.h" />
-		<Unit filename="view/fileio/PuzzleColorPersistence.cpp" />
-		<Unit filename="view/fileio/PuzzleColorPersistence.h" />
 		<Unit filename="view/format/HighScoreFormatter.cpp" />
 		<Unit filename="view/format/HighScoreFormatter.h" />
 		<Extensions>

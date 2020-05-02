@@ -1,3 +1,5 @@
+#include "PuzzleWindow.h"
+
 #include <string>
 #include <FL/Fl_Menu_Item.H>
 #include <FL/Fl.H>
@@ -5,7 +7,6 @@
 #include "../model/TileBoard.h"
 #include "../fileio/Utils.h"
 #include "fileio/PuzzleColorPersistence.h"
-#include "PuzzleWindow.h"
 #include "SettingsWindow.h"
 #include "ScoreBoardWindow.h"
 #include "AddNewScoreWindow.h"
@@ -67,7 +68,7 @@ Fl_Color PuzzleWindow::getInputNumberColor() const {
 
 void PuzzleWindow::setInitialColors() {
     if (fileio::fileExists(COLOR_SAVE_FILENAME)) {
-        std::vector<io::PuzzleColorPersistence::PuzzleColor> colors = io::PuzzleColorPersistence::loadPuzzleColorsFromFile(COLOR_SAVE_FILENAME);
+        std::vector<fileio::PuzzleColorPersistence::PuzzleColor> colors = fileio::PuzzleColorPersistence::loadPuzzleColorsFromFile(COLOR_SAVE_FILENAME);
         this->currentCellColor = fl_rgb_color(colors[0].red, colors[0].green, colors[0].blue);
         this->currentNumberColor = fl_rgb_color(colors[1].red, colors[1].green, colors[1].blue);
     } else {
@@ -163,9 +164,9 @@ void PuzzleWindow::cbSubmit(Fl_Widget* widget, void* data) {
     PuzzleWindow* window = (PuzzleWindow*) data;
     window->pushInputs();
     window->updateFromController();
-    window->gameController->toggleTimer(false);
-
+    window->gameController->toggleTimer(true);
     if (window->gameController->isSolved()) {
+        window->gameController->toggleTimer(false);
         AddNewScoreWindow* addScoreWindow = new AddNewScoreWindow(275, 100, "Score Entry", window);
         addScoreWindow->set_modal();
         addScoreWindow->show();
@@ -191,7 +192,7 @@ void PuzzleWindow::cbPause(Fl_Widget* widget, void* data) {
     window->makeInputsVisible(window->isPaused);
     window->pauseButton->label(window->isPaused ? "Pause" : "Unpause");
     window->isPaused = !window->isPaused;
-    window->gameController->toggleTimer(window->isPaused);
+    window->gameController->toggleTimer(!window->isPaused);
 }
 
 void PuzzleWindow::makeInputsVisible(bool isVisible) {

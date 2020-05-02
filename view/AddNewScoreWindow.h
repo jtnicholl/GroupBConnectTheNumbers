@@ -12,7 +12,7 @@ namespace view {
  */
 class AddNewScoreWindow : public Fl_Window {
 public:
-	/**
+    /**
         * Construct a new AddNewScoreWindow.
         *
         * @param width width of the window
@@ -22,8 +22,8 @@ public:
         */
     AddNewScoreWindow(int width, int height, const std::string& title, PuzzleWindow* parent);
     /**
-	 * Destructor.
-	 */
+     * Destructor.
+     */
     virtual ~AddNewScoreWindow();
 
 private:

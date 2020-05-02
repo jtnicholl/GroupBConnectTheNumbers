@@ -141,11 +141,11 @@ void GameController::setTimerPropertyChangedHandler(void (*callback)(int, void*)
     this->timerPropertyChangedData = data;
 }
 
-void GameController::toggleTimer(bool isOff) {
-    if (isOff) {
-        this->stopCurrentTimer();
-    } else {
+void GameController::toggleTimer(bool enabled) {
+    if (enabled) {
         this->startCurrentTimer();
+    } else {
+        this->stopCurrentTimer();
     }
 }
 

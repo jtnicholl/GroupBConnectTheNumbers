@@ -4,15 +4,10 @@
 #include <string>
 #include <vector>
 
-namespace view {
-namespace io {
+namespace fileio {
 
 /**
- * This class manages loading and saving view information.
- * The PuzzleColor struct is used to group rgb values for
- * a particular color.
- *
- * @author Thomas Luke Whaley
+ * This class manages loading and saving color settings.
  */
 class PuzzleColorPersistence {
 public:
@@ -33,20 +28,18 @@ public:
      * @param numberColor the game's number color.
      * @param filename the file to save the information to.
      */
-    static void savePuzzleColorsToFile(PuzzleColor& cellColor, PuzzleColor& numberColor, const std::string& filename);
+    static void savePuzzleColorsToFile(const PuzzleColor& cellColor, const PuzzleColor& numberColor, const std::string& filename);
 
     /**
      * Loads the puzzle colors from the specified file.
      *
-     * @post loadPuzzleColorsFromFile(std::string).size() == 2
+     * @param filename the file to load the colors from
      *
-     * @param filename the file to load the colors from.
-     * @return a vector containing the two puzzle colors.
+     * @return a vector containing the two colors
      */
     static std::vector<PuzzleColor> loadPuzzleColorsFromFile(const std::string& filename);
 };
 
-}
 }
 
 #endif // PUZZLECOLORPERSISTENCE_H

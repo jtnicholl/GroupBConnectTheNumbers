@@ -1,12 +1,12 @@
+#include "PuzzleColorPersistence.h"
+
 #include <fstream>
 
-#include "PuzzleColorPersistence.h"
-#include "../../fileio/Utils.h"
+#include "Utils.h"
 
-namespace view {
-namespace io {
+namespace fileio {
 
-void PuzzleColorPersistence::savePuzzleColorsToFile(PuzzleColor& cellColor, PuzzleColor& numberColor, const std::string& filename) {
+void PuzzleColorPersistence::savePuzzleColorsToFile(const PuzzleColor& cellColor, const PuzzleColor& numberColor, const std::string& filename) {
     std::ofstream outfile;
     outfile.open(filename, std::ios::out | std::ios::trunc);
     if (outfile.is_open()) {
@@ -35,5 +35,4 @@ std::vector<PuzzleColorPersistence::PuzzleColor> PuzzleColorPersistence::loadPuz
     return times;
 }
 
-}
 }

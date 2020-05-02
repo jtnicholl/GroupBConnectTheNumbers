@@ -1,8 +1,9 @@
+#include "SettingsWindow.h"
+
 #include <string>
 #include <FL/Fl.H>
 
-#include "SettingsWindow.h"
-#include "fileio/PuzzleColorPersistence.h"
+#include "../fileio/PuzzleColorPersistence.h"
 
 namespace view {
 
@@ -41,17 +42,17 @@ SettingsWindow::~SettingsWindow() {
 void SettingsWindow::cbSave(Fl_Widget* widget, void* data) {
     SettingsWindow* window = (SettingsWindow*) data;
 
-    io::PuzzleColorPersistence::PuzzleColor numberColorData;
+    fileio::PuzzleColorPersistence::PuzzleColor numberColorData;
     numberColorData.red = window->numberColorMenu->r() * 255;
     numberColorData.green = window->numberColorMenu->g() * 255;
     numberColorData.blue = window->numberColorMenu->b() * 255;
 
-    io::PuzzleColorPersistence::PuzzleColor cellColorData;
+    fileio::PuzzleColorPersistence::PuzzleColor cellColorData;
     cellColorData.red = window->cellColorMenu->r() * 255;
     cellColorData.green = window->cellColorMenu->g() * 255;
     cellColorData.blue = window->cellColorMenu->b() * 255;
 
-    io::PuzzleColorPersistence::savePuzzleColorsToFile(cellColorData, numberColorData, PuzzleWindow::COLOR_SAVE_FILENAME);
+    fileio::PuzzleColorPersistence::savePuzzleColorsToFile(cellColorData, numberColorData, PuzzleWindow::COLOR_SAVE_FILENAME);
 
     Fl_Color numberColor = fl_rgb_color(numberColorData.red, numberColorData.green, numberColorData.blue);
     Fl_Color cellColor = fl_rgb_color(cellColorData.red, cellColorData.green, cellColorData.blue);

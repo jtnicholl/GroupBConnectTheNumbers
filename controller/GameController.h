@@ -130,9 +130,9 @@ public:
     /**
      * Pauses or unpauses the games timer.
      *
-     * @param shouldPause whether or not to pause or unpause the timer.
+     * @param enabled whether the timer should be started or stopped
      */
-    void toggleTimer(bool isOff);
+    void toggleTimer(bool enabled);
     /**
      * Removes the entries in the scoreboard.
      */
