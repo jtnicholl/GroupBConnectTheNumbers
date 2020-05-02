@@ -47,7 +47,7 @@ public:
      * Sets the tile number at the specified position to the specified value.
      *
      * @pre position >= 0, x < TileBoard::BOARD_AREA, value >= 0, value <= 64
-     * @post if isTileMutable(position), then getTileValue(position) == value
+     * @post if isTileMutable(position) and the value is not already present, then getTileValue(position) == value
      *
      * @param position the position position of the tile to set
      * @param value the value to set at the position

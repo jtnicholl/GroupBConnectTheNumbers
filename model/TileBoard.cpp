@@ -37,6 +37,15 @@ void TileBoard::setTile(int position, Tile* tile) {
     this->tiles[position] = tile;
 }
 
+bool TileBoard::contains(int value) const {
+    for (int i = 0; i < BOARD_AREA; i++) {
+	    if (this->tiles[i]->getValue() == value) {
+	        return true;
+	    }
+    }
+    return false;
+}
+
 bool TileBoard::isSolved() const {
     for (int i = 0; i < BOARD_AREA; i++) {
         if (!tileValid(i)) {

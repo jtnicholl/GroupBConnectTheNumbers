@@ -52,6 +52,14 @@ public:
      */
     void setTile(int position, Tile* tile);
     /**
+     * Check if any of the tiles contain the given value.
+     *
+     * @param value value to check
+     *
+     * @return true if the number is present, else false
+     */
+    bool contains(int value) const;
+    /**
      * Check if the puzzle has been solved.
      *
      * @return true if the puzzle is solved, else false
